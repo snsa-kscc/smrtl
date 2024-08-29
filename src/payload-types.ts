@@ -88,20 +88,37 @@ export interface Page {
   id: number;
   title: string;
   content?: {
-    root: {
-      type: string;
-      children: {
+    content?: {
+      root: {
         type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
         version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  layout?: {
+    layout?:
+      | {
+          title?: string | null;
+          swappingTitle?: string | null;
+          description?: string | null;
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'hero';
+        }[]
+      | null;
+  };
+  seo?: {
+    title?: string | null;
+  };
   slug: string;
   updatedAt: string;
   createdAt: string;

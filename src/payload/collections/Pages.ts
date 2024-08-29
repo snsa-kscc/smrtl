@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { Hero } from '../blocks/Hero'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -12,14 +13,46 @@ export const Pages: CollectionConfig = {
       required: true,
     },
     {
-      name: 'content',
-      type: 'richText',
+      type: 'tabs',
+      tabs: [
+        {
+          name: 'content',
+          fields: [
+            {
+              name: 'content',
+              type: 'richText',
+            },
+          ],
+        },
+        {
+          name: 'layout',
+          fields: [
+            {
+              name: 'layout',
+              type: 'blocks',
+              blocks: [Hero],
+            },
+          ],
+        },
+        {
+          name: 'seo',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'slug',
       type: 'text',
       required: true,
       unique: true,
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
 }

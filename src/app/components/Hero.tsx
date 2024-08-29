@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(useGSAP)
 
-export default function Home() {
+export default function Hero({ data }: { data: any }) {
   useGSAP(() => {
     gsap.to('.box', { x: 360 })
   })
@@ -18,6 +18,8 @@ export default function Home() {
       </motion.div>
       <div>
         <p className="box">ja sam manupuliraan od gsapa</p>
+        <p>{data.layout[0].title}</p>
+        <p>{data.layout[0].swappingTitle}</p>
       </div>
     </main>
   )

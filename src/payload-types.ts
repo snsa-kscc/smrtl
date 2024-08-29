@@ -106,14 +106,25 @@ export interface Page {
   };
   layout?: {
     layout?:
-      | {
-          title?: string | null;
-          swappingTitle?: string | null;
-          description?: string | null;
-          id?: string | null;
-          blockName?: string | null;
-          blockType: 'hero';
-        }[]
+      | (
+          | {
+              title?: string | null;
+              swappingTitle?: string | null;
+              description?: string | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'hero';
+            }
+          | {
+              call?: string | null;
+              additionalText?: string | null;
+              buttonText?: string | null;
+              buttonLink?: string | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'call-to-action';
+            }
+        )[]
       | null;
   };
   seo?: {

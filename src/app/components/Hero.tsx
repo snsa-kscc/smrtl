@@ -19,7 +19,9 @@ export default function Hero({ data }: { data: any }) {
       <div>
         <p className="box">ja sam manupuliraan od gsapa</p>
         <p>{data.layout[0].title}</p>
-        <p>{data.layout[0].swappingTitle}</p>
+        {data.layout[0].swappingTitle.split(',').map((word: string, index: number) => (
+          <span key={index}>{word}</span>
+        ))}
       </div>
     </main>
   )

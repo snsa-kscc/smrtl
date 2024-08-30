@@ -1,4 +1,4 @@
-import Hero from '@/app/components/Hero'
+import { RenderBlocks } from '@/lib/RenderBlocks'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 
@@ -14,5 +14,11 @@ export default async function Page({ params: { slug = 'home' } }) {
     where: { slug: { equals: slug } },
   })
 
-  return <Hero data={result.docs[0].layout} />
+  if (!result.docs[0]) {
+    return null
+  }
+
+  const { layout } = result.docs?.[0]
+
+  return <RenderBlocks blocks={layout?.layout ?? []} />
 }

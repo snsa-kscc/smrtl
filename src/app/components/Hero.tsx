@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(useGSAP)
 
-export default function Hero({ data }: { data: any }) {
+export function Hero({ title, swappingTitle }: { title: string; swappingTitle: string }) {
   useGSAP(() => {
     gsap.to('.box', { x: 360 })
   })
@@ -18,8 +18,8 @@ export default function Hero({ data }: { data: any }) {
       </motion.div>
       <div>
         <p className="box">ja sam manupuliraan od gsapa</p>
-        <p>{data.layout[0].title}</p>
-        {data.layout[0].swappingTitle.split(',').map((word: string, index: number) => (
+        <p>{title}</p>
+        {swappingTitle.split(',').map((word: string, index: number) => (
           <span key={index}>{word}</span>
         ))}
       </div>

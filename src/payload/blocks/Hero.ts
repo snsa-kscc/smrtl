@@ -10,14 +10,17 @@ export const Hero: Block = {
     {
       name: 'title',
       type: 'text',
+      required: true,
     },
     {
-      name: 'swappingTitle',
+      name: 'animationWords',
       type: 'text',
+      required: true,
     },
     {
       name: 'description',
       type: 'textarea',
+      required: true,
     },
   ],
 }

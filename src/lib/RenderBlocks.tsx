@@ -2,11 +2,11 @@ import React, { Fragment } from 'react'
 import type { Page } from '../payload-types'
 
 import { Hero } from '../app/components/Hero'
-import { CallToAction } from '../app/components/CallToAction'
+import { QAndA } from '../app/components/QAndA'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
-  'call-to-action': CallToAction,
+  'q-and-a': QAndA,
 }
 
 export const RenderBlocks: React.FC<{

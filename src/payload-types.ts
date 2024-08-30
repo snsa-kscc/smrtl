@@ -108,21 +108,26 @@ export interface Page {
     layout?:
       | (
           | {
-              title?: string | null;
-              swappingTitle?: string | null;
-              description?: string | null;
+              title: string;
+              animationWords: string;
+              description: string;
               id?: string | null;
               blockName?: string | null;
               blockType: 'hero';
             }
           | {
-              call?: string | null;
-              additionalText?: string | null;
-              buttonText?: string | null;
-              buttonLink?: string | null;
+              title: string;
+              subtitle: string;
+              qAndABox?:
+                | {
+                    question?: string | null;
+                    answer?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
-              blockType: 'call-to-action';
+              blockType: 'q-and-a';
             }
         )[]
       | null;

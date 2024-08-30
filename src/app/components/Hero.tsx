@@ -22,7 +22,7 @@ export function Hero({
   return (
     <main>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 5 }}>
-        <h1>{title}</h1>
+        <h1 className="font-bold text-9xl">{title}</h1>
       </motion.div>
       <div>
         <p className="box">{description}</p>

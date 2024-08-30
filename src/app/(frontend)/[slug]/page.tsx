@@ -18,7 +18,11 @@ export default async function Page({ params: { slug = 'home' } }) {
     return null
   }
 
-  const { layout } = result.docs?.[0]
+  const { layout, content } = result.docs?.[0]
 
-  return <RenderBlocks blocks={layout?.layout ?? []} />
+  return (
+    <>
+      <RenderBlocks blocks={layout?.layout ?? []} />
+    </>
+  )
 }

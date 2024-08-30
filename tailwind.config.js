@@ -51,6 +51,9 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        smartellLightPurple: '#5E5EFF',
+        smartellDarkBlue: '#021F53',
+        smartellLightGray: '#E8EDF2',
       },
       borderRadius: {
         lg: 'var(--radius)',

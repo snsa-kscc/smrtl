@@ -27,9 +27,9 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <section className="my-16" key={index}>
                   <Block id={blockName} {...block} />
-                </div>
+                </section>
               )
             }
           }

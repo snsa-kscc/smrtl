@@ -9,6 +9,7 @@ export function QAndA({
 }) {
   return (
     <div>
+      <div className="h-screen bg-slate-500"></div>
       <h2>{title}</h2>
       <p>{subtitle}</p>
       <div>

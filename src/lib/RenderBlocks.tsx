@@ -3,10 +3,12 @@ import type { Page } from '../payload-types'
 
 import { Hero } from '../app/components/Hero'
 import { QAndA } from '../app/components/QAndA'
+import { Solutions } from '../app/components/Solutions'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
   'q-and-a': QAndA,
+  solutions: Solutions,
 }
 
 export const RenderBlocks: React.FC<{
@@ -27,7 +29,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <section className="my-24" key={index}>
+                <section className="my-24" key={index} data-name={blockName}>
                   <Block id={blockName} {...block} />
                 </section>
               )

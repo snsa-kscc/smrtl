@@ -129,6 +129,19 @@ export interface Page {
               blockName?: string | null;
               blockType: 'q-and-a';
             }
+          | {
+              title: string;
+              industry?:
+                | {
+                    name?: string | null;
+                    image?: (number | null) | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'solutions';
+            }
         )[]
       | null;
   };

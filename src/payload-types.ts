@@ -111,6 +111,12 @@ export interface Page {
               title: string;
               animationWords: string;
               description: string;
+              caseStudy?:
+                | {
+                    image?: (number | null) | Media;
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
               blockName?: string | null;
               blockType: 'hero';

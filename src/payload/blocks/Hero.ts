@@ -22,5 +22,16 @@ export const Hero: Block = {
       type: 'textarea',
       required: true,
     },
+    {
+      name: 'caseStudy',
+      type: 'array',
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+        },
+      ],
+    },
   ],
 }

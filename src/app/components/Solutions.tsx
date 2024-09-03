@@ -33,7 +33,7 @@ export function Solutions({ title, industry }: { title: string; industry: Indust
   }, [api])
 
   return (
-    <div className="flex">
+    <div className="flex bg-smartellDarkBlue py-10">
       <div className="w-1/2 pr-4">
         <h3>
           {title.split('**').map((part, index) =>

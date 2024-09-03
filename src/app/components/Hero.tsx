@@ -6,6 +6,14 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 import { HeroShapes } from './shapes/HeroShapes'
+import { Television } from './Television'
+
+type ImageType = {
+  url: string
+  alt: string
+  width: number
+  height: number
+}
 
 gsap.registerPlugin(useGSAP)
 
@@ -13,10 +21,15 @@ export function Hero({
   title,
   animationWords,
   description,
+  caseStudy,
 }: {
   title: string
   animationWords: string
   description: string
+  caseStudy: {
+    id: string
+    image: ImageType
+  }[]
 }) {
   const titleCharsRef = useRef<HTMLSpanElement[]>([])
   const animationWordsRef = useRef<HTMLDivElement[]>([])
@@ -65,64 +78,74 @@ export function Hero({
   }, [])
 
   return (
-    <div className="grid grid-cols-4 justify-items-end">
-      <div className="col-start-1 col-end-4 row-end-2 flex flex-col items-center">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
-          className="mb-4 text-center text-4xl font-bold text-smartellDarkBlue [perspective:1000px] [transform-style:preserve-3d] md:text-6xl lg:text-10xl"
-        >
-          {title.split(/(\s)/).map((word, i) => (
-            <div key={i} className="word inline-block">
-              {word.split('').map((char, j) => (
-                <span
-                  key={`${i}-${j}`}
-                  ref={(el) => {
-                    if (el) titleCharsRef.current.push(el)
-                  }}
-                  className="char inline-block will-change-transform"
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
-            </div>
-          ))}
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
-          className="relative mb-6 inline-block text-4xl font-bold text-smartellLightPurple md:text-6xl lg:text-10xl"
-        >
-          {animationWords.split(',').map((word, i) => (
-            <div
-              key={i}
-              className="word absolute left-0 top-0 w-max -translate-x-1/2"
-              ref={(el) => {
-                if (el) animationWordsRef.current.push(el)
-              }}
-            >
-              <div className="overflow-hidden">
+    <>
+      <div className="grid grid-cols-4 justify-items-end">
+        <div className="col-start-1 col-end-4 row-end-2 flex flex-col items-center">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="mb-4 text-center text-4xl font-bold text-smartellDarkBlue [perspective:1000px] [transform-style:preserve-3d] md:text-6xl lg:text-10xl"
+          >
+            {title.split(/(\s)/).map((word, i) => (
+              <div key={i} className="word inline-block">
                 {word.split('').map((char, j) => (
-                  <span key={`${i}-${j}`} className="char inline-block will-change-transform">
-                    {char}
+                  <span
+                    key={`${i}-${j}`}
+                    ref={(el) => {
+                      if (el) titleCharsRef.current.push(el)
+                    }}
+                    className="char inline-block will-change-transform"
+                  >
+                    {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
               </div>
-            </div>
-          ))}
+            ))}
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="relative mb-6 inline-block text-4xl font-bold text-smartellLightPurple md:text-6xl lg:text-10xl"
+          >
+            {animationWords.split(',').map((word, i) => (
+              <div
+                key={i}
+                className="word absolute left-0 top-0 w-max -translate-x-1/2"
+                ref={(el) => {
+                  if (el) animationWordsRef.current.push(el)
+                }}
+              >
+                <div className="overflow-hidden">
+                  {word.split('').map((char, j) => (
+                    <span key={`${i}-${j}`} className="char inline-block will-change-transform">
+                      {char}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+          {/* <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+            className="mt-40 text-lg text-smartellDarkBlue"
+          >
+            {description}
+          </motion.p> */}
+        </div>
+        <motion.div
+          className="col-span-2 col-start-3 row-end-2 w-full max-w-lg"
+          initial={{ opacity: 0, y: 200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 1 }}
+        >
+          <HeroShapes />
         </motion.div>
-        <p className="mt-40 text-lg text-smartellDarkBlue">{description}</p>
       </div>
-      <motion.div
-        className="col-span-2 col-start-3 row-end-2 w-full max-w-lg"
-        initial={{ opacity: 0, y: 200 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1, duration: 1 }}
-      >
-        <HeroShapes />
-      </motion.div>
-    </div>
+      <Television description={description} caseStudy={caseStudy} />
+    </>
   )
 }

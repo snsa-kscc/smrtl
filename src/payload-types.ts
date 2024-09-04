@@ -149,6 +149,18 @@ export interface Page {
               blockName?: string | null;
               blockType: 'solutions';
             }
+          | {
+              counterBox?:
+                | {
+                    number?: number | null;
+                    description?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'counter';
+            }
         )[]
       | null;
   };

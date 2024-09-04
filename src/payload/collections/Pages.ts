@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { Hero } from '../blocks/Hero'
 import { QAndA } from '../blocks/QAndA'
 import { Solutions } from '../blocks/Solutions'
+import { Counter } from '../blocks/Counter'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -32,7 +33,7 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Hero, QAndA, Solutions],
+              blocks: [Hero, QAndA, Solutions, Counter],
             },
           ],
         },

@@ -4,11 +4,13 @@ import type { Page } from '../payload-types'
 import { Hero } from '../app/components/Hero'
 import { QAndA } from '../app/components/QAndA'
 import { Solutions } from '../app/components/Solutions'
+import { Counter } from '../app/components/Counter'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
   'q-and-a': QAndA,
   solutions: Solutions,
+  counter: Counter,
 }
 
 export const RenderBlocks: React.FC<{

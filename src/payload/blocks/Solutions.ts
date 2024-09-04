@@ -8,6 +8,7 @@ export const Solutions: Block = {
   },
   fields: [
     { name: 'title', type: 'text', required: true },
+    { name: 'description', type: 'textarea', required: true },
     {
       name: 'industry',
       type: 'array',

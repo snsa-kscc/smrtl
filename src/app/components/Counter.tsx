@@ -62,33 +62,39 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
     <motion.div
       ref={ref}
       initial={{ opacity: 0 }}
-      animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{ duration: 0.5 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      transition={{ duration: 0.7 }}
+      className="mx-28 grid grid-cols-2 justify-items-start gap-20"
     >
-      <div>
-        {counterBox.map((counter, index) => (
-          <div key={counter.number} className="relative">
-            <h2
-              className="cursor-pointer px-20 text-8xl font-bold"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {counters[index]}
-            </h2>
-            <div
-              className={cn(
-                'absolute left-1/2 top-full mt-2 -translate-x-1/2 transform transition-opacity duration-300',
-                hoveredIndex === index ? 'opacity-100' : 'opacity-0',
-              )}
-            >
-              <div className="rounded-full bg-smartellLightPurple px-4 py-2 text-sm text-white">
-                {counter.description}
-              </div>
-            </div>
+      {counterBox.map((counter, index) => (
+        <div
+          key={counter.number}
+          className={cn(
+            'relative',
+            index % 4 === 2 || index % 4 === 3 ? 'justify-self-center' : '',
+          )}
+        >
+          <h2
+            className="cursor-pointer text-10xl font-bold text-smartellDarkBlue"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => setHoveredIndex(index)}
+          >
+            {counters[index]}
+          </h2>
+          <div
+            className={cn(
+              'absolute left-full top-1/2 w-max -translate-x-1/4 transform transition-opacity duration-700',
+              hoveredIndex === index ? 'opacity-100' : 'opacity-0',
+            )}
+          >
+            <p className="rounded-full bg-smartellLightPurple px-6 py-4 text-sm text-white">
+              {counter.description}
+            </p>
           </div>
-        ))}
-      </div>
-      <div className="h-[50vh] bg-red-200"></div>
+        </div>
+      ))}
     </motion.div>
   )
 }

@@ -161,6 +161,15 @@ export interface Page {
               blockName?: string | null;
               blockType: 'counter';
             }
+          | {
+              title: string;
+              subtitle: string;
+              firstLineFeatures: string;
+              secondLineFeatures: string;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'features';
+            }
         )[]
       | null;
   };

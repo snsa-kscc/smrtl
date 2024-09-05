@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@motionone/utils": "^10.18.0",
     "@payloadcms/db-sqlite": "beta",
     "@payloadcms/next": "beta",
     "@payloadcms/plugin-cloud": "beta",

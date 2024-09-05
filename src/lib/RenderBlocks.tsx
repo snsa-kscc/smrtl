@@ -5,12 +5,14 @@ import { Hero } from '../app/components/Hero'
 import { QAndA } from '../app/components/QAndA'
 import { Solutions } from '../app/components/Solutions'
 import { Counter } from '../app/components/Counter'
+import { Features } from '../app/components/Features'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
   'q-and-a': QAndA,
   solutions: Solutions,
   counter: Counter,
+  features: Features,
 }
 
 export const RenderBlocks: React.FC<{

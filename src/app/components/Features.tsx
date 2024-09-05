@@ -49,23 +49,16 @@ function Feature({
   })
 
   return (
-    <div className={`overflow-hidden p-1 ${margin} flex flex-nowrap whitespace-nowrap`}>
+    <div className={`p-1 ${margin} flex flex-nowrap whitespace-nowrap`}>
       <motion.div
-        className="flex flex-nowrap whitespace-nowrap text-10xl font-bold text-white"
+        className="flex flex-nowrap whitespace-nowrap text-8xl font-bold text-white"
         style={{ x }}
       >
-        <span style={{ wordSpacing: '0.25em' }} className="px-2">
-          {children}
-        </span>
-        <span style={{ wordSpacing: '0.25em' }} className="px-2">
-          {children}
-        </span>
-        <span style={{ wordSpacing: '0.25em' }} className="px-2">
-          {children}
-        </span>
-        <span style={{ wordSpacing: '0.25em' }} className="px-2">
-          {children}
-        </span>
+        {Array.from({ length: 4 }, (_, index) => (
+          <span key={index} style={{ wordSpacing: '0.25em' }} className="px-4">
+            {children}
+          </span>
+        ))}
       </motion.div>
     </div>
   )
@@ -83,17 +76,17 @@ export function Features({
   secondLineFeatures: string
 }) {
   return (
-    <div className="flex flex-col items-center justify-center bg-smartellLightPurple">
-      <h2>{title}</h2>
-      <h3>{subtitle}</h3>
+    <div className="flex flex-col items-center justify-center overflow-hidden bg-smartellLightPurple">
+      <p>{title}</p>
       <div className="my-40">
-        <Feature baseVelocity={-1} margin="mt-24">
+        <Feature baseVelocity={-0.8} margin="mt-24">
           {firstLineFeatures}
         </Feature>
-        <Feature baseVelocity={1} margin="mb-24">
+        <Feature baseVelocity={0.8} margin="mb-24">
           {secondLineFeatures}
         </Feature>
       </div>
+      <p>{subtitle}</p>
     </div>
   )
 }

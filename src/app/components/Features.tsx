@@ -28,7 +28,7 @@ function Feature({
     damping: 50,
     stiffness: 400,
   })
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 3], {
     clamp: false,
   })
 
@@ -76,17 +76,15 @@ export function Features({
   secondLineFeatures: string
 }) {
   return (
-    <div className="flex flex-col items-center justify-center overflow-hidden bg-smartellLightPurple">
-      <p>{title}</p>
-      <div className="my-40">
-        <Feature baseVelocity={-0.8} margin="mt-24">
-          {firstLineFeatures}
-        </Feature>
-        <Feature baseVelocity={0.8} margin="mb-24">
-          {secondLineFeatures}
-        </Feature>
-      </div>
-      <p>{subtitle}</p>
+    <div className="flex flex-col items-start justify-center overflow-hidden bg-smartellLightPurple">
+      <p className="pl-28 pt-32 text-xl font-bold text-white">{title}</p>
+      <Feature baseVelocity={-0.6} margin="mt-24">
+        {firstLineFeatures}
+      </Feature>
+      <Feature baseVelocity={0.6} margin="mb-24">
+        {secondLineFeatures}
+      </Feature>
+      <p className="self-end pb-32 pr-28 text-lg text-white">{subtitle}</p>
     </div>
   )
 }

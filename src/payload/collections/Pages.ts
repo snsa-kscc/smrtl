@@ -4,6 +4,7 @@ import { QAndA } from '../blocks/QAndA'
 import { Solutions } from '../blocks/Solutions'
 import { Counter } from '../blocks/Counter'
 import { Features } from '../blocks/Features'
+import { ImageHero } from '../blocks/ImageHero'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -34,7 +35,7 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Hero, QAndA, Solutions, Counter, Features],
+              blocks: [Hero, QAndA, Solutions, Counter, Features, ImageHero],
             },
           ],
         },

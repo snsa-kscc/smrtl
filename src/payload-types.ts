@@ -170,6 +170,15 @@ export interface Page {
               blockName?: string | null;
               blockType: 'features';
             }
+          | {
+              title: string;
+              description: string;
+              image: number | Media;
+              logo?: boolean | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'image-hero';
+            }
         )[]
       | null;
   };

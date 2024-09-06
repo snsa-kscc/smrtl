@@ -6,6 +6,7 @@ import { QAndA } from '../app/components/QAndA'
 import { Solutions } from '../app/components/Solutions'
 import { Counter } from '../app/components/Counter'
 import { Features } from '../app/components/Features'
+import { ImageHero } from '../app/components/ImageHero'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
@@ -13,6 +14,7 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   solutions: Solutions,
   counter: Counter,
   features: Features,
+  'image-hero': ImageHero,
 }
 
 export const RenderBlocks: React.FC<{

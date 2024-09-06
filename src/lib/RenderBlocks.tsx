@@ -7,6 +7,7 @@ import { Solutions } from '../app/components/Solutions'
 import { Counter } from '../app/components/Counter'
 import { Features } from '../app/components/Features'
 import { ImageHero } from '../app/components/ImageHero'
+import { IPTVSolutions } from '../app/components/IPTVSolutions'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
@@ -15,6 +16,7 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   counter: Counter,
   features: Features,
   'image-hero': ImageHero,
+  'iptv-solutions': IPTVSolutions,
 }
 
 export const RenderBlocks: React.FC<{

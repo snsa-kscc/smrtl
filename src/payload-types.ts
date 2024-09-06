@@ -179,6 +179,20 @@ export interface Page {
               blockName?: string | null;
               blockType: 'image-hero';
             }
+          | {
+              title: string;
+              IPTVBox?:
+                | {
+                    title?: string | null;
+                    description?: string | null;
+                    image?: (number | null) | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'iptv-solutions';
+            }
         )[]
       | null;
   };

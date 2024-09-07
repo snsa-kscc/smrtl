@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useCallback, useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 
 type IPTVBoxProp = {
   title: string
@@ -23,9 +23,20 @@ export function IPTVSolutions({ title, IPTVBox }: { title: string; IPTVBox: IPTV
   const imageWrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    setMousePosition({ x: e.clientX, y: e.clientY })
-  }, [])
+  const { scrollY } = useScroll()
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top + scrollY.get(),
+        })
+      }
+    },
+    [scrollY],
+  )
 
   useEffect(() => {
     let animationId: number
@@ -33,7 +44,7 @@ export function IPTVSolutions({ title, IPTVBox }: { title: string; IPTVBox: IPTV
     const animate = () => {
       setLerpedPosition((prev) => ({
         x: lerp(prev.x, mousePosition.x, 0.075),
-        y: lerp(prev.y, mousePosition.y, 0.075),
+        y: lerp(prev.y, mousePosition.y - scrollY.get(), 0.075),
       }))
 
       animationId = requestAnimationFrame(animate)
@@ -42,16 +53,17 @@ export function IPTVSolutions({ title, IPTVBox }: { title: string; IPTVBox: IPTV
     animate()
 
     return () => cancelAnimationFrame(animationId)
-  }, [mousePosition])
+  }, [mousePosition, scrollY])
 
   return (
     <div ref={containerRef} onMouseMove={handleMouseMove} className="relative">
       <h2>{title}</h2>
       <motion.div
-        className="pointer-events-none aspect-video w-1/4"
+        className="pointer-events-none absolute aspect-video w-1/4"
         ref={imageWrapperRef}
         style={{
-          transform: `translate3d(${lerpedPosition.x - (imageWrapperRef.current?.offsetWidth || 0) / 2}px, ${lerpedPosition.y - (imageWrapperRef.current?.offsetHeight || 0) / 2}px, 0)`,
+          left: lerpedPosition.x - (imageWrapperRef.current?.offsetWidth || 0) / 2,
+          top: lerpedPosition.y - (imageWrapperRef.current?.offsetHeight || 0) / 2,
         }}
       >
         {IPTVBox.map((item, index) => (

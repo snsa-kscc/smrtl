@@ -193,6 +193,22 @@ export interface Page {
               blockName?: string | null;
               blockType: 'iptv-solutions';
             }
+          | {
+              title: string;
+              description: string;
+              platform?:
+                | {
+                    image?: (number | null) | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+              ctaHook: string;
+              ctaLabel: string;
+              ctaUrl: string;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'compatibility';
+            }
         )[]
       | null;
   };

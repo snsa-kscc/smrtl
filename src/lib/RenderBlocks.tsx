@@ -8,6 +8,7 @@ import { Counter } from '../app/components/Counter'
 import { Features } from '../app/components/Features'
 import { ImageHero } from '../app/components/ImageHero'
 import { IPTVSolutions } from '../app/components/IPTVSolutions'
+import { Compatibility } from '../app/components/Compatibility'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
@@ -17,6 +18,7 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   features: Features,
   'image-hero': ImageHero,
   'iptv-solutions': IPTVSolutions,
+  compatibility: Compatibility,
 }
 
 export const RenderBlocks: React.FC<{

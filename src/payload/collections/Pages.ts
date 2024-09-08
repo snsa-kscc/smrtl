@@ -6,6 +6,7 @@ import { Counter } from '../blocks/Counter'
 import { Features } from '../blocks/Features'
 import { ImageHero } from '../blocks/ImageHero'
 import { IPTVSolutions } from '../blocks/IPTVSolutions'
+import { Compatibility } from '../blocks/Compatibility'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -36,7 +37,16 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Hero, QAndA, Solutions, Counter, Features, ImageHero, IPTVSolutions],
+              blocks: [
+                Hero,
+                QAndA,
+                Solutions,
+                Counter,
+                Features,
+                ImageHero,
+                IPTVSolutions,
+                Compatibility,
+              ],
             },
           ],
         },

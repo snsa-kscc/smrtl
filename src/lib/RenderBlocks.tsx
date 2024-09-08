@@ -9,6 +9,8 @@ import { Features } from '../app/components/Features'
 import { ImageHero } from '../app/components/ImageHero'
 import { IPTVSolutions } from '../app/components/IPTVSolutions'
 import { Compatibility } from '../app/components/Compatibility'
+import { Brands } from '../app/components/Brands'
+import { Referals } from '../app/components/Referals'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
@@ -19,6 +21,8 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   'image-hero': ImageHero,
   'iptv-solutions': IPTVSolutions,
   compatibility: Compatibility,
+  brands: Brands,
+  referals: Referals,
 }
 
 export const RenderBlocks: React.FC<{

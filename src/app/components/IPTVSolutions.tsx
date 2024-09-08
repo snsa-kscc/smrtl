@@ -78,7 +78,7 @@ export function IPTVSolutions({ title, IPTVBox }: { title: string; IPTVBox: IPTV
           className="my-10"
         >
           <p className="text-smartellLightPurple">{String(index + 1).padStart(2, '0')}</p>
-          <div className="my-20 flex items-center justify-center">
+          <div className="my-20 flex items-center justify-center gap-4">
             <h3 className="basis-1/2 text-7xl font-bold text-smartellDarkBlue">{item.title}</h3>
             <p className="basis-1/2 text-smartellDarkBlue">{item.description}</p>
           </div>

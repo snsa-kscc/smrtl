@@ -29,9 +29,9 @@ export function Compatibility({
   return (
     <>
       <div className="bg-smartellDarkBlue px-20 pt-32">
-        <p className="mx-auto w-1/3 text-balance text-center text-6xl font-bold text-white">
+        <h3 className="mx-auto w-1/3 text-balance text-center text-6xl font-bold text-white">
           {title}
-        </p>
+        </h3>
         <p className="mt-6 text-balance text-center text-2xl font-bold text-white">{description}</p>
         <div className="mt-24 flex items-center justify-center gap-16">
           {platform.map((item) => (

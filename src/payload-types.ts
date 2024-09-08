@@ -209,6 +209,34 @@ export interface Page {
               blockName?: string | null;
               blockType: 'compatibility';
             }
+          | {
+              title: string;
+              description: string;
+              brands?:
+                | {
+                    image?: (number | null) | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'brands';
+            }
+          | {
+              title: string;
+              referals?:
+                | {
+                    image?: (number | null) | Media;
+                    message?: string | null;
+                    name?: string | null;
+                    role?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'referals';
+            }
         )[]
       | null;
   };

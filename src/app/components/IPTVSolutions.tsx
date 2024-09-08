@@ -56,8 +56,7 @@ export function IPTVSolutions({ title, IPTVBox }: { title: string; IPTVBox: IPTV
   }, [mousePosition, scrollY])
 
   return (
-    <div ref={containerRef} onMouseMove={handleMouseMove} className="relative">
-      <h2>{title}</h2>
+    <div ref={containerRef} onMouseMove={handleMouseMove} className="relative px-20 py-10">
       <motion.div
         className="pointer-events-none absolute aspect-video w-1/4"
         ref={imageWrapperRef}
@@ -70,15 +69,20 @@ export function IPTVSolutions({ title, IPTVBox }: { title: string; IPTVBox: IPTV
           <ImageItem key={item.title} item={item} isActive={activeImage === index} />
         ))}
       </motion.div>
+      <h3 className="mb-20 text-lg font-bold text-smartellDarkBlue">{title}</h3>
       {IPTVBox.map((item, index) => (
         <div
           onMouseEnter={() => setActiveImage(index)}
           onMouseLeave={() => setActiveImage(null)}
           key={item.title}
+          className="my-10"
         >
-          <p>{String(index + 1).padStart(2, '0')}</p>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
+          <p className="text-smartellLightPurple">{String(index + 1).padStart(2, '0')}</p>
+          <div className="my-20 flex items-center justify-center">
+            <h3 className="basis-1/2 text-7xl font-bold text-smartellDarkBlue">{item.title}</h3>
+            <p className="basis-1/2 text-smartellDarkBlue">{item.description}</p>
+          </div>
+          <hr />
         </div>
       ))}
     </div>

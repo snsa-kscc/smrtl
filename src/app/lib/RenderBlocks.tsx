@@ -12,11 +12,11 @@ import { Compatibility } from '../components/Compatibility'
 import { Brands } from '../components/Brands'
 import { Referals } from '../components/Referals'
 import { HomeFooter } from '../components/HomeFooter'
-import { Archive } from '../components/Archive'
+import { ArchiveBlock } from '../components/ArchiveBlock'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
-  archive: Archive,
+  archive: ArchiveBlock,
   'q-and-a': QAndA,
   solutions: Solutions,
   counter: Counter,

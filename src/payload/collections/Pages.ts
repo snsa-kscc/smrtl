@@ -9,6 +9,7 @@ import { IPTVSolutions } from '../blocks/IPTVSolutions'
 import { Compatibility } from '../blocks/Compatibility'
 import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
+import { Footer } from '../blocks/Footer'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -50,6 +51,7 @@ export const Pages: CollectionConfig = {
                 Compatibility,
                 Brands,
                 Referals,
+                Footer,
               ],
             },
           ],

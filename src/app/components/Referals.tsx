@@ -1,4 +1,8 @@
+'use client'
+
 import Image from 'next/image'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 type ReferalsProps = {
   name: string
@@ -13,25 +17,41 @@ type ReferalsProps = {
 }
 
 export function Referals({ title, referals }: { title: string; referals: ReferalsProps[] }) {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start 30%', 'end start'],
+  })
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, -((referals.length + 1) * 320)])
+
   return (
-    <div className="bg-white">
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="mb-16 text-center text-4xl font-bold">{title}</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {referals.map((referal) => (
-            <div key={referal.name} className="rounded-lg bg-gray-100 p-8">
-              <Image
-                src={referal.image.url}
-                alt={referal.image.alt}
-                width={referal.image.width}
-                height={referal.image.height}
-              />
-              <h3 className="mt-4 text-2xl font-bold">{referal.name}</h3>
-              <p className="mt-2 text-gray-700">{referal.role}</p>
-              <p className="mt-2 text-gray-700">{referal.message}</p>
-            </div>
-          ))}
-        </div>
+    <div ref={containerRef} className="relative my-20 h-[200vh]">
+      <div className="sticky top-0 h-[60vh] overflow-hidden pt-20">
+        <motion.div className="flex items-center justify-center gap-20" style={{ x }}>
+          <div className="ml-20 basis-72">
+            <h2 className="text-balance text-center text-4xl font-bold text-smartellDarkBlue">
+              {title}
+            </h2>
+          </div>
+          <div className="ml-40 flex gap-20">
+            {referals.map((referal) => (
+              <div key={referal.name} className="flex-shrink-0 basis-72">
+                <Image
+                  src={referal.image.url}
+                  alt={referal.image.alt}
+                  width={referal.image.width}
+                  height={referal.image.height}
+                />
+                <h3 className="mt-8 min-h-20 text-4xl font-bold text-smartellDarkBlue">
+                  {referal.message}
+                </h3>
+                <p className="mt-4 text-sm font-bold text-smartellDarkBlue">{referal.name}</p>
+                <p className="mt-1 text-sm font-bold text-smartellDarkBlue">{referal.role}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   )

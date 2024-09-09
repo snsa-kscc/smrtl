@@ -237,6 +237,20 @@ export interface Page {
               blockName?: string | null;
               blockType: 'referals';
             }
+          | {
+              title: string;
+              contactTitle: string;
+              email: string;
+              phone: string;
+              address: string;
+              infoTitle: string;
+              newsletterTitle: string;
+              newsletterButton: string;
+              newsletterDisclaimer: string;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'footer';
+            }
         )[]
       | null;
   };

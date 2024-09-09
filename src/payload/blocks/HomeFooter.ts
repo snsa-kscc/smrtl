@@ -1,10 +1,10 @@
 import type { Block } from 'payload'
 
-export const Footer: Block = {
-  slug: 'footer',
+export const HomeFooter: Block = {
+  slug: 'home-footer',
   labels: {
-    singular: 'Footer',
-    plural: 'Footer',
+    singular: 'Home Footer',
+    plural: 'Home Footer',
   },
   fields: [
     {

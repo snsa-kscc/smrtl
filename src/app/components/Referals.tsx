@@ -35,8 +35,8 @@ export function Referals({ title, referals }: { title: string; referals: Referal
             </h2>
           </div>
           <div className="ml-40 flex gap-20">
-            {referals.map((referal) => (
-              <div key={referal.name} className="flex-shrink-0 basis-72">
+            {referals.map((referal, idx) => (
+              <div key={idx} className="flex-shrink-0 basis-72">
                 <Image
                   src={referal.image.url}
                   alt={referal.image.alt}

@@ -11,7 +11,7 @@ import { IPTVSolutions } from '../app/components/IPTVSolutions'
 import { Compatibility } from '../app/components/Compatibility'
 import { Brands } from '../app/components/Brands'
 import { Referals } from '../app/components/Referals'
-import { Footer } from '../app/components/Footer'
+import { HomeFooter } from '../app/components/HomeFooter'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
@@ -24,7 +24,7 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   compatibility: Compatibility,
   brands: Brands,
   referals: Referals,
-  footer: Footer,
+  'home-footer': HomeFooter,
 }
 
 export const RenderBlocks: React.FC<{
@@ -45,7 +45,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <section className="my-10" key={index} data-name={blockName}>
+                <section key={index} data-name={blockName}>
                   <Block id={blockName} {...block} />
                 </section>
               )

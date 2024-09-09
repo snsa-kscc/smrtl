@@ -14,13 +14,17 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    posts: Post;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   db: {
     defaultIDType: number;
   };
-  globals: {};
+  globals: {
+    header: Header;
+    footer: Footer;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -249,7 +253,7 @@ export interface Page {
               newsletterDisclaimer: string;
               id?: string | null;
               blockName?: string | null;
-              blockType: 'footer';
+              blockType: 'home-footer';
             }
         )[]
       | null;
@@ -258,6 +262,19 @@ export interface Page {
     title?: string | null;
   };
   slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  content: string;
+  slug: string;
+  featuredImage: number | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -294,6 +311,33 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  logo: number | Media;
+  navItems?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  copyright: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

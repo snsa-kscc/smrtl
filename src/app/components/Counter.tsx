@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import { cn } from '../lib/utils'
 
 export function Counter({ counterBox }: { counterBox: { number: number; description: string }[] }) {
   const [counters, setCounters] = useState<string[]>(counterBox.map(() => '0'))

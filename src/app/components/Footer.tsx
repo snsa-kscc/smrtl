@@ -1,4 +1,4 @@
-import { getCachedGlobal } from '@/lib/getGlobals'
+import { getCachedGlobal } from '../lib/getGlobals'
 
 import type { Footer } from '../../payload-types'
 

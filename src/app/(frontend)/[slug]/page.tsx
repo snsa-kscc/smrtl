@@ -1,4 +1,4 @@
-import { RenderBlocks } from '@/lib/RenderBlocks'
+import { RenderBlocks } from '../../lib/RenderBlocks'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 

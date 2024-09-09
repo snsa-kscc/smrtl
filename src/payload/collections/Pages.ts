@@ -10,6 +10,8 @@ import { Compatibility } from '../blocks/Compatibility'
 import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
 import { HomeFooter } from '../blocks/HomeFooter'
+import { Archive } from '../blocks/Archive'
+import formatSlug from '../utils/formatSlug'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -52,6 +54,7 @@ export const Pages: CollectionConfig = {
                 Brands,
                 Referals,
                 HomeFooter,
+                Archive,
               ],
             },
           ],
@@ -72,6 +75,9 @@ export const Pages: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      hooks: {
+        beforeChange: [formatSlug('title')],
+      },
       admin: {
         position: 'sidebar',
       },

@@ -1,20 +1,22 @@
 import React, { Fragment } from 'react'
-import type { Page } from '../payload-types'
+import type { Page } from '../../payload-types'
 
-import { Hero } from '../app/components/Hero'
-import { QAndA } from '../app/components/QAndA'
-import { Solutions } from '../app/components/Solutions'
-import { Counter } from '../app/components/Counter'
-import { Features } from '../app/components/Features'
-import { ImageHero } from '../app/components/ImageHero'
-import { IPTVSolutions } from '../app/components/IPTVSolutions'
-import { Compatibility } from '../app/components/Compatibility'
-import { Brands } from '../app/components/Brands'
-import { Referals } from '../app/components/Referals'
-import { HomeFooter } from '../app/components/HomeFooter'
+import { Hero } from '../components/Hero'
+import { QAndA } from '../components/QAndA'
+import { Solutions } from '../components/Solutions'
+import { Counter } from '../components/Counter'
+import { Features } from '../components/Features'
+import { ImageHero } from '../components/ImageHero'
+import { IPTVSolutions } from '../components/IPTVSolutions'
+import { Compatibility } from '../components/Compatibility'
+import { Brands } from '../components/Brands'
+import { Referals } from '../components/Referals'
+import { HomeFooter } from '../components/HomeFooter'
+import { Archive } from '../components/Archive'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
+  archive: Archive,
   'q-and-a': QAndA,
   solutions: Solutions,
   counter: Counter,

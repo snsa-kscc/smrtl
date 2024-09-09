@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { Mont } from '../../lib/fonts'
+import { Mont } from '../lib/fonts'
 import { TailwindIndicator } from '../components/utils/TailwindIndicator'
 import { Sig } from '../components/utils/Sig'
 import { Header } from '../components/Header'

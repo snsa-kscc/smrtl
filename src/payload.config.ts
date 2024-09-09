@@ -6,8 +6,8 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { Footer } from './payload/collections/globals/Footer'
-import { Header } from './payload/collections/globals/Header'
+import { Footer } from './payload/globals/Footer'
+import { Header } from './payload/globals/Header'
 
 import { Users } from './payload/collections/Users'
 import { Media } from './payload/collections/Media'

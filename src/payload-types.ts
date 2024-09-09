@@ -255,6 +255,20 @@ export interface Page {
               blockName?: string | null;
               blockType: 'home-footer';
             }
+          | {
+              populateBy?: ('collection' | 'selection') | null;
+              relationTo?: 'posts' | null;
+              limit?: number | null;
+              selectedDocs?:
+                | {
+                    relationTo: 'posts';
+                    value: number | Post;
+                  }[]
+                | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'archive';
+            }
         )[]
       | null;
   };

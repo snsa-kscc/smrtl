@@ -1,3 +1,9 @@
+import { serializeLexical } from '../lib/serialize'
+
 export function Content({ content }: { content: any }) {
-  return <div>{content}</div>
+  return (
+    <div>
+      <div className="richText">{serializeLexical({ nodes: content.root.children })}</div>
+    </div>
+  )
 }

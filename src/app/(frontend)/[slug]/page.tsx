@@ -19,10 +19,9 @@ export default async function Page({ params: { slug = 'home' } }) {
   }
 
   const { layout, content } = result.docs?.[0]
-
   return (
     <>
-      {/* <Content content={content} /> */}
+      {content?.content && <Content content={content.content} />}
       <RenderBlocks blocks={layout?.layout ?? []} />
     </>
   )

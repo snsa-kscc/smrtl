@@ -7,7 +7,7 @@ import { Footer } from '../components/Footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={` ${Mont.className}`}>
+    <html lang="en" className={`scroll-smooth ${Mont.className}`}>
       <body>
         <Header />
         <main>{children}</main>

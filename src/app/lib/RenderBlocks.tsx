@@ -47,7 +47,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <section key={index} data-name={blockName}>
+                <section key={index} id={blockName ?? ''}>
                   <Block id={blockName} {...block} />
                 </section>
               )

@@ -324,7 +324,7 @@ export interface PayloadMigration {
  */
 export interface Header {
   id: number;
-  logo: number | Media;
+  logotype: number | Media;
   navItems?:
     | {
         label: string;
@@ -332,6 +332,14 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  langSwitcher: {
+    label: string;
+    url: string;
+  };
+  cta: {
+    label: string;
+    url: string;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }

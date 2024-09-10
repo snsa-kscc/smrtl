@@ -19,28 +19,28 @@ export function Archive({ posts }: { posts: Post[] }) {
   })
 
   return (
-    <Carousel className="mx-auto w-full max-w-sm">
+    <Carousel className="mx-auto my-24 w-full max-w-7xl">
       <CarouselContent>
         {posts.map((post) => (
-          <CarouselItem key={post.id} className="basis-1/3 pl-1">
+          <CarouselItem key={post.id} className="basis-1/3">
             <Link href={`/posts/${post.slug}`} className="block">
-              <div className="p-1">
-                <div className="overflow-hidden rounded-lg shadow-lg">
+              <div className="p-8">
+                <div className="overflow-hidden">
+                  <div className="p-1 pb-10 text-smartellDarkBlue">
+                    <p className="text-sm">
+                      {dateFormatter.format(new Date(post.createdAt)).replace(/\//g, '.')}
+                    </p>
+                    <h3 className="text-balance text-xl font-bold">{post.title}</h3>
+                  </div>
                   {post.featuredImage && (
                     <Image
                       src={(post.featuredImage as Media)?.url ?? ''}
                       alt={(post.featuredImage as Media)?.alt || ''}
                       width={(post.featuredImage as Media)?.width || 300}
                       height={(post.featuredImage as Media)?.height || 200}
-                      className="h-40 w-full object-cover"
+                      className="w-full object-cover"
                     />
                   )}
-                  <div className="p-4">
-                    <h3 className="mb-2 text-lg font-bold">{post.title}</h3>
-                    <p className="text-sm text-gray-600">
-                      {dateFormatter.format(new Date(post.createdAt)).replace(/\//g, '.')}
-                    </p>
-                  </div>
                 </div>
               </div>
             </Link>

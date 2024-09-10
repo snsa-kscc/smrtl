@@ -11,8 +11,8 @@ export async function ArchiveBlock({ limit }: { limit: number }) {
   })
 
   return (
-    <div>
+    <>
       <Archive posts={fetchedPosts.docs} />
-    </div>
+    </>
   )
 }

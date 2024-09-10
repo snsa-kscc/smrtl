@@ -1,11 +1,11 @@
-import { getCachedGlobal } from '../lib/getGlobals'
+import { getGlobal } from '../lib/getGlobals'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Header } from '../../payload-types'
 
 export async function Header() {
-  const header: any = await getCachedGlobal('header')()
+  const header: any = await getGlobal('header')
   return (
     <nav className="mx-20 mb-44 mt-10 flex items-center justify-between">
       <div>

@@ -36,6 +36,9 @@ export function HomeFooter({
         </div>
         <div className="basis-1/3">
           <h3 className="mb-8 font-bold text-white">{infoTitle}</h3>
+          <p className="text-white">Cookie Policy</p>
+          <p className="text-white">Privacy Policy</p>
+          <p className="text-white">Terms of Use</p>
         </div>
         <div className="basis-1/3">
           <h3 className="mb-12 font-bold text-white">{newsletterTitle}</h3>

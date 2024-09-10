@@ -1,7 +1,7 @@
 import { RenderBlocks } from '../../lib/RenderBlocks'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
-
+import { Content } from '../../components/Content'
 export default async function Page({ params: { slug = 'home' } }) {
   const payload = await getPayloadHMR({ config: configPromise })
 
@@ -22,6 +22,7 @@ export default async function Page({ params: { slug = 'home' } }) {
 
   return (
     <>
+      {/* <Content content={content} /> */}
       <RenderBlocks blocks={layout?.layout ?? []} />
     </>
   )

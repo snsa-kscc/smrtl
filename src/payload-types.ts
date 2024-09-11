@@ -25,7 +25,7 @@ export interface Config {
     header: Header;
     footer: Footer;
   };
-  locale: null;
+  locale: 'en' | 'hr' | 'it';
   user: User & {
     collection: 'users';
   };

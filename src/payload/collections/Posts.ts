@@ -11,22 +11,25 @@ export const Posts: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'content',
       type: 'textarea',
       required: true,
+      localized: true,
     },
     {
       name: 'slug',
       type: 'text',
       required: true,
       unique: true,
-      hooks: {
-        beforeChange: [formatSlug('title')],
-      },
+      localized: true,
       admin: {
         position: 'sidebar',
+      },
+      hooks: {
+        beforeChange: [formatSlug('title')],
       },
     },
     {

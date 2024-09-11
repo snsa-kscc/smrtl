@@ -24,6 +24,11 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages, Posts],
+  localization: {
+    locales: ['en', 'hr', 'it'],
+    defaultLocale: 'en',
+    fallback: true,
+  },
   globals: [Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

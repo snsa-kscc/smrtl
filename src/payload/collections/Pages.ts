@@ -13,6 +13,14 @@ import { HomeFooter } from '../blocks/HomeFooter'
 import { Archive } from '../blocks/Archive'
 import formatSlug from '../utils/formatSlug'
 
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
+
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
@@ -60,12 +68,30 @@ export const Pages: CollectionConfig = {
           ],
         },
         {
-          name: 'seo',
+          name: 'meta',
+          label: 'SEO',
           fields: [
-            {
-              name: 'title',
-              type: 'text',
-            },
+            OverviewField({
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+              imagePath: 'meta.image',
+            }),
+            MetaTitleField({
+              hasGenerateFn: true,
+            }),
+            MetaImageField({
+              relationTo: 'media',
+            }),
+
+            MetaDescriptionField({}),
+            PreviewField({
+              // if the `generateUrl` function is configured
+              hasGenerateFn: true,
+
+              // field paths to match the target field for data
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+            }),
           ],
         },
       ],

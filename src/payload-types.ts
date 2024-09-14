@@ -264,8 +264,10 @@ export interface Page {
         )[]
       | null;
   };
-  seo?: {
+  meta?: {
     title?: string | null;
+    image?: (number | null) | Media;
+    description?: string | null;
   };
   slug: string;
   updatedAt: string;

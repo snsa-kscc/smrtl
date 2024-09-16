@@ -1,11 +1,16 @@
 import Image from 'next/image'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Content } from '@/app/components/Content'
+import { Locale, i18n } from 'i18n.config'
 
-type Locale = 'en' | 'hr' | 'it'
-const locales: Locale[] = ['en', 'hr', 'it']
+const locales = i18n.locales
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page({
+  params: { lang, slug },
+}: {
+  params: { lang: Locale; slug: string }
+}) {
   const payload = await getPayloadHMR({ config: configPromise })
 
   // Find the post by slug to get its ID
@@ -14,6 +19,7 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
     depth: 1,
     limit: 1,
     where: { slug: { equals: slug } },
+    locale: lang,
   })
 
   if (!result.docs[0]) {
@@ -40,13 +46,12 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
     localizedPosts.map(({ locale, post }) => [locale, post.slug]),
   )
 
-  // Use 'en' locale for display (you can change this based on user preference)
   const { title, content, featuredImage } = result.docs?.[0]
 
   return (
     <>
       <h1>{title}</h1>
-      <div>{content}</div>
+      {content?.content && <Content content={content.content} />}
       {featuredImage && (
         <Image
           src={(featuredImage as any).url}

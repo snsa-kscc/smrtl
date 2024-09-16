@@ -8,7 +8,7 @@ export async function Header() {
   const header: any = await getGlobal('header')
   return (
     <nav className="mx-20 mb-44 mt-10 flex items-center justify-between">
-      <div>
+      {/* <div>
         <Image
           src={header.logotype.url}
           alt={header.logotype.alt}
@@ -38,7 +38,7 @@ export async function Header() {
         >
           {header.cta.label}
         </Link>
-      </div>
+      </div> */}
     </nav>
   )
 }

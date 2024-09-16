@@ -1,8 +1,18 @@
-# blank
+# smartell.tv website
 
-blank
+### 2DO
 
-## Attributes
+- Navbar
+- Leading
+- Block entry animations
+- Responsiveness
 
-- **Database**: mongodb
-- **Storage Adapter**: localDisk
+## For duscussion with Tanja
+
+- **Favicon**
+- **OG image**
+
+## For duscussion with smartell
+
+- **Cookie banner**
+- **E-mail provider**

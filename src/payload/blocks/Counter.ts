@@ -18,6 +18,7 @@ export const Counter: Block = {
         {
           name: 'description',
           type: 'text',
+          localized: true,
         },
       ],
     },

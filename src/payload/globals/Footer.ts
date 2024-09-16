@@ -7,6 +7,7 @@ export const Footer: GlobalConfig = {
       name: 'copyright',
       type: 'text',
       required: true,
+      localized: true,
     },
   ],
 }

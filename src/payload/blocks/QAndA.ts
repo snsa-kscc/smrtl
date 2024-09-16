@@ -11,11 +11,13 @@ export const QAndA: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'subtitle',
       type: 'textarea',
       required: true,
+      localized: true,
     },
     {
       name: 'qAndABox',
@@ -24,10 +26,12 @@ export const QAndA: Block = {
         {
           name: 'question',
           type: 'text',
+          localized: true,
         },
         {
           name: 'answer',
           type: 'textarea',
+          localized: true,
         },
       ],
     },

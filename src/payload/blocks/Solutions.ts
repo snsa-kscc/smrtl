@@ -7,13 +7,13 @@ export const Solutions: Block = {
     plural: 'Solutions',
   },
   fields: [
-    { name: 'title', type: 'text', required: true },
-    { name: 'description', type: 'textarea', required: true },
+    { name: 'title', type: 'text', required: true, localized: true },
+    { name: 'description', type: 'textarea', required: true, localized: true },
     {
       name: 'industry',
       type: 'array',
       fields: [
-        { name: 'name', type: 'text' },
+        { name: 'name', type: 'text', localized: true },
         { name: 'image', type: 'upload', relationTo: 'media' },
       ],
     },

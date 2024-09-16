@@ -11,16 +11,19 @@ export const Hero: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'animationWords',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'description',
       type: 'textarea',
       required: true,
+      localized: true,
     },
     {
       name: 'caseStudy',

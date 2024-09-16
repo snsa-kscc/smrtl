@@ -11,6 +11,7 @@ export const IPTVSolutions: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'IPTVBox',
@@ -19,10 +20,12 @@ export const IPTVSolutions: Block = {
         {
           name: 'title',
           type: 'text',
+          localized: true,
         },
         {
           name: 'description',
           type: 'textarea',
+          localized: true,
         },
         {
           name: 'image',

@@ -11,21 +11,25 @@ export const Features: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'subtitle',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'firstLineFeatures',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'secondLineFeatures',
       type: 'text',
       required: true,
+      localized: true,
     },
   ],
 }

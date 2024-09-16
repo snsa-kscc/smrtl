@@ -11,11 +11,13 @@ export const Compatibility: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'description',
       type: 'textarea',
       required: true,
+      localized: true,
     },
     {
       name: 'platform',
@@ -32,6 +34,7 @@ export const Compatibility: Block = {
       name: 'ctaHook',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       type: 'row',
@@ -40,6 +43,7 @@ export const Compatibility: Block = {
           name: 'ctaLabel',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'ctaUrl',

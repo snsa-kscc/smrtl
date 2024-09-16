@@ -11,6 +11,7 @@ export const Referals: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'referals',
@@ -24,6 +25,7 @@ export const Referals: Block = {
         {
           name: 'message',
           type: 'textarea',
+          localized: true,
         },
         {
           type: 'row',
@@ -35,6 +37,7 @@ export const Referals: Block = {
             {
               name: 'role',
               type: 'text',
+              localized: true,
             },
           ],
         },

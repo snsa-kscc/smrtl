@@ -39,7 +39,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages, Posts],
+  collections: [Users, Media, Posts, Pages],
   localization: {
     locales: ['en', 'hr', 'it'],
     defaultLocale: 'en',

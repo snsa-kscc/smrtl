@@ -22,25 +22,26 @@ export const Header: GlobalConfig = {
           name: 'url',
           type: 'text',
           required: true,
+          localized: true,
         },
       ],
     },
-    {
-      name: 'langSwitcher',
-      type: 'group',
-      fields: [
-        {
-          name: 'label',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'url',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
+    // {
+    //   name: 'langSwitcher',
+    //   type: 'group',
+    //   fields: [
+    //     {
+    //       name: 'label',
+    //       type: 'text',
+    //       required: true,
+    //     },
+    //     {
+    //       name: 'url',
+    //       type: 'text',
+    //       required: true,
+    //     },
+    //   ],
+    // },
     {
       name: 'cta',
       type: 'group',
@@ -49,6 +50,7 @@ export const Header: GlobalConfig = {
           name: 'label',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'url',

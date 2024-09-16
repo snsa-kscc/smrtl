@@ -20,17 +20,32 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { generatePreviewPath } from '../utils/generatePreviewPath'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     useAsTitle: 'title',
+    preview: (doc, locale) => {
+      return generatePreviewPath({
+        path: `/${locale.locale}/posts/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+      })
+    },
+  },
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 10_000,
+      },
+    },
+    maxPerDoc: 10,
   },
   fields: [
     {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       type: 'tabs',
@@ -41,6 +56,7 @@ export const Pages: CollectionConfig = {
             {
               name: 'content',
               type: 'richText',
+              localized: true,
             },
           ],
         },
@@ -101,6 +117,7 @@ export const Pages: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      localized: true,
       hooks: {
         beforeChange: [formatSlug('title')],
       },

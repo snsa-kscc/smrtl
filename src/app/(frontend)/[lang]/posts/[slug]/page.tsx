@@ -2,10 +2,9 @@ import Image from 'next/image'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Content } from '@/app/components/Content'
-import { Locale, i18n } from 'i18n.config'
+import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
-
-const locales = i18n.locales
+import { fetchLocalizedVersions } from '@/app/lib/utils'
 
 export default async function Page({
   params: { lang, slug },
@@ -14,7 +13,6 @@ export default async function Page({
 }) {
   const payload = await getPayloadHMR({ config: configPromise })
 
-  // Find the post by slug to get its ID
   const result = await payload.find({
     collection: 'posts',
     depth: 1,
@@ -27,25 +25,7 @@ export default async function Page({
     notFound()
   }
 
-  const postId = result.docs[0].id
-
-  // Fetch localized versions
-  const localizedPosts = await Promise.all(
-    locales.map(async (locale: Locale) => {
-      const localizedPost = await payload.findByID({
-        collection: 'posts',
-        id: postId,
-        depth: 1,
-        locale: locale,
-      })
-      return { locale, post: localizedPost }
-    }),
-  )
-
-  // Create a dictionary of localized posts
-  const postsByLocale = Object.fromEntries(
-    localizedPosts.map(({ locale, post }) => [locale, post.slug]),
-  )
+  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', result.docs[0].id)
 
   const { title, content, featuredImage } = result.docs?.[0]
 

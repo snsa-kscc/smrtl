@@ -4,6 +4,7 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Content } from '@/app/components/Content'
 import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
+import { fetchLocalizedVersions } from '@/app/lib/utils'
 
 export default async function Page({
   params: { lang, slug = 'home' },
@@ -16,8 +17,6 @@ export default async function Page({
     collection: 'pages',
     depth: 1,
     limit: 1,
-    page: 1,
-    sort: 'createdAt',
     where: { slug: { equals: slug } },
     locale: lang,
   })
@@ -26,9 +25,12 @@ export default async function Page({
     notFound()
   }
 
-  const { layout, content } = result.docs?.[0]
+  const localizedPosts = await fetchLocalizedVersions(payload, 'pages', result.docs[0].id)
+
+  const { title, layout, content } = result.docs?.[0]
   return (
     <>
+      {title !== 'home' && <h1>{title}</h1>}
       {content?.content && <Content content={content.content} />}
       <RenderBlocks blocks={layout?.layout ?? []} />
     </>

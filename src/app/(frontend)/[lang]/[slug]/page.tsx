@@ -3,6 +3,7 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Content } from '@/app/components/Content'
 import { Locale } from 'i18n.config'
+import { notFound } from 'next/navigation'
 
 export default async function Page({
   params: { lang, slug = 'home' },
@@ -22,7 +23,7 @@ export default async function Page({
   })
 
   if (!result.docs[0]) {
-    return null
+    notFound()
   }
 
   const { layout, content } = result.docs?.[0]

@@ -3,6 +3,7 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Content } from '@/app/components/Content'
 import { Locale, i18n } from 'i18n.config'
+import { notFound } from 'next/navigation'
 
 const locales = i18n.locales
 
@@ -23,7 +24,7 @@ export default async function Page({
   })
 
   if (!result.docs[0]) {
-    return null
+    notFound()
   }
 
   const postId = result.docs[0].id

@@ -116,7 +116,6 @@ export const Pages: CollectionConfig = {
       name: 'slug',
       type: 'text',
       required: true,
-      unique: true,
       localized: true,
       hooks: {
         beforeChange: [formatSlug('title')],

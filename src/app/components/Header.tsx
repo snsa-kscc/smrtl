@@ -1,11 +1,13 @@
-import { getGlobal } from '@/app/lib/getGlobals'
+'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Header, Media } from '@/payload-types'
+import { useLocaleLinks } from '@/app/context/LocaleLinksContext'
 
-export async function Header() {
-  const header: Header = (await getGlobal('header')) as Header
+export function Header({ header }: { header: Header }) {
+  const { localeLinks } = useLocaleLinks()
+
   return (
     <nav className="mx-20 mb-44 mt-10 flex items-center justify-between">
       <div>
@@ -26,6 +28,7 @@ export async function Header() {
         })}
       </div>
       <div className="flex items-center gap-4">
+        {JSON.stringify(localeLinks, null, 2)}
         {/* <Link
           href={header.langSwitcher.url}
           className="flex h-12 w-12 items-center justify-center rounded-full bg-smartellLightPurple text-white duration-300 hover:bg-opacity-70"

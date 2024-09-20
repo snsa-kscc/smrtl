@@ -6,6 +6,7 @@ import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
 import { fetchLocalizedVersions } from '@/app/lib/utils'
 import type { Media } from '@/payload-types'
+import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 
 export default async function Page({
   params: { lang, slug },
@@ -32,6 +33,7 @@ export default async function Page({
 
   return (
     <>
+      <LocaleLinksUpdater localeLinks={localizedPosts} />
       <h1>{title}</h1>
       {content?.content && <Content content={content.content} />}
       {featuredImage && (

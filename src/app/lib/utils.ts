@@ -24,9 +24,11 @@ export async function fetchLocalizedVersions(
     }),
   )
 
-  const itemsByLocale = Object.fromEntries(
-    localizedItems.map(({ locale, item }) => [locale, item.slug]),
-  )
+  // const itemsByLocale = Object.fromEntries(
+  //   localizedItems.map(({ locale, item }) => [locale, item.slug]),
+  // )
 
-  return itemsByLocale
+  const arrayByLocale = localizedItems.map(({ locale, item }) => ({ locale, slug: item.slug }))
+
+  return arrayByLocale
 }

@@ -2,6 +2,9 @@
 
 ### 2DO
 
+- Header context
+- Metadata render
+- Data import
 - Navbar
 - Leading
 - Block entry animations

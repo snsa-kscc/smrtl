@@ -5,6 +5,7 @@ import { Content } from '@/app/components/Content'
 import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
 import { fetchLocalizedVersions } from '@/app/lib/utils'
+import type { Media } from '@/payload-types'
 
 export default async function Page({
   params: { lang, slug },
@@ -35,10 +36,10 @@ export default async function Page({
       {content?.content && <Content content={content.content} />}
       {featuredImage && (
         <Image
-          src={(featuredImage as any).url}
-          alt={(featuredImage as any).alt || ''}
-          width={(featuredImage as any).width || 0}
-          height={(featuredImage as any).height || 0}
+          src={(featuredImage as Media).url ?? ''}
+          alt={(featuredImage as Media).alt ?? ''}
+          width={(featuredImage as Media).width ?? 0}
+          height={(featuredImage as Media).height ?? 0}
         />
       )}
     </>

@@ -1,30 +1,26 @@
 import '@/app/styles/globals.css'
 import { Mont } from '@/app/lib/fonts'
-import { getGlobal } from '@/app/lib/getGlobals'
 import { TailwindIndicator } from '@/app/components/utils/TailwindIndicator'
 import { Sig } from '@/app/components/utils/Sig'
-import { Header as HeaderComponent } from '@/app/components/Header'
-import { Footer as FooterComponent } from '@/app/components/Footer'
-import type { Header } from '@/payload-types'
+import { Header } from '@/app/components/Header'
+import { Footer } from '@/app/components/Footer'
 import { Locale } from 'i18n.config'
 import { LocaleLinksProvider } from '@/app/context/LocaleLinksContext'
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const header = (await getGlobal('header')) as Header
-
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
       <body>
         <LocaleLinksProvider>
-          <HeaderComponent header={header} />
+          <Header lang={lang} />
           <main>{children}</main>
-          <FooterComponent />
+          <Footer />
           <TailwindIndicator />
           {/* <Sig /> */}
         </LocaleLinksProvider>

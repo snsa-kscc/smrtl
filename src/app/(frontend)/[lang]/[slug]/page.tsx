@@ -5,6 +5,7 @@ import { Content } from '@/app/components/Content'
 import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
 import { fetchLocalizedVersions } from '@/app/lib/utils'
+import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 
 export default async function Page({
   params: { lang, slug = 'home' },
@@ -30,6 +31,7 @@ export default async function Page({
   const { title, layout, content } = result.docs?.[0]
   return (
     <>
+      <LocaleLinksUpdater localeLinks={localizedPosts} />
       {title !== 'home' && <h1>{title}</h1>}
       {content?.content && <Content content={content.content} />}
       <RenderBlocks blocks={layout?.layout ?? []} />

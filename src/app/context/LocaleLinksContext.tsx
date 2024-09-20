@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 
 type LocaleLink = {
   locale: string
-  slug: string
+  path: string
 }
 
 type LocaleLinksContextType = {

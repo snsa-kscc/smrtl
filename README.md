@@ -2,7 +2,7 @@
 
 ### 2DO
 
-- Header context
+- Footer refactor
 - Metadata render
 - Data import
 - Navbar

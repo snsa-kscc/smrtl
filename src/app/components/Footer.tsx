@@ -31,7 +31,7 @@ export async function Footer({ lang }: { lang: Locale }) {
       <div className="p-20">
         {foterLinks.map((link, index) => (
           <div key={index}>
-            <Link href={link.href}>{link.label.toUpperCase()}</Link>
+            <Link href={link.href}>{link.label?.toUpperCase()}</Link>
           </div>
         ))}
       </div>

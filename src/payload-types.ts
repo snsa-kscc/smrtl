@@ -126,7 +126,7 @@ export interface Post {
  */
 export interface Page {
   id: number;
-  title: string;
+  title?: string | null;
   content?: {
     content?: {
       root: {
@@ -305,7 +305,7 @@ export interface Page {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  slug: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

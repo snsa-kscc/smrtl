@@ -46,6 +46,9 @@ export const Pages: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        condition: (data) => data?.slug !== 'home',
+      },
     },
     {
       type: 'tabs',
@@ -55,6 +58,9 @@ export const Pages: CollectionConfig = {
           fields: [
             {
               name: 'content',
+              admin: {
+                condition: (data) => data?.slug !== 'home',
+              },
               type: 'richText',
               localized: true,
             },
@@ -122,6 +128,7 @@ export const Pages: CollectionConfig = {
       },
       admin: {
         position: 'sidebar',
+        condition: (data) => data?.slug !== 'home',
       },
     },
   ],

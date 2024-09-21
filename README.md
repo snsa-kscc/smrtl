@@ -2,7 +2,6 @@
 
 ### 2DO
 
-- 404 locale
 - Footer refactor
 - Metadata render
 - Data import

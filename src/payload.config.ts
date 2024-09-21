@@ -9,7 +9,7 @@ import sharp from 'sharp'
 
 import { Footer } from './payload/globals/Footer'
 import { Header } from './payload/globals/Header'
-
+import { NotFound } from './payload/globals/NotFound'
 import { Users } from './payload/collections/Users'
 import { Media } from './payload/collections/Media'
 import { Pages } from './payload/collections/Pages'
@@ -45,7 +45,7 @@ export default buildConfig({
     defaultLocale: 'en',
     fallback: true,
   },
-  globals: [Header, Footer],
+  globals: [Header, Footer, NotFound],
   plugins: [
     seoPlugin({
       generateTitle,

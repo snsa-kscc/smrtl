@@ -20,7 +20,7 @@ export default function RootLayout({
         <LocaleLinksProvider>
           <Header lang={lang} />
           <main>{children}</main>
-          <Footer />
+          <Footer lang={lang} />
           <TailwindIndicator />
           {/* <Sig /> */}
         </LocaleLinksProvider>

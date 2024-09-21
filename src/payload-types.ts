@@ -24,6 +24,7 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'not-found': NotFound;
   };
   locale: 'en' | 'hr' | 'it';
   user: User & {
@@ -371,6 +372,17 @@ export interface Header {
 export interface Footer {
   id: number;
   copyright: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "not-found".
+ */
+export interface NotFound {
+  id: number;
+  title: string;
+  description: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

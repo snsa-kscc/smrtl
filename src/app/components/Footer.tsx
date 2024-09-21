@@ -1,8 +1,8 @@
 import { getGlobal } from '../lib/getGlobals'
-
+import type { Locale } from 'i18n.config'
 import type { Footer } from '../../payload-types'
 
-export async function Footer() {
+export async function Footer({ lang }: { lang: Locale }) {
   const footer = (await getGlobal('footer')) as Footer
 
   return (

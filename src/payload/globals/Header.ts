@@ -17,6 +17,7 @@ export const Header: GlobalConfig = {
           name: 'label',
           type: 'text',
           required: true,
+          localized: true,
         },
         {
           name: 'url',
@@ -56,6 +57,7 @@ export const Header: GlobalConfig = {
           name: 'url',
           type: 'text',
           required: true,
+          localized: true,
         },
       ],
     },

@@ -6,7 +6,7 @@ import { getGlobal } from '@/app/lib/getGlobals'
 import { Locale, i18n } from 'i18n.config'
 
 export async function Header({ lang }: { lang: Locale }) {
-  const header = (await getGlobal('header')) as Header
+  const header = (await getGlobal('header', undefined, lang)) as Header
 
   return (
     <nav className="mx-20 mb-44 mt-10 flex items-center justify-between">

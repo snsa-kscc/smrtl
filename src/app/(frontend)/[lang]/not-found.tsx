@@ -16,8 +16,10 @@ export default async function NotFound() {
   )
 
   return (
-    <div>
+    <>
+      <title>{`404 | ${process.env.NEXT_PUBLIC_SERVER_NAME}`}</title>
+      <meta name="description" content={`${process.env.NEXT_PUBLIC_SERVER_NAME} | 404`} />
       <NotFoundClient notfoundData={notfoundData} />
-    </div>
+    </>
   )
 }

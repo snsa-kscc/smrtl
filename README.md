@@ -3,7 +3,7 @@
 ### 2DO
 
 - Footer refactor
-- Metadata render
+- generate static params
 - Data import
 - Navbar
 - Leading

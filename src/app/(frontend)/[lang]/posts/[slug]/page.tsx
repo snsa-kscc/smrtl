@@ -7,6 +7,8 @@ import { notFound } from 'next/navigation'
 import { fetchLocalizedVersions } from '@/app/lib/utils'
 import type { Media } from '@/payload-types'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
+import { Metadata } from 'next'
+import { generateMeta } from '@/app/lib/generateMeta'
 
 export default async function Page({
   params: { lang, slug },
@@ -46,4 +48,26 @@ export default async function Page({
       )}
     </>
   )
+}
+
+export async function generateMetadata({
+  params: { lang, slug },
+}: {
+  params: { lang: Locale; slug: string }
+}): Promise<Metadata> {
+  const payload = await getPayloadHMR({ config: configPromise })
+
+  const result = await payload.find({
+    collection: 'posts',
+    depth: 1,
+    limit: 1,
+    where: { slug: { equals: slug } },
+    locale: lang,
+  })
+
+  if (!result.docs[0]) {
+    return {}
+  }
+
+  return generateMeta({ doc: result.docs[0], collection: 'posts', lang })
 }

@@ -3,9 +3,11 @@
 ### 2DO
 
 - Footer refactor
-- generate static params
+- revalidatePath on update and delete
 - 404 // problem
-- preview issue
+- debaunce slug
+- conditionaly render preview
+- mailer
 - Data import
 - Navbar
 - Leading

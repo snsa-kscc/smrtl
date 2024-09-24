@@ -9,6 +9,8 @@ import { LocaleLinksProvider } from '@/app/context/LocaleLinksContext'
 import { Metadata } from 'next'
 import { mergeOpenGraph } from '@/app/lib/mergeOpenGraph'
 import { i18n } from 'i18n.config'
+import { AdminBar } from '@/app/components/AdminBar'
+import { draftMode } from 'next/headers'
 
 export default function RootLayout({
   children,
@@ -17,10 +19,16 @@ export default function RootLayout({
   children: React.ReactNode
   params: { lang: Locale }
 }) {
+  const isEnabled = draftMode().isEnabled
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
       <body>
         <LocaleLinksProvider>
+          <AdminBar
+            adminBarProps={{
+              preview: isEnabled,
+            }}
+          />
           <Header lang={lang} />
           <main>{children}</main>
           <Footer lang={lang} />

@@ -11,6 +11,10 @@ import { generatePreviewPath } from '../utils/generatePreviewPath'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
+  labels: {
+    singular: 'Post',
+    plural: 'Posts',
+  },
   admin: {
     useAsTitle: 'title',
     preview: (doc, locale) => {
@@ -22,7 +26,7 @@ export const Posts: CollectionConfig = {
   versions: {
     drafts: {
       autosave: {
-        interval: 10_000,
+        interval: 3_000,
       },
     },
     maxPerDoc: 10,

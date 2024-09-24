@@ -4,6 +4,8 @@
 
 - Footer refactor
 - generate static params
+- 404 // problem
+- preview issue
 - Data import
 - Navbar
 - Leading

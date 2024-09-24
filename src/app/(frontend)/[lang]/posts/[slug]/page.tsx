@@ -9,6 +9,24 @@ import type { Media } from '@/payload-types'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 import { Metadata } from 'next'
 import { generateMeta } from '@/app/lib/generateMeta'
+import { i18n } from 'i18n.config'
+
+export async function generateStaticParams() {
+  const payload = await getPayloadHMR({ config: configPromise })
+
+  const paramsPromises = i18n.locales.map(async (lang) => {
+    const { docs } = await payload.find({
+      collection: 'posts',
+      draft: false,
+      limit: 1000,
+      locale: lang,
+    })
+    return docs.map((post) => ({ lang, slug: post.slug }))
+  })
+
+  const nestedParams = await Promise.all(paramsPromises)
+  return nestedParams.flat()
+}
 
 export default async function Page({
   params: { lang, slug },
@@ -37,6 +55,7 @@ export default async function Page({
     <>
       <LocaleLinksUpdater localeLinks={localizedPosts} />
       <h1>{title}</h1>
+      <p>{new Date().toString()}</p>
       {content?.content && <Content content={content.content} />}
       {featuredImage && (
         <Image

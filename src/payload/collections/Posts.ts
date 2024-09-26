@@ -1,5 +1,4 @@
 import { CollectionConfig } from 'payload'
-import formatSlug from '../utils/formatSlug'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -9,6 +8,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { generatePreviewPath } from '../utils/generatePreviewPath'
 import { revalidatePost } from '../utils/revalidatePath'
+import { slugField } from '../fields/slug'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -35,14 +35,6 @@ export const Posts: CollectionConfig = {
       },
     },
     maxPerDoc: 10,
-  },
-  hooks: {
-    afterDelete: [
-      ({ doc }) => {
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!', doc.slug)
-        revalidatePost(doc.slug)
-      },
-    ], // revalidate path with doc slug
   },
   fields: [
     {
@@ -94,20 +86,7 @@ export const Posts: CollectionConfig = {
         },
       ],
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      localized: true,
-      admin: {
-        position: 'sidebar',
-      },
-      hooks: {
-        beforeValidate: [() => revalidatePost()],
-        beforeChange: [formatSlug('title')],
-      },
-    },
+    ...slugField(),
     {
       name: 'featuredImage',
       type: 'upload',

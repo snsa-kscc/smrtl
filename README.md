@@ -5,7 +5,6 @@
 - Footer refactor
 - revalidatePath on update and delete
 - 404 // problem
-- improve slug admin generation
 - conditionaly render preview, repair preview link
 - mailer
 - Data import

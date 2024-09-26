@@ -2,7 +2,7 @@ import { RenderBlocks } from '@/app/lib/RenderBlocks'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Content } from '@/app/components/Content'
-import { i18n, Locale } from 'i18n.config'
+import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
 import { fetchLocalizedVersions } from '@/app/lib/utils'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
@@ -12,18 +12,34 @@ import { Metadata } from 'next'
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise })
 
-  const paramsPromises = i18n.locales.map(async (lang) => {
-    const { docs } = await payload.find({
-      collection: 'pages',
-      draft: false,
-      limit: 1000,
-      locale: lang,
-    })
-    return docs.filter((page) => page.slug !== 'home').map((page) => ({ lang, slug: page.slug }))
+  const pages = await payload.find({
+    collection: 'pages',
+    draft: false,
+    depth: 1,
+    limit: 1000,
+    locale: 'all',
   })
 
-  const nestedParams = await Promise.all(paramsPromises)
-  return nestedParams.flat()
+  const params = pages.docs.flatMap((page) => {
+    return Object.entries(page.slug ?? {})
+      .filter(([_, slug]) => slug !== 'home')
+      .map(([lang, slug]) => ({ lang, slug }))
+  })
+
+  return params
+
+  // const paramsPromises = i18n.locales.map(async (lang) => {
+  //   const { docs } = await payload.find({
+  //     collection: 'pages',
+  //     draft: false,
+  //     limit: 1000,
+  //     locale: lang,
+  //   })
+  //   return docs.filter((page) => page.slug !== 'home').map((page) => ({ lang, slug: page.slug }))
+  // })
+
+  // const nestedParams = await Promise.all(paramsPromises)
+  // return nestedParams.flat()
 }
 
 export default async function Page({
@@ -45,7 +61,7 @@ export default async function Page({
     notFound()
   }
 
-  const localizedPosts = await fetchLocalizedVersions(payload, 'pages', result.docs[0].id)
+  const localizedPosts = await fetchLocalizedVersions(payload, 'pages', slug)
 
   const { title, layout, content } = result.docs?.[0]
   return (

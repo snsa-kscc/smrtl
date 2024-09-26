@@ -8,6 +8,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { generatePreviewPath } from '../utils/generatePreviewPath'
+import { revalidatePost } from '../utils/revalidatePath'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -17,10 +18,14 @@ export const Posts: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    preview: (doc, locale) => {
-      return generatePreviewPath({
-        path: `/${locale.locale}/posts/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
-      })
+    preview: (doc, { locale }) => {
+      if (doc?.slug) {
+        //2DO fix this
+        return generatePreviewPath({
+          path: `/${locale}/posts/${typeof doc.slug === 'string' ? doc.slug : ''}`,
+        })
+      }
+      return null
     },
   },
   versions: {
@@ -30,6 +35,14 @@ export const Posts: CollectionConfig = {
       },
     },
     maxPerDoc: 10,
+  },
+  hooks: {
+    afterDelete: [
+      ({ doc }) => {
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!', doc.slug)
+        revalidatePost(doc.slug)
+      },
+    ], // revalidate path with doc slug
   },
   fields: [
     {
@@ -91,6 +104,7 @@ export const Posts: CollectionConfig = {
         position: 'sidebar',
       },
       hooks: {
+        beforeValidate: [() => revalidatePost()],
         beforeChange: [formatSlug('title')],
       },
     },

@@ -9,23 +9,23 @@ import type { Media } from '@/payload-types'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 import { Metadata } from 'next'
 import { generateMeta } from '@/app/lib/generateMeta'
-import { i18n } from 'i18n.config'
 
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise })
 
-  const paramsPromises = i18n.locales.map(async (lang) => {
-    const { docs } = await payload.find({
-      collection: 'posts',
-      draft: false,
-      limit: 1000,
-      locale: lang,
-    })
-    return docs.map((post) => ({ lang, slug: post.slug }))
+  const posts = await payload.find({
+    collection: 'posts',
+    draft: false,
+    depth: 1,
+    limit: 1000,
+    locale: 'all',
   })
 
-  const nestedParams = await Promise.all(paramsPromises)
-  return nestedParams.flat()
+  const params = posts.docs.flatMap((post) => {
+    return Object.entries(post.slug ?? {}).map(([lang, slug]) => ({ lang, slug }))
+  })
+
+  return params
 }
 
 export default async function Page({
@@ -47,7 +47,7 @@ export default async function Page({
     notFound()
   }
 
-  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', result.docs[0].id)
+  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', slug)
 
   const { title, content, featuredImage } = result.docs?.[0]
 

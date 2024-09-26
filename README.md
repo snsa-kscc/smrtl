@@ -5,8 +5,8 @@
 - Footer refactor
 - revalidatePath on update and delete
 - 404 // problem
-- debaunce slug
-- conditionaly render preview
+- improve slug admin generation
+- conditionaly render preview, repair preview link
 - mailer
 - Data import
 - Navbar

@@ -11,7 +11,10 @@ import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
 import { HomeFooter } from '../blocks/HomeFooter'
 import { Archive } from '../blocks/Archive'
-
+import {
+  revalidatePagesAfterChange,
+  revalidatePagesAfterDelete,
+} from '@/payload/hooks/revalidatePages'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -43,6 +46,10 @@ export const Pages: CollectionConfig = {
       },
     },
     maxPerDoc: 10,
+  },
+  hooks: {
+    afterChange: [revalidatePagesAfterChange],
+    afterDelete: [revalidatePagesAfterDelete],
   },
   fields: [
     {

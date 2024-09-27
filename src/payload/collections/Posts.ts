@@ -7,8 +7,11 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { generatePreviewPath } from '../utils/generatePreviewPath'
-import { revalidatePost } from '../utils/revalidatePath'
 import { slugField } from '../fields/slug'
+import {
+  revalidatePostsAfterChange,
+  revalidatePostsAfterDelete,
+} from '@/payload/hooks/revalidatePosts'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -32,6 +35,10 @@ export const Posts: CollectionConfig = {
     },
     maxPerDoc: 10,
   },
+  hooks: {
+    afterChange: [revalidatePostsAfterChange],
+    afterDelete: [revalidatePostsAfterDelete],
+  },
   fields: [
     {
       name: 'title',
@@ -48,8 +55,8 @@ export const Posts: CollectionConfig = {
             {
               name: 'content',
               type: 'richText',
-              required: true,
               localized: true,
+              required: true,
             },
           ],
         },

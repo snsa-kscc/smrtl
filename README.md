@@ -2,7 +2,6 @@
 
 ### 2DO
 
-- preview issue
 - revalidatePath on update and delete
 - 404 // problem
 - Footer refactor

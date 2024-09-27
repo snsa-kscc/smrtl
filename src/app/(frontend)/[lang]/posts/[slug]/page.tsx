@@ -9,6 +9,7 @@ import type { Media } from '@/payload-types'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 import { Metadata } from 'next'
 import { generateMeta } from '@/app/lib/generateMeta'
+import { draftMode } from 'next/headers'
 
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise })
@@ -35,10 +36,13 @@ export default async function Page({
 }: {
   params: { lang: Locale; slug: string }
 }) {
+  const { isEnabled: draft } = await draftMode()
+
   const payload = await getPayloadHMR({ config: configPromise })
 
   const result = await payload.find({
     collection: 'posts',
+    draft,
     depth: 1,
     limit: 1,
     where: { slug: { equals: slug } },
@@ -76,10 +80,13 @@ export async function generateMetadata({
 }: {
   params: { lang: Locale; slug: string }
 }): Promise<Metadata> {
+  const { isEnabled: draft } = await draftMode()
+
   const payload = await getPayloadHMR({ config: configPromise })
 
   const result = await payload.find({
     collection: 'posts',
+    draft,
     depth: 1,
     limit: 1,
     where: { slug: { equals: slug } },

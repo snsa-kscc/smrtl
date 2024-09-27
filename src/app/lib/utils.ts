@@ -25,6 +25,7 @@ export async function fetchLocalizedVersions(
 
   const localizedItems = await payload.find({
     collection,
+    draft: false,
     depth: 1,
     where: { slug: { equals: slug } },
     locale: 'all',

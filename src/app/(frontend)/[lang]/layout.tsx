@@ -12,14 +12,14 @@ import { i18n } from 'i18n.config'
 import { AdminBar } from '@/app/components/AdminBar'
 import { draftMode } from 'next/headers'
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const isEnabled = draftMode().isEnabled
+  const { isEnabled } = await draftMode()
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
       <body>

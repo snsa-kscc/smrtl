@@ -19,13 +19,9 @@ export const Posts: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     preview: (doc, { locale }) => {
-      if (doc?.slug) {
-        //2DO fix this
-        return generatePreviewPath({
-          path: `/${locale}/posts/${typeof doc.slug === 'string' ? doc.slug : ''}`,
-        })
-      }
-      return null
+      return generatePreviewPath({
+        path: `/${locale}/posts/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+      })
     },
   },
   versions: {

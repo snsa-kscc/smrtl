@@ -307,7 +307,8 @@ export interface Page {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  slug?: string | null;
+  slug: string;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

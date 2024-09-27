@@ -11,7 +11,6 @@ import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
 import { HomeFooter } from '../blocks/HomeFooter'
 import { Archive } from '../blocks/Archive'
-import formatSlug from '../utils/formatSlug'
 
 import {
   MetaDescriptionField,
@@ -21,6 +20,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { generatePreviewPath } from '../utils/generatePreviewPath'
+import { slugField } from '../fields/slug'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -30,9 +30,9 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    preview: (doc, locale) => {
+    preview: (doc, { locale }) => {
       return generatePreviewPath({
-        path: `/${locale.locale}/posts/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+        path: `/${locale}/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
       })
     },
   },
@@ -122,18 +122,6 @@ export const Pages: CollectionConfig = {
         },
       ],
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      localized: true,
-      hooks: {
-        beforeChange: [formatSlug('title')],
-      },
-      admin: {
-        position: 'sidebar',
-        condition: (data) => data?.slug !== 'home',
-      },
-    },
+    ...slugField(),
   ],
 }

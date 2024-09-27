@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
   const params = pages.docs.flatMap((page) => {
     return Object.entries(page.slug ?? {})
-      .filter(([_, slug]) => slug !== 'home')
+      .filter(([_, slug]) => slug !== 'home' && slug != null)
       .map(([lang, slug]) => ({ lang, slug }))
   })
 

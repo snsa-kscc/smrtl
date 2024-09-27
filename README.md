@@ -2,10 +2,10 @@
 
 ### 2DO
 
-- Footer refactor
+- preview issue
 - revalidatePath on update and delete
 - 404 // problem
-- conditionaly render preview, repair preview link
+- Footer refactor
 - mailer
 - Data import
 - Navbar

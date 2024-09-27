@@ -30,10 +30,12 @@ export async function fetchLocalizedVersions(
     locale: 'all',
   })
 
-  const arrayByLocale = Object.entries(localizedItems.docs[0].slug ?? {}).map(([lang, slug]) => ({
-    locale: lang,
-    path: collection === 'pages' ? `${slug}` : `${collection}/${slug}`,
-  }))
+  const arrayByLocale = Object.entries(localizedItems.docs[0].slug ?? {})
+    .filter(([_, slug]) => slug != null)
+    .map(([lang, slug]) => ({
+      locale: lang,
+      path: collection === 'pages' ? `${slug}` : `${collection}/${slug}`,
+    }))
 
   return arrayByLocale
 }

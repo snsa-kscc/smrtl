@@ -1,5 +1,6 @@
 // storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import path from 'path'
@@ -35,6 +36,10 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 export default buildConfig({
   admin: {
     user: Users.slug,
+    autoLogin: {
+      email: process.env.PAYLOAD_AUTOLOGIN_EMAIL,
+      password: process.env.PAYLOAD_AUTOLOGIN_PASSWORD,
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -63,4 +68,16 @@ export default buildConfig({
     },
   }),
   sharp,
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.EMAIL_SERVER_USER!,
+    defaultFromName: process.env.NEXT_PUBLIC_SERVER_NAME!,
+    transportOptions: {
+      host: process.env.EMAIL_SERVER_HOST!,
+      port: process.env.EMAIL_SERVER_PORT!,
+      auth: {
+        user: process.env.EMAIL_SERVER_USER!,
+        pass: process.env.EMAIL_SERVER_PASSWORD!,
+      },
+    },
+  }),
 })

@@ -19,7 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const { isEnabled } = await draftMode()
+  const { isEnabled } = draftMode()
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
       <body>

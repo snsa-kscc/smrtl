@@ -48,7 +48,7 @@ export default async function Page({
 }: {
   params: { lang: Locale; slug?: string }
 }) {
-  const { isEnabled: draft } = await draftMode()
+  const { isEnabled: draft } = draftMode()
 
   const payload = await getPayloadHMR({ config: configPromise })
 
@@ -83,7 +83,7 @@ export async function generateMetadata({
 }: {
   params: { lang: Locale; slug?: string }
 }): Promise<Metadata> {
-  const { isEnabled: draft } = await draftMode()
+  const { isEnabled: draft } = draftMode()
 
   const payload = await getPayloadHMR({ config: configPromise })
 

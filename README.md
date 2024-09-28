@@ -4,7 +4,6 @@
 
 - 404 // problem
 - Footer refactor
-- mailer
 - Data import
 - Navbar
 - Leading

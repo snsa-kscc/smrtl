@@ -10,12 +10,12 @@
 - Block entry animations
 - Responsiveness
 
-## For duscussion with Tanja
+## For discussion with Tanja
 
 - **Favicon**
 - **OG image**
 
-## For duscussion with smartell
+## For discussion with smartell
 
 - **Cookie banner**
 - **E-mail provider**

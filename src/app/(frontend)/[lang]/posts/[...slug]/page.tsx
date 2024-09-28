@@ -25,7 +25,7 @@ export async function generateStaticParams() {
   const params = posts.docs.flatMap((post) => {
     return Object.entries(post.slug ?? {})
       .filter(([_, slug]) => slug != null)
-      .map(([lang, slug]) => ({ lang, slug }))
+      .map(([lang, slug]) => ({ lang, slug: [slug] }))
   })
 
   return params
@@ -34,7 +34,7 @@ export async function generateStaticParams() {
 export default async function Page({
   params: { lang, slug },
 }: {
-  params: { lang: Locale; slug: string }
+  params: { lang: Locale; slug: string[] }
 }) {
   const { isEnabled: draft } = draftMode()
 
@@ -45,7 +45,7 @@ export default async function Page({
     draft,
     depth: 1,
     limit: 1,
-    where: { slug: { equals: slug } },
+    where: { slug: { equals: slug[0] } },
     locale: lang,
   })
 
@@ -53,7 +53,7 @@ export default async function Page({
     notFound()
   }
 
-  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', slug)
+  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', slug[0])
 
   const { title, content, featuredImage } = result.docs?.[0]
 
@@ -78,7 +78,7 @@ export default async function Page({
 export async function generateMetadata({
   params: { lang, slug },
 }: {
-  params: { lang: Locale; slug: string }
+  params: { lang: Locale; slug: string[] }
 }): Promise<Metadata> {
   const { isEnabled: draft } = draftMode()
 
@@ -89,7 +89,7 @@ export async function generateMetadata({
     draft,
     depth: 1,
     limit: 1,
-    where: { slug: { equals: slug } },
+    where: { slug: { equals: slug[0] } },
     locale: lang,
   })
 

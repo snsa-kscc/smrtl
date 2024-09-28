@@ -2,7 +2,6 @@
 
 ### 2DO
 
-- 404 // problem
 - Footer refactor
 - Data import
 - Navbar

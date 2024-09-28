@@ -11,7 +11,7 @@ export const revalidatePostsAfterChange: CollectionAfterChangeHook<Post> = ({
   if (doc._status === 'published') {
     payload.logger.info(`Revalidating posts.`)
 
-    revalidatePath('/(frontend)/[lang]/posts/[slug]', 'page')
+    revalidatePath('/(frontend)/[lang]/posts/[...slug]', 'page')
   }
 
   return doc
@@ -22,5 +22,5 @@ export const revalidatePostsAfterDelete: CollectionAfterDeleteHook<Post> = ({
 }) => {
   payload.logger.info(`Revalidating posts.`)
 
-  revalidatePath('/(frontend)/[lang]/posts/[slug]', 'page')
+  revalidatePath('/(frontend)/[lang]/posts/[...slug]', 'page')
 }

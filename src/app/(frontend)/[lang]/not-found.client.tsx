@@ -10,10 +10,12 @@ export default function NotFoundClient({
 }) {
   const { lang }: { lang: Locale } = useParams()
 
+  const localeData = notfoundData.find((item) => item.locale === lang)
+
   return (
     <div>
-      <h1>{notfoundData.find((item) => item.locale === lang)?.title}</h1>
-      <p>{notfoundData.find((item) => item.locale === lang)?.description}</p>
+      <h1>{localeData?.title || 'error 404'}</h1>
+      <p>{localeData?.description || 'this is error 404'}</p>
     </div>
   )
 }

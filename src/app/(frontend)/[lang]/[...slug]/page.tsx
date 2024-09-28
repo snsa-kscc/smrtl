@@ -24,7 +24,7 @@ export async function generateStaticParams() {
   const params = pages.docs.flatMap((page) => {
     return Object.entries(page.slug ?? {})
       .filter(([_, slug]) => slug !== 'home' && slug != null)
-      .map(([lang, slug]) => ({ lang, slug }))
+      .map(([lang, slug]) => ({ lang, slug: [slug] }))
   })
 
   return params
@@ -44,9 +44,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({
-  params: { lang, slug = 'home' },
+  params: { lang, slug = ['home'] },
 }: {
-  params: { lang: Locale; slug?: string }
+  params: { lang: Locale; slug?: string[] }
 }) {
   const { isEnabled: draft } = draftMode()
 
@@ -56,7 +56,7 @@ export default async function Page({
     collection: 'pages',
     depth: 1,
     limit: 1,
-    where: { slug: { equals: slug } },
+    where: { slug: { equals: slug[0] } },
     locale: lang,
     draft,
   })
@@ -65,7 +65,7 @@ export default async function Page({
     notFound()
   }
 
-  const localizedPosts = await fetchLocalizedVersions(payload, 'pages', slug)
+  const localizedPosts = await fetchLocalizedVersions(payload, 'pages', slug[0])
 
   const { title, layout, content } = result.docs?.[0]
   return (
@@ -79,9 +79,9 @@ export default async function Page({
 }
 
 export async function generateMetadata({
-  params: { lang, slug = 'home' },
+  params: { lang, slug = ['home'] },
 }: {
-  params: { lang: Locale; slug?: string }
+  params: { lang: Locale; slug?: string[] }
 }): Promise<Metadata> {
   const { isEnabled: draft } = draftMode()
 
@@ -91,7 +91,7 @@ export async function generateMetadata({
     collection: 'pages',
     depth: 1,
     limit: 1,
-    where: { slug: { equals: slug } },
+    where: { slug: { equals: slug[0] } },
     locale: lang,
     draft,
   })

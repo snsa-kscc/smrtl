@@ -5,8 +5,8 @@ import { revalidatePath } from 'next/cache'
 export const revalidateLayoutAfterChange: GlobalAfterChangeHook = ({ doc, req: { payload } }) => {
   payload.logger.info(`Revalidating layout.`)
 
-  revalidatePath('/(frontend)/[lang]/[slug]', 'layout')
-  revalidatePath('/(frontend)/[lang]/posts/[slug]', 'layout')
+  revalidatePath('/(frontend)/[lang]/[...slug]', 'layout')
+  revalidatePath('/(frontend)/[lang]/posts/[...slug]', 'layout')
 
   return doc
 }

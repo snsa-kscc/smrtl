@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export function LanguageSwitcher() {
   const { localeLinks } = useLocaleLinks()
-  const { lang, slug }: { lang: Locale; slug?: string } = useParams()
+  const { lang, slug }: { lang: Locale; slug?: string | string[] } = useParams()
 
   return (
     <div className="flex items-center gap-4">

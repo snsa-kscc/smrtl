@@ -1,104 +1,111 @@
-import { RenderBlocks } from '@/app/lib/RenderBlocks'
+import Image from 'next/image'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Content } from '@/app/components/Content'
-import { Locale } from 'i18n.config'
+import { Locale, pathTranslations } from 'i18n.config'
 import { notFound } from 'next/navigation'
 import { fetchLocalizedVersions } from '@/app/lib/utils'
+import type { Media } from '@/payload-types'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
-import { generateMeta } from '@/app/lib/generateMeta'
 import { Metadata } from 'next'
+import { generateMeta } from '@/app/lib/generateMeta'
 import { draftMode } from 'next/headers'
 
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise })
 
-  const pages = await payload.find({
-    collection: 'pages',
+  const posts = await payload.find({
+    collection: 'posts',
     draft: false,
     depth: 1,
     limit: 1000,
     locale: 'all',
   })
 
-  const params = pages.docs.flatMap((page) => {
-    return Object.entries(page.slug ?? {})
-      .filter(([_, slug]) => slug !== 'home' && slug != null)
-      .map(([lang, slug]) => ({ lang, slug: [slug] }))
+  const params = posts.docs.flatMap((post) => {
+    return Object.entries(post.slug ?? {})
+      .filter(([_, slug]) => slug != null)
+      .map(([lang, slug]) => ({
+        lang,
+        path: [pathTranslations[lang as keyof typeof pathTranslations], slug],
+      }))
   })
 
   return params
-
-  // const paramsPromises = i18n.locales.map(async (lang) => {
-  //   const { docs } = await payload.find({
-  //     collection: 'pages',
-  //     draft: false,
-  //     limit: 1000,
-  //     locale: lang,
-  //   })
-  //   return docs.filter((page) => page.slug !== 'home').map((page) => ({ lang, slug: page.slug }))
-  // })
-
-  // const nestedParams = await Promise.all(paramsPromises)
-  // return nestedParams.flat()
 }
 
 export default async function Page({
-  params: { lang, slug = ['home'] },
+  params: { lang, slug },
 }: {
-  params: { lang: Locale; slug?: string[] }
+  params: { lang: Locale; slug: string[] }
 }) {
+  const [pathLang, ...pathSlug] = slug
+
+  if (pathLang !== pathTranslations[lang]) {
+    notFound()
+  }
+
   const { isEnabled: draft } = draftMode()
 
   const payload = await getPayloadHMR({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'pages',
+    collection: 'posts',
+    draft,
     depth: 1,
     limit: 1,
-    where: { slug: { equals: slug[0] } },
+    where: { slug: { equals: pathSlug[0] } },
     locale: lang,
-    draft,
   })
 
   if (!result.docs[0]) {
     notFound()
   }
 
-  const localizedPosts = await fetchLocalizedVersions(payload, 'pages', slug[0])
+  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', pathSlug[0])
 
-  const { title, layout, content } = result.docs?.[0]
+  const { title, content, featuredImage } = result.docs?.[0]
+
   return (
     <>
       <LocaleLinksUpdater localeLinks={localizedPosts} />
-      {title !== 'home' && <h1>{title}</h1>}
+      <h1>{title}</h1>
+      <p>{new Date().toString()}</p>
       {content?.content && <Content content={content.content} />}
-      <RenderBlocks blocks={layout?.layout ?? []} />
+      {featuredImage && (
+        <Image
+          src={(featuredImage as Media).url ?? ''}
+          alt={(featuredImage as Media).alt ?? ''}
+          width={(featuredImage as Media).width ?? 0}
+          height={(featuredImage as Media).height ?? 0}
+        />
+      )}
     </>
   )
 }
 
 export async function generateMetadata({
-  params: { lang, slug = ['home'] },
+  params: { lang, slug },
 }: {
-  params: { lang: Locale; slug?: string[] }
+  params: { lang: Locale; slug: string[] }
 }): Promise<Metadata> {
+  const [_, ...pathSlug] = slug
   const { isEnabled: draft } = draftMode()
 
   const payload = await getPayloadHMR({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'pages',
+    collection: 'posts',
+    draft,
     depth: 1,
     limit: 1,
-    where: { slug: { equals: slug[0] } },
+    where: { slug: { equals: pathSlug[0] } },
     locale: lang,
-    draft,
   })
 
   if (!result.docs[0]) {
     return {}
   }
 
-  return generateMeta({ doc: result.docs[0], collection: 'pages', lang })
+  return generateMeta({ doc: result.docs[0], collection: 'posts', lang })
 }

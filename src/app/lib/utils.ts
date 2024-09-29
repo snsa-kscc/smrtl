@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { Payload } from 'payload'
+import { pathTranslations } from 'i18n.config'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -35,7 +36,10 @@ export async function fetchLocalizedVersions(
     .filter(([_, slug]) => slug != null)
     .map(([lang, slug]) => ({
       locale: lang,
-      path: collection === 'pages' ? `${slug}` : `${collection}/${slug}`,
+      path:
+        collection === 'pages'
+          ? `${slug}`
+          : `${pathTranslations[lang as keyof typeof pathTranslations]}/${slug}`,
     }))
 
   return arrayByLocale

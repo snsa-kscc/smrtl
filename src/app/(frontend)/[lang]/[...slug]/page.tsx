@@ -27,7 +27,7 @@ export async function generateStaticParams() {
       .filter(([_, slug]) => slug != null)
       .map(([lang, slug]) => ({
         lang,
-        path: [pathTranslations[lang as keyof typeof pathTranslations], slug],
+        slug: [pathTranslations[lang as keyof typeof pathTranslations], slug],
       }))
   })
 

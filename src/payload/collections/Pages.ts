@@ -130,5 +130,15 @@ export const Pages: CollectionConfig = {
       ],
     },
     ...slugField(),
+    {
+      name: 'titleVisibleInFooter',
+      type: 'checkbox',
+      defaultValue: false,
+      localized: true,
+      admin: {
+        position: 'sidebar',
+        condition: (data) => data?.slug !== 'home',
+      },
+    },
   ],
 }

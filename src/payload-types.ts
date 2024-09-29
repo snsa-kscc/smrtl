@@ -309,6 +309,7 @@ export interface Page {
   };
   slug: string;
   slugLock?: boolean | null;
+  titleVisibleInFooter?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

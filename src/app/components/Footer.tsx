@@ -17,7 +17,7 @@ export async function Footer({ lang }: { lang: Locale }) {
   })
 
   const foterLinks = result.docs
-    .filter((doc) => doc.slug !== 'home')
+    .filter((doc) => doc.slug !== 'home' && doc.titleVisibleInFooter)
     .map((doc) => ({
       label: doc.title,
       href: i18n.defaultLocale === lang ? `/${doc.slug}` : `/${lang}/${doc.slug}`,

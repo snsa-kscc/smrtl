@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@libsql/client": "^0.14.0",
     "@motionone/utils": "^10.18.0",
     "@payloadcms/db-sqlite": "beta",
     "@payloadcms/email-nodemailer": "3.0.0-beta.109",

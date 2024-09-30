@@ -13,10 +13,10 @@ export async function Header({ lang }: { lang: Locale }) {
       <div>
         <Link href={lang === i18n.defaultLocale ? '/' : `/${lang}`}>
           <Image
-            src={(header.logotype as Media).url ?? ''}
-            alt={(header.logotype as Media).alt ?? ''}
-            width={(header.logotype as Media).width ?? 0}
-            height={(header.logotype as Media).height ?? 0}
+            src={(header.logotype as Media)?.url ?? ''}
+            alt={(header.logotype as Media)?.alt ?? ''}
+            width={(header.logotype as Media)?.width ?? 0}
+            height={(header.logotype as Media)?.height ?? 0}
           />
         </Link>
       </div>
@@ -32,10 +32,10 @@ export async function Header({ lang }: { lang: Locale }) {
       <div className="flex items-center gap-4">
         <LanguageSwitcher />
         <Link
-          href={header.cta.url}
+          href={header.cta?.url ?? ''}
           className="rounded-full bg-smartellDarkBlue px-7 py-3 text-white duration-300 hover:bg-opacity-70"
         >
-          {header.cta.label}
+          {header.cta?.label}
         </Link>
       </div>
     </nav>

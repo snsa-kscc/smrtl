@@ -120,7 +120,6 @@ export interface Post {
   featuredImage: number | Media;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -280,20 +279,6 @@ export interface Page {
               blockType: 'referals';
             }
           | {
-              title: string;
-              contactTitle: string;
-              email: string;
-              phone: string;
-              address: string;
-              infoTitle: string;
-              newsletterTitle: string;
-              newsletterButton: string;
-              newsletterDisclaimer: string;
-              id?: string | null;
-              blockName?: string | null;
-              blockType: 'home-footer';
-            }
-          | {
               limit?: number | null;
               id?: string | null;
               blockName?: string | null;
@@ -312,7 +297,6 @@ export interface Page {
   titleVisibleInFooter?: boolean | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -406,6 +390,15 @@ export interface Header {
  */
 export interface Footer {
   id: number;
+  title: string;
+  contactTitle: string;
+  email: string;
+  phone: string;
+  address: string;
+  infoTitle: string;
+  newsletterTitle: string;
+  newsletterButton: string;
+  newsletterDisclaimer: string;
   copyright: string;
   updatedAt?: string | null;
   createdAt?: string | null;

@@ -9,7 +9,6 @@ import { IPTVSolutions } from '../blocks/IPTVSolutions'
 import { Compatibility } from '../blocks/Compatibility'
 import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
-import { HomeFooter } from '../blocks/HomeFooter'
 import { Archive } from '../blocks/Archive'
 import {
   revalidatePagesAfterChange,
@@ -39,14 +38,14 @@ export const Pages: CollectionConfig = {
       })
     },
   },
-  versions: {
-    drafts: {
-      autosave: {
-        interval: 3_000,
-      },
-    },
-    maxPerDoc: 10,
-  },
+  // versions: {
+  //   drafts: {
+  //     autosave: {
+  //       interval: 3_000,
+  //     },
+  //   },
+  //   maxPerDoc: 10,
+  // },
   hooks: {
     afterChange: [revalidatePagesAfterChange],
     afterDelete: [revalidatePagesAfterDelete],
@@ -94,7 +93,6 @@ export const Pages: CollectionConfig = {
                 Compatibility,
                 Brands,
                 Referals,
-                HomeFooter,
                 Archive,
               ],
             },

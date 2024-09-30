@@ -27,14 +27,14 @@ export const Posts: CollectionConfig = {
       })
     },
   },
-  versions: {
-    drafts: {
-      autosave: {
-        interval: 3_000,
-      },
-    },
-    maxPerDoc: 10,
-  },
+  // versions: {
+  //   drafts: {
+  //     autosave: {
+  //       interval: 3_000,
+  //     },
+  //   },
+  //   maxPerDoc: 10,
+  // },
   hooks: {
     afterChange: [revalidatePostsAfterChange],
     afterDelete: [revalidatePostsAfterDelete],

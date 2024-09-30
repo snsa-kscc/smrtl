@@ -36,6 +36,7 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 export default buildConfig({
   admin: {
     user: Users.slug,
+    // remove this before deploying
     autoLogin: {
       email: process.env.PAYLOAD_AUTOLOGIN_EMAIL,
       password: process.env.PAYLOAD_AUTOLOGIN_PASSWORD,

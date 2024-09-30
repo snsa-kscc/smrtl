@@ -11,7 +11,6 @@ import { IPTVSolutions } from '../components/IPTVSolutions'
 import { Compatibility } from '../components/Compatibility'
 import { Brands } from '../components/Brands'
 import { Referals } from '../components/Referals'
-import { HomeFooter } from '../components/HomeFooter'
 import { ArchiveBlock } from '../components/ArchiveBlock'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
@@ -26,7 +25,6 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   compatibility: Compatibility,
   brands: Brands,
   referals: Referals,
-  'home-footer': HomeFooter,
 }
 
 export const RenderBlocks: React.FC<{

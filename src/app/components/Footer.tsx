@@ -14,6 +14,7 @@ export async function Footer({ lang }: { lang: Locale }) {
     collection: 'pages',
     depth: 1,
     locale: lang,
+    sort: 'createdAt',
   })
 
   const foterLinks = result.docs
@@ -39,9 +40,15 @@ export async function Footer({ lang }: { lang: Locale }) {
           </div>
           <div className="basis-1/3">
             <h3 className="mb-8 font-bold text-white">{footer.infoTitle}</h3>
-            <p className="text-white">Cookie Policy</p>
-            <p className="text-white">Privacy Policy</p>
-            <p className="text-white">Terms of Use</p>
+            <div className="text-white">
+              {foterLinks.map((link, index) => (
+                <div key={index}>
+                  <Link href={link.href} className="duration-500 hover:opacity-60">
+                    {link.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="basis-1/3">
             <h3 className="mb-12 font-bold text-white">{footer.newsletterTitle}</h3>
@@ -57,13 +64,6 @@ export async function Footer({ lang }: { lang: Locale }) {
       </div>
       <div className="bg-smartellDarkBlue px-20 py-8 text-smartellLightPurple">
         {footer.copyright}
-      </div>
-      <div className="p-20">
-        {foterLinks.map((link, index) => (
-          <div key={index}>
-            <Link href={link.href}>{link.label?.toUpperCase()}</Link>
-          </div>
-        ))}
       </div>
     </>
   )

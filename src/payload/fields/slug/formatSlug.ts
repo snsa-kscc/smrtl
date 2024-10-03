@@ -3,13 +3,14 @@ import type { FieldHook } from 'payload'
 export const formatSlug = (val: string): string =>
   val
     .trim()
-    .replace(/ /g, '-')
-    .replace(/[šŠ]/g, 's')
-    .replace(/[đĐ]/g, 'd')
-    .replace(/[čČćĆ]/g, 'c')
-    .replace(/[žŽ]/g, 'z')
-    .replace(/[^\w-]+/g, '')
     .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[š]/g, 's')
+    .replace(/[đ]/g, 'd')
+    .replace(/[č]/g, 'c')
+    .replace(/[ć]/g, 'c')
+    .replace(/[ž]/g, 'z')
+    .replace(/[^\w-]+/g, '')
 
 export const formatSlugHook =
   (fallback: string): FieldHook =>

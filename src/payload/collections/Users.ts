@@ -6,6 +6,8 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
   },
   auth: {
+    maxLoginAttempts: 5,
+    lockTime: 1000 * 60 * 5,
     forgotPassword: {
       generateEmailSubject: ({ req, user }: { req?: PayloadRequest; user?: any } = {}) => {
         return `Hey ${user.email}, reset your password!`

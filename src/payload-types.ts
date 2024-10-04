@@ -154,7 +154,7 @@ export interface Page {
               description: string;
               caseStudy?:
                 | {
-                    image?: (number | null) | Media;
+                    image: number | Media;
                     id?: string | null;
                   }[]
                 | null;

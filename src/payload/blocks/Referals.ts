@@ -20,12 +20,14 @@ export const Referals: Block = {
         {
           name: 'image',
           type: 'upload',
+          required: true,
           relationTo: 'media',
         },
         {
           name: 'message',
           type: 'textarea',
           localized: true,
+          required: true,
         },
         {
           type: 'row',
@@ -33,11 +35,13 @@ export const Referals: Block = {
             {
               name: 'name',
               type: 'text',
+              required: true,
             },
             {
               name: 'role',
               type: 'text',
               localized: true,
+              required: true,
             },
           ],
         },

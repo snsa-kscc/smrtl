@@ -13,8 +13,8 @@ export const Solutions: Block = {
       name: 'industry',
       type: 'array',
       fields: [
-        { name: 'name', type: 'text', localized: true },
-        { name: 'image', type: 'upload', relationTo: 'media' },
+        { name: 'name', type: 'text', localized: true, required: true },
+        { name: 'image', type: 'upload', relationTo: 'media', required: true },
       ],
     },
   ],

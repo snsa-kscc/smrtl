@@ -167,8 +167,8 @@ export interface Page {
               subtitle: string;
               qAndABox?:
                 | {
-                    question?: string | null;
-                    answer?: string | null;
+                    question: string;
+                    answer: string;
                     id?: string | null;
                   }[]
                 | null;
@@ -181,8 +181,8 @@ export interface Page {
               description: string;
               industry?:
                 | {
-                    name?: string | null;
-                    image?: (number | null) | Media;
+                    name: string;
+                    image: number | Media;
                     id?: string | null;
                   }[]
                 | null;
@@ -193,8 +193,8 @@ export interface Page {
           | {
               counterBox?:
                 | {
-                    number?: number | null;
-                    description?: string | null;
+                    number: number;
+                    description: string;
                     id?: string | null;
                   }[]
                 | null;
@@ -224,9 +224,9 @@ export interface Page {
               title: string;
               IPTVBox?:
                 | {
-                    title?: string | null;
-                    description?: string | null;
-                    image?: (number | null) | Media;
+                    title: string;
+                    description: string;
+                    image: number | Media;
                     id?: string | null;
                   }[]
                 | null;
@@ -239,7 +239,7 @@ export interface Page {
               description: string;
               platform?:
                 | {
-                    image?: (number | null) | Media;
+                    image: number | Media;
                     id?: string | null;
                   }[]
                 | null;
@@ -255,7 +255,7 @@ export interface Page {
               description: string;
               brands?:
                 | {
-                    image?: (number | null) | Media;
+                    image: number | Media;
                     id?: string | null;
                   }[]
                 | null;
@@ -267,10 +267,10 @@ export interface Page {
               title: string;
               referals?:
                 | {
-                    image?: (number | null) | Media;
-                    message?: string | null;
-                    name?: string | null;
-                    role?: string | null;
+                    image: number | Media;
+                    message: string;
+                    name: string;
+                    role: string;
                     id?: string | null;
                   }[]
                 | null;
@@ -279,7 +279,7 @@ export interface Page {
               blockType: 'referals';
             }
           | {
-              limit?: number | null;
+              limit: number;
               id?: string | null;
               blockName?: string | null;
               blockType: 'archive';

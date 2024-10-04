@@ -26,6 +26,7 @@ export const Brands: Block = {
         {
           name: 'image',
           type: 'upload',
+          required: true,
           relationTo: 'media',
         },
       ],

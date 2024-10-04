@@ -27,11 +27,13 @@ export const QAndA: Block = {
           name: 'question',
           type: 'text',
           localized: true,
+          required: true,
         },
         {
           name: 'answer',
           type: 'textarea',
           localized: true,
+          required: true,
         },
       ],
     },

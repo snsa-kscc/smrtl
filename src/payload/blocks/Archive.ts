@@ -12,6 +12,7 @@ export const Archive: Block = {
       type: 'number',
       defaultValue: 6,
       label: 'Limit',
+      required: true,
     },
   ],
 }

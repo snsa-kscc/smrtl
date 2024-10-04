@@ -26,6 +26,7 @@ export const Compatibility: Block = {
         {
           name: 'image',
           type: 'upload',
+          required: true,
           relationTo: 'media',
         },
       ],

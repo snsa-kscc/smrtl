@@ -14,11 +14,13 @@ export const Counter: Block = {
         {
           name: 'number',
           type: 'number',
+          required: true,
         },
         {
           name: 'description',
           type: 'text',
           localized: true,
+          required: true,
         },
       ],
     },

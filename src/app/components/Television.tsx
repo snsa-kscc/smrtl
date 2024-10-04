@@ -48,7 +48,7 @@ export function Television({
               <p className="text-center text-xl text-smartellDarkBlue">{description}</p>
               <Image
                 className="mx-auto"
-                src="api/media/file/television.png"
+                src="/api/media/file/television.png"
                 alt="Television"
                 width={789}
                 height={537}

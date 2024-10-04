@@ -4,6 +4,7 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Locale, i18n } from 'i18n.config'
 import type { Footer } from '../../payload-types'
+import { Slogan } from './shapes/Slogan'
 
 export async function Footer({ lang }: { lang: Locale }) {
   const footer = (await getGlobal('footer', undefined, lang)) as Footer
@@ -27,7 +28,7 @@ export async function Footer({ lang }: { lang: Locale }) {
   return (
     <>
       <div
-        className="bg-smartellDarkBlue bg-right-top bg-no-repeat px-20 pb-60 pt-6"
+        className="bg-smartellDarkBlue bg-right-top bg-no-repeat px-20 pb-20 pt-6"
         style={{ backgroundImage: `url('/api/media/file/bg.svg')` }}
       >
         <h2 className="text-10xl font-bold text-smartellLightPurple">{footer.title}</h2>
@@ -61,9 +62,9 @@ export async function Footer({ lang }: { lang: Locale }) {
             <p className="mt-2 text-xs text-smartellLightPurple">{footer.newsletterDisclaimer}</p>
           </div>
         </div>
-      </div>
-      <div className="bg-smartellDarkBlue px-20 py-8 text-smartellLightPurple">
-        {footer.copyright}
+        <div className="mt-44 w-1/6">
+          <Slogan />
+        </div>
       </div>
     </>
   )

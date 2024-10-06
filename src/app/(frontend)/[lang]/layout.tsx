@@ -11,6 +11,7 @@ import { mergeOpenGraph } from '@/app/lib/mergeOpenGraph'
 import { i18n } from 'i18n.config'
 import { AdminBar } from '@/app/components/AdminBar'
 import { draftMode } from 'next/headers'
+import SmoothScrolling from '@/app/components/SmoothScrolling'
 
 export default async function RootLayout({
   children,
@@ -24,16 +25,18 @@ export default async function RootLayout({
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
       <body>
         <LocaleLinksProvider>
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
-          <Header lang={lang} />
-          <main>{children}</main>
-          <Footer lang={lang} />
-          <TailwindIndicator />
-          {/* <Sig /> */}
+          <SmoothScrolling>
+            <AdminBar
+              adminBarProps={{
+                preview: isEnabled,
+              }}
+            />
+            <Header lang={lang} />
+            <main>{children}</main>
+            <Footer lang={lang} />
+            <TailwindIndicator />
+            {/* <Sig /> */}
+          </SmoothScrolling>
         </LocaleLinksProvider>
       </body>
     </html>

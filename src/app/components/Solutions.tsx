@@ -43,7 +43,7 @@ export function Solutions({
   return (
     <div className="bg-smartellDarkBlue">
       <p className="mx-auto w-1/2 text-balance pt-28 text-center text-white">{description}</p>
-      <h3 className="w-1/2 pl-24 pt-20 text-4xl font-bold text-white">
+      <h3 className="w-1/2 text-balance pl-24 pt-20 text-4xl font-bold text-white">
         {title.split('**').map((part, index) =>
           index % 2 === 0 ? (
             part

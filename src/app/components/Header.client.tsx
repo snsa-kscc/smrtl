@@ -10,8 +10,8 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-white shadow-md">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <nav className="bg-white pb-28 pt-6 sm:pt-10">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-shrink-0">
             <Link href={lang === i18n.defaultLocale ? '/' : `/${lang}`}>
@@ -20,7 +20,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
                 alt={(header.logotype as Media)?.alt ?? ''}
                 width={(header.logotype as Media)?.width ?? 0}
                 height={(header.logotype as Media)?.height ?? 0}
-                className="h-8 w-auto sm:h-10"
+                className="h-8 w-auto"
               />
             </Link>
           </div>
@@ -30,7 +30,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
                 <Link
                   key={idx}
                   href={item.url}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-smartellDarkBlue transition-colors duration-200 hover:bg-smartellLightPurple hover:text-white"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-smartellDarkBlue transition-colors duration-200 hover:bg-smartellLightPurple hover:text-white"
                 >
                   {item.label}
                 </Link>
@@ -42,7 +42,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               <LanguageSwitcher />
               <Link
                 href={header.cta?.url ?? ''}
-                className="ml-4 rounded-full bg-smartellDarkBlue px-4 py-2 text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-opacity-90"
+                className="ml-4 rounded-full bg-smartellDarkBlue p-4 text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-opacity-90"
               >
                 {header.cta?.label}
               </Link>
@@ -117,7 +117,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
             <LanguageSwitcher />
             <Link
               href={header.cta?.url ?? ''}
-              className="ml-auto flex-shrink-0 rounded-full bg-smartellDarkBlue px-4 py-2 text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-opacity-90"
+              className="ml-auto flex-shrink-0 rounded-full bg-smartellDarkBlue p-4 text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-opacity-90"
             >
               {header.cta?.label}
             </Link>

@@ -399,6 +399,8 @@ export interface Footer {
   newsletterTitle: string;
   newsletterButton: string;
   newsletterDisclaimer: string;
+  successMessage: string;
+  errorMessage: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

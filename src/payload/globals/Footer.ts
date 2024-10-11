@@ -70,5 +70,22 @@ export const Footer: GlobalConfig = {
         },
       ],
     },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'successMessage',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+        {
+          name: 'errorMessage',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+      ],
+    },
   ],
 }

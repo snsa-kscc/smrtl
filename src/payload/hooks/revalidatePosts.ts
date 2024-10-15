@@ -8,11 +8,11 @@ export const revalidatePostsAfterChange: CollectionAfterChangeHook<Post> = ({
   doc,
   req: { payload },
 }) => {
-  if (doc._status === 'published') {
-    payload.logger.info(`Revalidating posts.`)
+  // if (doc._status === 'published') {
+  //   payload.logger.info(`Revalidating posts.`)
 
-    revalidatePath('/(frontend)/[lang]/[...slug]', 'page')
-  }
+  //   revalidatePath('/(frontend)/[lang]/[...slug]', 'page')
+  // }
 
   return doc
 }

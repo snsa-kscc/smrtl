@@ -11,9 +11,9 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
 
   return (
     <nav className="bg-white pb-28 pt-6 sm:pt-10">
-      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link href={lang === i18n.defaultLocale ? '/' : `/${lang}`}>
               <Image
                 src={(header.logotype as Media)?.url ?? ''}
@@ -42,7 +42,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               <LanguageSwitcher />
               <Link
                 href={header.cta?.url ?? ''}
-                className="ml-4 rounded-full bg-smartellDarkBlue p-4 text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-opacity-90"
+                className="ml-4 rounded-full bg-smartellDarkBlue p-4 text-sm font-medium text-white shadow-xs transition duration-200 hover:bg-opacity-90"
               >
                 {header.cta?.label}
               </Link>
@@ -52,7 +52,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="inline-flex items-center justify-center rounded-md bg-white p-2 text-smartellDarkBlue transition-colors duration-200 hover:bg-smartellLightPurple hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-smartellDarkBlue"
+              className="inline-flex items-center justify-center rounded-md bg-white p-2 text-smartellDarkBlue transition-colors duration-200 hover:bg-smartellLightPurple hover:text-white focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-smartellDarkBlue"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -117,7 +117,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
             <LanguageSwitcher />
             <Link
               href={header.cta?.url ?? ''}
-              className="ml-auto flex-shrink-0 rounded-full bg-smartellDarkBlue p-4 text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-opacity-90"
+              className="ml-auto shrink-0 rounded-full bg-smartellDarkBlue p-4 text-sm font-medium text-white shadow-xs transition duration-200 hover:bg-opacity-90"
             >
               {header.cta?.label}
             </Link>

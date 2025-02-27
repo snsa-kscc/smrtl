@@ -1,11 +1,10 @@
 'use server'
 
 import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
-
+import { getPayload } from 'payload'
 export async function resetPassword(token: string, password: string) {
   try {
-    const payload = await getPayloadHMR({ config: configPromise })
+    const payload = await getPayload({ config: configPromise })
 
     const result = await payload.resetPassword({
       collection: 'users',

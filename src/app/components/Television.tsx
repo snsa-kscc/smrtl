@@ -64,14 +64,14 @@ export function Television({
               {caseStudy.map((item, index) => (
                 <div
                   key={item.id}
-                  className={`flex-shrink-0 basis-1/3 ${index % 2 === 0 ? 'translate-y-10' : '-translate-y-10'}`}
+                  className={`shrink-0 basis-1/3 ${index % 2 === 0 ? 'translate-y-10' : '-translate-y-10'}`}
                 >
                   <Image
                     src={item.image.url}
                     alt={item.image.alt}
                     width={item.image.width}
                     height={item.image.height}
-                    className="aspect-[3/4] object-cover"
+                    className="aspect-3/4 object-cover"
                   />
                 </div>
               ))}

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import { Content } from '@/app/components/Content'
 import { Locale, pathTranslations } from 'i18n.config'
 import { notFound } from 'next/navigation'
@@ -12,7 +12,7 @@ import { generateMeta } from '@/app/lib/generateMeta'
 import { draftMode } from 'next/headers'
 
 export async function generateStaticParams() {
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
     collection: 'posts',
@@ -45,9 +45,9 @@ export default async function Page({
     notFound()
   }
 
-  const { isEnabled: draft } = draftMode()
+  const { isEnabled: draft } = await draftMode()
 
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'posts',
@@ -90,9 +90,9 @@ export async function generateMetadata({
   params: { lang: Locale; slug: string[] }
 }): Promise<Metadata> {
   const [_, ...pathSlug] = slug
-  const { isEnabled: draft } = draftMode()
+  const { isEnabled: draft } = await draftMode()
 
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'posts',

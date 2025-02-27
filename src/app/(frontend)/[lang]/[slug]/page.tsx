@@ -1,6 +1,6 @@
 import { RenderBlocks } from '@/app/lib/RenderBlocks'
 import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import { Content } from '@/app/components/Content'
 import { Locale } from 'i18n.config'
 import { notFound } from 'next/navigation'
@@ -11,7 +11,7 @@ import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 
 export async function generateStaticParams() {
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const pages = await payload.find({
     collection: 'pages',
@@ -48,9 +48,9 @@ export default async function Page({
 }: {
   params: { lang: Locale; slug?: string }
 }) {
-  const { isEnabled: draft } = draftMode()
+  const { isEnabled: draft } = await draftMode()
 
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'pages',
@@ -83,9 +83,9 @@ export async function generateMetadata({
 }: {
   params: { lang: Locale; slug?: string }
 }): Promise<Metadata> {
-  const { isEnabled: draft } = draftMode()
+  const { isEnabled: draft } = await draftMode()
 
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'pages',

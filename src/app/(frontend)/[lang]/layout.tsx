@@ -11,7 +11,6 @@ import { mergeOpenGraph } from '@/app/lib/mergeOpenGraph'
 import { i18n } from 'i18n.config'
 import { AdminBar } from '@/app/components/AdminBar'
 import { draftMode } from 'next/headers'
-import SmoothScrolling from '@/app/components/SmoothScrolling'
 
 export default async function RootLayout({
   children,
@@ -20,23 +19,21 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
       <body>
         <LocaleLinksProvider>
-          <SmoothScrolling>
-            <AdminBar
-              adminBarProps={{
-                preview: isEnabled,
-              }}
-            />
-            <Header lang={lang} />
-            <main>{children}</main>
-            <Footer lang={lang} />
-            <TailwindIndicator />
-            {/* <Sig /> */}
-          </SmoothScrolling>
+          <AdminBar
+            adminBarProps={{
+              preview: isEnabled,
+            }}
+          />
+          <Header lang={lang} />
+          <main>{children}</main>
+          <Footer lang={lang} />
+          <TailwindIndicator />
+          {/* <Sig /> */}
         </LocaleLinksProvider>
       </body>
     </html>

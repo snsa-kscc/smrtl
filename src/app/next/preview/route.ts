@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken'
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { getPayload } from 'payload'import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 const payloadToken = 'payload-token'
 

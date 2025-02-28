@@ -35,10 +35,11 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({
-  params: { lang, slug },
+  params,
 }: {
-  params: { lang: Locale; slug: string[] }
+  params: Promise<{ lang: Locale; slug: string[] }>
 }) {
+  const { lang, slug } = await params
   const [pathLang, ...pathSlug] = slug
 
   if (pathLang !== pathTranslations[lang]) {
@@ -85,10 +86,11 @@ export default async function Page({
 }
 
 export async function generateMetadata({
-  params: { lang, slug },
+  params,
 }: {
-  params: { lang: Locale; slug: string[] }
+  params: Promise<{ lang: Locale; slug: string[] }>
 }): Promise<Metadata> {
+  const { lang, slug } = await params
   const [_, ...pathSlug] = slug
   const { isEnabled: draft } = await draftMode()
 

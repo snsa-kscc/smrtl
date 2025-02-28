@@ -14,11 +14,12 @@ import { draftMode } from 'next/headers'
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params,
 }: {
   children: React.ReactNode
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const { isEnabled } = await draftMode()
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>

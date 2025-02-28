@@ -44,10 +44,11 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({
-  params: { lang, slug = 'home' },
+  params,
 }: {
-  params: { lang: Locale; slug?: string }
+  params: Promise<{ lang: Locale; slug?: string }>
 }) {
+  const { lang, slug = 'home' } = await params
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -79,10 +80,11 @@ export default async function Page({
 }
 
 export async function generateMetadata({
-  params: { lang, slug = 'home' },
+  params,
 }: {
-  params: { lang: Locale; slug?: string }
+  params: Promise<{ lang: Locale; slug?: string }>
 }): Promise<Metadata> {
+  const { lang, slug = 'home' } = await params
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })

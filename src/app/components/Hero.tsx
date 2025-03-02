@@ -85,7 +85,7 @@ export function Hero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="mb-4 text-center text-4xl font-bold text-smartellDarkBlue [perspective:1000px] [transform-style:preserve-3d] md:text-6xl lg:text-10xl"
+            className="text-smartellDarkBlue lg:text-10xl mb-4 text-center text-4xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:text-6xl"
           >
             {title.split(/(\s)/).map((word, i) => (
               <div key={i} className="word inline-block">
@@ -107,12 +107,12 @@ export function Hero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="relative mb-6 inline-block text-4xl font-bold text-smartellLightPurple md:text-6xl lg:text-10xl"
+            className="text-smartellLightPurple lg:text-10xl relative mb-6 inline-block text-4xl font-bold md:text-6xl"
           >
             {animationWords.split(',').map((word, i) => (
               <div
                 key={i}
-                className="word absolute left-0 top-0 w-max -translate-x-1/2"
+                className="word absolute top-0 left-0 w-max -translate-x-1/2"
                 ref={(el) => {
                   if (el) animationWordsRef.current.push(el)
                 }}
@@ -145,7 +145,7 @@ export function Hero({
           <HeroShapes />
         </motion.div>
       </div>
-      <Television description={description} caseStudy={caseStudy} />
+      {/* <Television description={description} caseStudy={caseStudy} /> */}
     </>
   )
 }

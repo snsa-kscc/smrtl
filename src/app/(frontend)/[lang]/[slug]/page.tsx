@@ -74,7 +74,7 @@ export default async function Page({
       <LocaleLinksUpdater localeLinks={localizedPosts} />
       {title !== 'home' && <h1>{title}</h1>}
       {content?.content && <Content content={content.content} />}
-      <RenderBlocks blocks={layout?.layout ?? []} />
+      <RenderBlocks lang={lang} blocks={layout?.layout ?? []} />
     </>
   )
 }

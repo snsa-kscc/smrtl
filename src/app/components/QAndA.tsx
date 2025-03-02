@@ -4,24 +4,12 @@ import React from 'react'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './ui/accordion'
 import { QAShape } from './shapes/QAShape'
 
-export function QAndA({
-  title,
-  subtitle,
-  qAndABox,
-}: {
-  title: string
-  subtitle: string
-  qAndABox: { question: string; answer: string }[]
-}) {
+export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: string }[] }) {
   return (
     <div className="bg-smartellDarkBlue">
-      <h2 className="mb-2 text-balance px-10 pt-20 text-center text-10xl font-bold text-smartellLightPurple">
-        {title}
-      </h2>
-      <p className="mx-auto w-1/2 text-white">{subtitle}</p>
       <div className="flex items-center justify-between gap-10">
         <div className="relative max-w-2xl basis-1/2 translate-y-40">
-          <div className="absolute left-1/2 top-[10%] -translate-x-1/2 text-10xl font-bold text-smartellLightPurple">
+          <div className="text-10xl text-smartellLightPurple absolute top-[10%] left-1/2 -translate-x-1/2 font-bold">
             <p>QA</p>
           </div>
           <QAShape />

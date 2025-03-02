@@ -45,7 +45,7 @@ export function Television({
         <div className="sticky top-0 h-screen">
           <div className="flex h-full w-full items-center justify-center overflow-hidden">
             <motion.div style={{ scale }}>
-              <p className="text-center text-xl text-smartellDarkBlue">{description}</p>
+              <p className="text-smartellDarkBlue text-center text-xl">{description}</p>
               <Image
                 className="mx-auto"
                 src="/api/media/file/television.png"

@@ -10,6 +10,7 @@ import { Compatibility } from '../blocks/Compatibility'
 import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
 import { Archive } from '../blocks/Archive'
+import { Question } from '../blocks/Question'
 import {
   revalidatePagesAfterChange,
   revalidatePagesAfterDelete,
@@ -94,6 +95,7 @@ export const Pages: CollectionConfig = {
                 Brands,
                 Referals,
                 Archive,
+                Question,
               ],
             },
           ],

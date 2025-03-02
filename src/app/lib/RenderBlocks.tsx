@@ -12,6 +12,8 @@ import { Compatibility } from '../components/Compatibility'
 import { Brands } from '../components/Brands'
 import { Referals } from '../components/Referals'
 import { ArchiveBlock } from '../components/ArchiveBlock'
+import { Question } from '../components/Question'
+import { Locale } from 'i18n.config'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
   hero: Hero,
@@ -25,12 +27,14 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   compatibility: Compatibility,
   brands: Brands,
   referals: Referals,
+  question: Question,
 }
 
 export const RenderBlocks: React.FC<{
+  lang: Locale
   blocks: NonNullable<Page['layout']>['layout']
 }> = (props) => {
-  const { blocks } = props
+  const { lang, blocks } = props
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
@@ -46,7 +50,7 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               return (
                 <section key={index} id={blockName ?? ''}>
-                  <Block id={blockName} {...block} />
+                  <Block lang={lang} id={blockName} {...block} />
                 </section>
               )
             }

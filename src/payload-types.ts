@@ -240,8 +240,6 @@ export interface Page {
               blockType: 'hero';
             }
           | {
-              title: string;
-              subtitle: string;
               qAndABox?:
                 | {
                     question: string;
@@ -360,6 +358,14 @@ export interface Page {
               id?: string | null;
               blockName?: string | null;
               blockType: 'archive';
+            }
+          | {
+              title: string;
+              firstSubtitle: string;
+              secondSubtitle: string;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'question';
             }
         )[]
       | null;
@@ -535,8 +541,6 @@ export interface PagesSelect<T extends boolean = true> {
               'q-and-a'?:
                 | T
                 | {
-                    title?: T;
-                    subtitle?: T;
                     qAndABox?:
                       | T
                       | {
@@ -661,6 +665,15 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     limit?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              question?:
+                | T
+                | {
+                    title?: T;
+                    firstSubtitle?: T;
+                    secondSubtitle?: T;
                     id?: T;
                     blockName?: T;
                   };

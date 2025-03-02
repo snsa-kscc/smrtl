@@ -10,8 +10,9 @@ import {
 } from '@/app/components/ui/carousel'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Locale, pathTranslations, i18n } from 'i18n.config'
 
-export function Archive({ posts }: { posts: Post[] }) {
+export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
   const dateFormatter = new Intl.DateTimeFormat('en-GB', {
     year: 'numeric',
     month: '2-digit',
@@ -23,14 +24,21 @@ export function Archive({ posts }: { posts: Post[] }) {
       <CarouselContent>
         {posts.map((post) => (
           <CarouselItem key={post.id} className="basis-1/3">
-            <Link href={`/posts/${post.slug}`} className="block">
+            <Link
+              href={
+                lang === i18n.defaultLocale
+                  ? `/${pathTranslations[lang]}/${post.slug}`
+                  : `/${lang}/${pathTranslations[lang]}/${post.slug}`
+              }
+              className="block"
+            >
               <div className="p-8">
                 <div className="overflow-hidden">
-                  <div className="p-1 pb-10 text-smartellDarkBlue">
+                  <div className="text-smartellDarkBlue p-1 pb-10">
                     <p className="text-sm">
                       {dateFormatter.format(new Date(post.createdAt)).replace(/\//g, '.')}
                     </p>
-                    <h3 className="text-balance text-xl font-bold">{post.title}</h3>
+                    <h3 className="text-xl font-bold text-balance">{post.title}</h3>
                   </div>
                   {post.featuredImage && (
                     <Image

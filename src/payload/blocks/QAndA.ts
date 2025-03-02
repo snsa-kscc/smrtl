@@ -8,18 +8,6 @@ export const QAndA: Block = {
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
-      localized: true,
-    },
-    {
-      name: 'subtitle',
-      type: 'textarea',
-      required: true,
-      localized: true,
-    },
-    {
       name: 'qAndABox',
       type: 'array',
       fields: [

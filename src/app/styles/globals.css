@@ -34,9 +34,9 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --color-smartell-light-purple: #5e5eff;
-  --color-smartell-dark-blue: #021f53;
-  --color-smartell-light-gray: #e8edf2;
+  --color-smartellLightPurple: #5e5eff;
+  --color-smartellDarkBlue: #021f53;
+  --color-smartellLightGray: #e8edf2;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);

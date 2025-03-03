@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { BrandsShape } from './shapes/BrandsShape'
 
 type BrandsProps = {
   title: string
@@ -18,8 +17,8 @@ type BrandsProps = {
 export function Brands({ title, description, brands }: BrandsProps) {
   return (
     <div className="p-20">
-      <h3 className="text-center text-6xl font-bold text-smartellDarkBlue">{title}</h3>
-      <p className="mx-auto w-2/3 text-center text-6xl font-bold text-smartellDarkBlue">
+      <h3 className="text-smartellDarkBlue text-center text-6xl font-bold">{title}</h3>
+      <p className="text-smartellDarkBlue mx-auto w-2/3 text-center text-6xl font-bold">
         {description}
       </p>
       <div className="my-20 flex items-center justify-center gap-6">
@@ -34,9 +33,6 @@ export function Brands({ title, description, brands }: BrandsProps) {
             />
           </div>
         ))}
-      </div>
-      <div className="mx-auto w-1/2">
-        <BrandsShape />
       </div>
     </div>
   )

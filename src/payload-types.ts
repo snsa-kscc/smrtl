@@ -297,11 +297,12 @@ export interface Page {
             }
           | {
               title: string;
+              firstSubtitle: string;
+              secondSubtitle: string;
               IPTVBox?:
                 | {
                     title: string;
                     description: string;
-                    image: number | Media;
                     id?: string | null;
                   }[]
                 | null;
@@ -366,6 +367,29 @@ export interface Page {
               id?: string | null;
               blockName?: string | null;
               blockType: 'question';
+            }
+          | {
+              title: string;
+              subtitle: string;
+              images?:
+                | {
+                    image: number | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+              benefitsBox?:
+                | {
+                    image: number | Media;
+                    title: string;
+                    description: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              ctaLabel: string;
+              ctaUrl: string;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'benefits';
             }
         )[]
       | null;
@@ -603,12 +627,13 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
+                    firstSubtitle?: T;
+                    secondSubtitle?: T;
                     IPTVBox?:
                       | T
                       | {
                           title?: T;
                           description?: T;
-                          image?: T;
                           id?: T;
                         };
                     id?: T;
@@ -674,6 +699,30 @@ export interface PagesSelect<T extends boolean = true> {
                     title?: T;
                     firstSubtitle?: T;
                     secondSubtitle?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              benefits?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    images?:
+                      | T
+                      | {
+                          image?: T;
+                          id?: T;
+                        };
+                    benefitsBox?:
+                      | T
+                      | {
+                          image?: T;
+                          title?: T;
+                          description?: T;
+                          id?: T;
+                        };
+                    ctaLabel?: T;
+                    ctaUrl?: T;
                     id?: T;
                     blockName?: T;
                   };

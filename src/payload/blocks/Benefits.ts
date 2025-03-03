@@ -1,10 +1,10 @@
 import type { Block } from 'payload'
 
-export const Compatibility: Block = {
-  slug: 'compatibility',
+export const Benefits: Block = {
+  slug: 'benefits',
   labels: {
-    singular: 'Compatibility',
-    plural: 'Compatibility',
+    singular: 'Benefits',
+    plural: 'Benefits',
   },
   fields: [
     {
@@ -14,28 +14,46 @@ export const Compatibility: Block = {
       localized: true,
     },
     {
-      name: 'description',
-      type: 'textarea',
+      name: 'subtitle',
+      type: 'text',
       required: true,
       localized: true,
     },
     {
-      name: 'platform',
+      name: 'images',
       type: 'array',
       fields: [
         {
           name: 'image',
           type: 'upload',
-          required: true,
           relationTo: 'media',
+          required: true,
         },
       ],
     },
     {
-      name: 'ctaHook',
-      type: 'text',
-      required: true,
-      localized: true,
+      name: 'benefitsBox',
+      type: 'array',
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          required: true,
+          localized: true,
+        },
+      ],
     },
     {
       type: 'row',

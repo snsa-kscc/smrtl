@@ -13,6 +13,7 @@ import { Brands } from '../components/Brands'
 import { Referals } from '../components/Referals'
 import { ArchiveBlock } from '../components/ArchiveBlock'
 import { Question } from '../components/Question'
+import { Benefits } from '../components/Benefits'
 import { Locale } from 'i18n.config'
 
 const blockComponents: { [key: string]: React.ComponentType<any> } = {
@@ -28,6 +29,7 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   brands: Brands,
   referals: Referals,
   question: Question,
+  benefits: Benefits,
 }
 
 export const RenderBlocks: React.FC<{

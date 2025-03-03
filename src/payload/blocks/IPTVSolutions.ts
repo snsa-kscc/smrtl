@@ -14,6 +14,18 @@ export const IPTVSolutions: Block = {
       localized: true,
     },
     {
+      name: 'firstSubtitle',
+      type: 'text',
+      required: true,
+      localized: true,
+    },
+    {
+      name: 'secondSubtitle',
+      type: 'text',
+      required: true,
+      localized: true,
+    },
+    {
       name: 'IPTVBox',
       type: 'array',
       fields: [
@@ -27,12 +39,6 @@ export const IPTVSolutions: Block = {
           name: 'description',
           type: 'textarea',
           localized: true,
-          required: true,
-        },
-        {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
           required: true,
         },
       ],

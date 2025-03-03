@@ -11,6 +11,7 @@ import { Brands } from '../blocks/Brands'
 import { Referals } from '../blocks/Referals'
 import { Archive } from '../blocks/Archive'
 import { Question } from '../blocks/Question'
+import { Benefits } from '../blocks/Benefits'
 import {
   revalidatePagesAfterChange,
   revalidatePagesAfterDelete,
@@ -96,6 +97,7 @@ export const Pages: CollectionConfig = {
                 Referals,
                 Archive,
                 Question,
+                Benefits,
               ],
             },
           ],

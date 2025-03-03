@@ -14,7 +14,7 @@ export function Question({
   secondSubtitle: string
 }) {
   return (
-    <div className="bg-smartellDarkBlue">
+    <div className="bg-smartellDarkBlue px-6 py-24 md:px-12 lg:px-24 xl:px-32">
       <h2 className="text-10xl text-smartellLightPurple mb-2 px-10 pt-20 text-center font-bold text-balance">
         {title}
       </h2>

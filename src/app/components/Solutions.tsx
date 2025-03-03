@@ -41,9 +41,9 @@ export function Solutions({
   }, [api])
 
   return (
-    <div className="bg-smartellDarkBlue">
-      <p className="mx-auto w-1/2 text-balance pt-28 text-center text-white">{description}</p>
-      <h3 className="w-1/2 text-balance pl-24 pt-20 text-4xl font-bold text-white">
+    <div className="bg-smartellDarkBlue py-24">
+      <p className="mx-auto w-1/2 pt-28 text-center text-balance text-white">{description}</p>
+      <h3 className="w-1/2 pt-20 pl-24 text-4xl font-bold text-balance text-white">
         {title.split('**').map((part, index) =>
           index % 2 === 0 ? (
             part
@@ -80,7 +80,7 @@ export function Solutions({
                       height={item.image.height}
                       className="w-full object-cover"
                     />
-                    <div className="h-2 w-full bg-smartellLightPurple"></div>
+                    <div className="bg-smartellLightPurple h-2 w-full"></div>
                   </div>
                 </CarouselItem>
               ))}

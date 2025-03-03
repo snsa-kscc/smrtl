@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-
 import { HeroShapes } from './shapes/HeroShapes'
 import { Television } from './Television'
 

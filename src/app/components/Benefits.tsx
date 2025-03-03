@@ -36,47 +36,47 @@ export function Benefits({
   ctaUrl,
 }: BenefitsProps) {
   return (
-    <div className="bg-smartellDarkBlue">
-      <div className="mx-auto h-20 w-20">
-        <ImageShape />
+    <div className="px-6 py-24 md:px-12 lg:px-24 xl:px-32">
+      <div className="mb-24 flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:justify-between">
+        <div className="w-32 lg:w-40">
+          <ImageShape />
+        </div>
+        <div className="max-w-3xl lg:ml-12">
+          <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-6xl">
+            {title}
+          </h2>
+          <p className="text-center text-xl text-white/80 lg:text-left">{subtitle}</p>
+        </div>
       </div>
-      <p className="mx-auto w-1/2 pt-28 text-center text-balance text-white">{title}</p>
-      <p className="mx-auto w-1/2 pt-4 text-center text-balance text-white">{subtitle}</p>
-      <div className="flex flex-wrap justify-center">
-        {images.map((image) => (
-          <Image
-            key={image.id}
-            src={image.url}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-            className="w-1/2 rounded-lg shadow-lg md:w-1/4 lg:w-1/6 xl:w-1/8 2xl:w-1/12"
-          />
-        ))}
-      </div>
-      <div className="flex flex-wrap justify-center">
+
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
         {benefitsBox.map((benefit, index) => (
-          <Link
-            href={ctaUrl}
+          <div
             key={index}
-            className="w-1/2 rounded-lg shadow-lg md:w-1/4 lg:w-1/6 xl:w-1/8 2xl:w-1/12"
+            className="group bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 relative overflow-hidden rounded-xl border border-white/10 p-8 transition-all"
           >
-            <p className="text-center text-balance text-white">{benefit.title}</p>
-            <p className="text-center text-balance text-white">{benefit.description}</p>
-            <Image
-              src={benefit.image.url}
-              alt={benefit.image.alt}
-              width={benefit.image.width}
-              height={benefit.image.height}
-              className="w-full object-cover"
-            />
-          </Link>
+            <h3 className="text-smartellLightPurple mb-6 text-center text-2xl font-bold lg:text-3xl">
+              {benefit.title}
+            </h3>
+            <p className="mb-8 text-lg text-white/70">{benefit.description}</p>
+            {benefit.image.url && (
+              <div className="relative h-48 w-full overflow-hidden rounded-lg">
+                <Image
+                  src={benefit.image.url}
+                  alt={benefit.image.alt}
+                  width={benefit.image.width}
+                  height={benefit.image.height}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            )}
+          </div>
         ))}
       </div>
-      <div className="mx-auto w-1/2 pt-28 text-center text-balance text-white">
+      <div className="mt-24 text-center">
         <Link
           href={ctaUrl}
-          className="bg-smartellBlue hover:bg-smartellBlue-light rounded-lg px-8 py-4 text-center text-white"
+          className="bg-smartellBlue hover:bg-opacity-90 inline-block rounded-lg px-12 py-5 text-xl font-medium text-white transition-colors"
         >
           {ctaLabel}
         </Link>

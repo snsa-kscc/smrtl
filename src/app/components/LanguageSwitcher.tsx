@@ -26,7 +26,7 @@ export function LanguageSwitcher() {
             <Link
               key={locale}
               href={href}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-smartellLightPurple text-white duration-300 hover:bg-opacity-70"
+              className="bg-smartellLightPurple hover:bg-smartellLightPurple/90 flex h-12 w-12 items-center justify-center rounded-full text-white duration-300"
             >
               {locale.toUpperCase()}
             </Link>

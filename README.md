@@ -4,6 +4,3 @@
 
 - Data import
 - Navbar
-- Leading
-- Block entry animations
-- Responsiveness

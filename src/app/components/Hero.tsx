@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { HeroShapes } from './shapes/HeroShapes'
-import { Television } from './Television'
+import { TVSlider } from './TVSlider'
 
 type ImageType = {
   url: string
@@ -41,7 +41,7 @@ export function Hero({
       yPercent: -55,
       opacity: 0,
       rotateX: -100,
-      stagger: 0.09,
+      stagger: 0.04,
       ease: 'power3.out',
     })
 
@@ -78,65 +78,79 @@ export function Hero({
 
   return (
     <>
-      <div className="grid grid-cols-4 justify-items-end">
-        <div className="col-start-1 col-end-4 row-end-2 flex flex-col items-center">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-smartellLightPurple lg:text-10xl mb-4 text-center text-4xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:text-6xl"
-          >
-            {title.split(/(\s)/).map((word, i) => (
-              <div key={i} className="word inline-block">
-                {word.split('').map((char, j) => (
-                  <span
-                    key={`${i}-${j}`}
-                    ref={(el) => {
-                      if (el) titleCharsRef.current.push(el)
-                    }}
-                    className="char inline-block will-change-transform"
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
+      <div className="flex flex-col items-center px-4 py-20 md:px-8 lg:px-16">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.02 }}
+          className="text-smartellLightPurple mb-6 text-center text-4xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-9xl"
+        >
+          {title.split(/(\s)/).map((word, i) => (
+            <div key={i} className="word inline-block">
+              {word.split('').map((char, j) => (
+                <span
+                  key={`${i}-${j}`}
+                  ref={(el) => {
+                    if (el) titleCharsRef.current.push(el)
+                  }}
+                  className="char inline-block will-change-transform"
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </div>
+          ))}
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="text-smartellDarkBlue relative mb-12 inline-block text-4xl font-bold md:mb-16 md:text-6xl lg:mb-20 lg:text-8xl"
+        >
+          {animationWords.split(';').map((word, i) => (
+            <div
+              key={i}
+              className="word absolute top-0 left-1/2 w-max -translate-x-1/2"
+              ref={(el) => {
+                if (el) animationWordsRef.current.push(el)
+              }}
+            >
+              <div className="overflow-hidden">
+                {word.split(/(\s)/).map((subWord, k) => (
+                  <div key={`${i}-${k}`} className="word inline-block">
+                    {subWord.split('').map((char, j) => (
+                      <span
+                        key={`${i}-${k}-${j}`}
+                        className="char inline-block will-change-transform"
+                      >
+                        {char === ' ' ? '\u00A0' : char}
+                      </span>
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-smartellDarkBlue lg:text-10xl relative mb-6 inline-block text-4xl font-bold md:text-6xl"
-          >
-            {animationWords.split(',').map((word, i) => (
-              <div
-                key={i}
-                className="word absolute top-0 left-0 w-max -translate-x-1/2"
-                ref={(el) => {
-                  if (el) animationWordsRef.current.push(el)
-                }}
-              >
-                <div className="overflow-hidden">
-                  {word.split('').map((char, j) => (
-                    <span key={`${i}-${j}`} className="char inline-block will-change-transform">
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-          {/* <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-            className="mt-40 text-lg text-smartellDarkBlue"
-          >
-            {description}
-          </motion.p> */}
-        </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="text-smartellDarkBlue mx-auto mb-10 max-w-2xl px-4 text-center text-3xl font-bold"
+      >
+        {description}
+      </motion.p>
+      <div className="relative pb-20 md:pb-32 lg:pb-40">
         <motion.div
-          className="col-span-2 col-start-3 row-end-2 w-full max-w-lg"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          <TVSlider caseStudy={caseStudy} />
+        </motion.div>
+        <motion.div
+          className="absolute top-0 right-0 -z-50 w-full max-w-lg"
           initial={{ opacity: 0, y: 200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 1 }}
@@ -144,8 +158,6 @@ export function Hero({
           <HeroShapes />
         </motion.div>
       </div>
-      <p>{description}</p>
-      {/* <Television description={description} caseStudy={caseStudy} /> */}
     </>
   )
 }

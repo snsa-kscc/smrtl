@@ -14,12 +14,16 @@ export function Question({
   secondSubtitle: string
 }) {
   return (
-    <div className="bg-smartellDarkBlue px-6 py-24 md:px-12 lg:px-24 xl:px-32">
-      <h2 className="text-10xl text-smartellLightPurple mb-2 px-10 pt-20 text-center font-bold text-balance">
+    <div className="from-smartellDarkBlue to-smartellDarkBlue/85 bg-gradient-to-b px-6 pt-20 pb-40 md:px-12 lg:px-24 xl:px-32">
+      <h2 className="text-10xl text-smartellLightPurple mb-20 px-10 pt-20 text-center font-bold text-balance">
         {title}
       </h2>
-      <p className="mx-auto w-1/2 text-white">{firstSubtitle}</p>
-      <p className="mx-auto w-1/2 text-white">{secondSubtitle}</p>
+      <p className="mx-auto mb-20 w-3/4 text-center text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+        {firstSubtitle}
+      </p>
+      <p className="mx-auto text-center text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+        {secondSubtitle}
+      </p>
     </div>
   )
 }

@@ -55,7 +55,7 @@ export async function Footer({ lang }: { lang: Locale }) {
             <h3 className="mb-12 font-bold text-white">{footer.newsletterTitle}</h3>
             <div className="flex items-end justify-center gap-4">
               <hr className="h-1 w-full" />
-              <button className="text-smartellDarkBlue hover:bg-opacity-70 rounded-full bg-white px-6 py-2 transition-colors duration-300">
+              <button className="text-smartellDarkBlue hover:bg-opacity-70 rounded-full bg-white px-12 py-2 font-bold transition-colors duration-300">
                 {footer.newsletterButton}
               </button>
             </div>
@@ -64,6 +64,9 @@ export async function Footer({ lang }: { lang: Locale }) {
         </div>
         <div className="mt-44 w-1/6">
           <Slogan />
+        </div>
+        <div className="mt-8 text-lg text-white">
+          <p>© Copyright {new Date().getFullYear()} Smartell</p>
         </div>
       </div>
     </>

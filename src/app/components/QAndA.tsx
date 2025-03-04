@@ -6,7 +6,7 @@ import { QAShape } from './shapes/QAShape'
 
 export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: string }[] }) {
   return (
-    <div className="bg-smartellDarkBlue">
+    <div className="from-smartellDarkBlue to-smartellDarkBlue/85 bg-gradient-to-b">
       <div className="flex items-center justify-between gap-10">
         <div className="relative max-w-2xl basis-1/2 translate-y-40">
           <div className="text-10xl text-smartellLightPurple absolute top-[10%] left-1/2 -translate-x-1/2 font-bold">
@@ -18,10 +18,12 @@ export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: stri
           <Accordion type="single" collapsible>
             {qAndABox.map((item, index) => (
               <AccordionItem key={index} value={item.question} className="my-8">
-                <AccordionTrigger className="text-left text-lg font-bold text-white hover:no-underline">
+                <AccordionTrigger className="text-left text-3xl font-bold text-white hover:no-underline">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="w-11/12 text-white">{item.answer}</AccordionContent>
+                <AccordionContent className="w-11/12 text-lg text-white">
+                  {item.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

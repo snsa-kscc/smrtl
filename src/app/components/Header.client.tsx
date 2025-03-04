@@ -42,7 +42,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               <LanguageSwitcher />
               <Link
                 href={header.cta?.url ?? ''}
-                className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 ml-4 rounded-full p-4 text-sm font-medium text-white shadow-xs transition duration-200"
+                className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 ml-4 rounded-full p-4 text-sm font-bold text-white shadow-xs transition duration-200"
               >
                 {header.cta?.label}
               </Link>

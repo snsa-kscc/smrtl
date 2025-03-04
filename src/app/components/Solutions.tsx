@@ -41,9 +41,8 @@ export function Solutions({
   }, [api])
 
   return (
-    <div className="bg-smartellDarkBlue py-24">
-      <p className="mx-auto w-1/2 pt-28 text-center text-balance text-white">{description}</p>
-      <h3 className="w-1/2 pt-20 pl-24 text-4xl font-bold text-balance text-white">
+    <div className="bg-smartellDarkBlue py-12 md:py-24">
+      <h3 className="w-full px-6 pt-12 text-3xl font-bold text-balance text-white md:w-2/3 md:pt-20 md:pl-24 md:text-4xl lg:w-1/2 lg:text-5xl">
         {title.split('**').map((part, index) =>
           index % 2 === 0 ? (
             part
@@ -54,25 +53,30 @@ export function Solutions({
           ),
         )}
       </h3>
-      <div className="flex items-center pt-20">
-        <div className="basis-1/2 pl-24 text-4xl font-bold text-white">
-          {industry.map((item, index) => (
-            <p
-              key={item.name}
-              className={`text-4xl transition-colors duration-300 ${
-                index === currentIndex ? 'text-smartellLightPurple' : 'text-slate-600'
-              }`}
-            >
-              {item.name}
-            </p>
-          ))}
+      <div className="flex flex-col items-center justify-between pt-12 md:flex-row">
+        <div>
+          <p className="w-full px-6 pb-10 text-2xl font-bold text-balance text-white md:pt-28 md:pl-24 md:text-3xl lg:text-4xl">
+            {description}
+          </p>
+          <div className="mb-8 w-full px-6 md:mb-0 md:basis-1/2 md:pl-24">
+            {industry.map((item, index) => (
+              <p
+                key={item.name}
+                className={`mb-4 text-2xl font-bold transition-colors duration-300 md:text-3xl lg:text-4xl xl:text-5xl ${
+                  index === currentIndex ? 'text-smartellLightPurple' : 'text-slate-600'
+                }`}
+              >
+                {item.name}
+              </p>
+            ))}
+          </div>
         </div>
-        <div className="basis-1/2 translate-y-12">
+        <div className="w-full md:basis-1/2 md:translate-y-12">
           <Carousel setApi={setApi} plugins={[Autoplay({ delay: 2500 })]} className="w-full">
             <CarouselContent>
               {industry.map((item) => (
-                <CarouselItem key={item.name} className="">
-                  <div className="">
+                <CarouselItem key={item.name}>
+                  <div>
                     <Image
                       src={item.image.url}
                       alt={item.image.alt}

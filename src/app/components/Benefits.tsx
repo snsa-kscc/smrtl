@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ImageShape } from './shapes/ImageShape'
+import { Fingerprint, Globe, Wallet, Popcorn } from 'lucide-react'
 
 type BenefitsProps = {
   title: string
@@ -27,6 +28,8 @@ type BenefitsProps = {
   ctaUrl: string
 }
 
+const BENEFIT_ICONS = [Fingerprint, Globe, Wallet, Popcorn]
+
 export function Benefits({
   title,
   subtitle,
@@ -36,47 +39,47 @@ export function Benefits({
   ctaUrl,
 }: BenefitsProps) {
   return (
-    <div className="px-6 py-24 md:px-12 lg:px-24 xl:px-32">
-      <div className="mb-24 flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:justify-between">
+    <div className="py-40">
+      <div className="mb-24 flex flex-col items-center gap-12 px-6 py-32 lg:flex-row lg:items-start lg:justify-between lg:px-24 xl:px-32">
         <div className="w-32 lg:w-40">
           <ImageShape />
         </div>
         <div className="max-w-3xl lg:ml-12">
-          <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-6xl">
+          <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-8xl">
             {title}
           </h2>
-          <p className="text-center text-xl text-white/80 lg:text-left">{subtitle}</p>
+          <p className="text-center text-2xl font-bold lg:text-left">{subtitle}</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-        {benefitsBox.map((benefit, index) => (
-          <div
-            key={index}
-            className="group bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 relative overflow-hidden rounded-xl border border-white/10 p-8 transition-all"
-          >
-            <h3 className="text-smartellLightPurple mb-6 text-center text-2xl font-bold lg:text-3xl">
-              {benefit.title}
-            </h3>
-            <p className="mb-8 text-lg text-white/70">{benefit.description}</p>
-            {benefit.image.url && (
-              <div className="relative h-48 w-full overflow-hidden rounded-lg">
-                <Image
-                  src={benefit.image.url}
-                  alt={benefit.image.alt}
-                  width={benefit.image.width}
-                  height={benefit.image.height}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-            )}
-          </div>
-        ))}
+      <div className="bg-smartellDarkBlue grid grid-cols-1 gap-12 px-6 py-20 md:grid-cols-2 lg:grid-cols-4 lg:px-24 xl:px-32">
+        {benefitsBox.map((benefit, index) => {
+          const Icon = BENEFIT_ICONS[index]
+          return (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl border border-white/10 p-8 transition-all"
+            >
+              <Link
+                href={ctaUrl}
+                className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/70 block"
+              >
+                <div className="mb-8 flex justify-center">
+                  <Icon className="h-16 w-16 text-white" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-smartellLightPurple mb-10 text-center text-2xl font-bold lg:text-4xl">
+                  {benefit.title}
+                </h3>
+                <p className="text-lg text-white/90">{benefit.description}</p>
+              </Link>
+            </div>
+          )
+        })}
       </div>
       <div className="mt-24 text-center">
         <Link
           href={ctaUrl}
-          className="bg-smartellBlue hover:bg-opacity-90 inline-block rounded-lg px-12 py-5 text-xl font-medium text-white transition-colors"
+          className="bg-smartellDarkBlue hover:bg-opacity-90 inline-block rounded-full px-16 py-5 text-xl font-bold text-white transition-colors"
         >
           {ctaLabel}
         </Link>

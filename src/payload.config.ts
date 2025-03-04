@@ -7,6 +7,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { i18n } from '../i18n.config'
 
 import { Footer } from './payload/globals/Footer'
 import { Header } from './payload/globals/Header'
@@ -36,19 +37,21 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 export default buildConfig({
   admin: {
     user: Users.slug,
-    // remove this before deploying
-    autoLogin: {
-      email: process.env.PAYLOAD_AUTOLOGIN_EMAIL,
-      password: process.env.PAYLOAD_AUTOLOGIN_PASSWORD,
-    },
+    autoLogin:
+      process.env.NODE_ENV === 'development'
+        ? {
+            email: process.env.PAYLOAD_AUTOLOGIN_EMAIL,
+            password: process.env.PAYLOAD_AUTOLOGIN_PASSWORD,
+          }
+        : undefined,
     importMap: {
       baseDir: path.resolve(dirname),
     },
   },
   collections: [Users, Media, Posts, Pages],
   localization: {
-    locales: ['en', 'hr', 'it'],
-    defaultLocale: 'en',
+    locales: i18n.locales as unknown as string[],
+    defaultLocale: i18n.defaultLocale,
     fallback: true,
   },
   globals: [Header, Footer, NotFound],

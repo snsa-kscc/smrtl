@@ -28,11 +28,11 @@ export function Compatibility({
 }: CompatibilityProps) {
   return (
     <>
-      <div className="bg-smartellDarkBlue px-20 pt-32">
-        <h3 className="mx-auto w-1/3 text-balance text-center text-6xl font-bold text-white">
+      <div className="bg-smartellDarkBlue px-20 pt-52">
+        <h3 className="text-smartellLightPurple mx-auto w-2/3 text-center text-4xl font-bold text-balance lg:text-5xl xl:text-8xl">
           {title}
         </h3>
-        <p className="mt-6 text-balance text-center text-2xl font-bold text-white">{description}</p>
+        <p className="mt-6 py-10 text-center text-2xl text-balance text-white">{description}</p>
         <div className="mt-24 flex items-center justify-center gap-16">
           {platform.map((item) => (
             <div key={item.image.id}>
@@ -49,12 +49,14 @@ export function Compatibility({
           <SupportShape />
         </div>
       </div>
-      <div className="flex justify-between bg-smartellLightPurple px-20 py-16">
-        <p className="basis-1/3 text-balance text-4xl font-bold text-smartellDarkBlue">{ctaHook}</p>
+      <div className="bg-smartellLightPurple flex justify-between px-20 pt-44">
+        <p className="text-smartellDarkBlue basis-1/2 text-4xl font-bold text-balance lg:text-5xl xl:text-7xl">
+          {ctaHook}
+        </p>
         <div className="mr-20 flex items-center justify-center">
           <a
             href={ctaUrl}
-            className="inline-block rounded-full bg-white px-7 py-3 text-smartellDarkBlue transition-colors duration-300 hover:bg-opacity-70"
+            className="text-smartellDarkBlue hover:bg-opacity-70 inline-block rounded-full bg-white px-16 py-5 text-xl font-bold transition-colors duration-300"
           >
             {ctaLabel}
           </a>

@@ -77,14 +77,14 @@ export function Features({
 }) {
   return (
     <div className="bg-smartellLightPurple flex flex-col items-start justify-center overflow-hidden px-6 py-24 md:px-12 lg:px-24 xl:px-32">
-      <p className="pt-32 pl-28 text-xl font-bold text-white">{title}</p>
+      <p className="pt-32 pl-28 text-2xl font-bold text-white md:text-3xl lg:text-4xl">{title}</p>
       <Feature baseVelocity={-0.6} margin="mt-24">
         {firstLineFeatures}
       </Feature>
       <Feature baseVelocity={0.6} margin="mb-24">
         {secondLineFeatures}
       </Feature>
-      <p className="self-end pr-28 pb-32 text-lg text-white">{subtitle}</p>
+      <p className="self-end pr-28 pb-32 text-2xl text-white">{subtitle}</p>
     </div>
   )
 }

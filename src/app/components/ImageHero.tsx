@@ -17,8 +17,16 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
         backgroundImage: `url('${image.url}')`,
       }}
     >
-      <h2 className="col-span-2 text-7xl font-bold text-white">{title}</h2>
-      <p className="row-start-2 self-start text-lg text-white">{description}</p>
+      {logo ? (
+        <h2 className="text-smartellLightPurple mb-8 text-4xl font-bold lg:text-5xl xl:text-7xl">
+          {title}
+        </h2>
+      ) : (
+        <h2 className="col-span-2 mb-8 text-4xl font-bold text-white lg:text-5xl xl:text-7xl">
+          {title}
+        </h2>
+      )}
+      <p className="row-start-2 self-start text-2xl text-white">{description}</p>
       {logo && (
         <div className="col-start-3 row-start-2 translate-y-10 scale-150">
           <ImageShape />

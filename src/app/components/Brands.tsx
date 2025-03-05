@@ -16,9 +16,11 @@ type BrandsProps = {
 
 export function Brands({ title, description, brands }: BrandsProps) {
   return (
-    <div className="p-20">
-      <h3 className="text-smartellDarkBlue text-center text-6xl font-bold">{title}</h3>
-      <p className="text-smartellDarkBlue mx-auto w-2/3 text-center text-6xl font-bold">
+    <div className="bg-smartellDarkBlue py-40">
+      <h3 className="text-smartellLightPurple text-center text-4xl font-bold text-balance lg:text-5xl xl:text-7xl">
+        {title}
+      </h3>
+      <p className="mx-auto w-2/3 pt-10 text-center text-4xl font-bold text-balance text-white lg:text-5xl xl:text-6xl">
         {description}
       </p>
       <div className="my-20 flex items-center justify-center gap-6">
@@ -29,7 +31,6 @@ export function Brands({ title, description, brands }: BrandsProps) {
               alt={brand.image.alt}
               width={brand.image.width}
               height={brand.image.height}
-              className="invert filter"
             />
           </div>
         ))}

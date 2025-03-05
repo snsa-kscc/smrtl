@@ -65,7 +65,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       transition={{ duration: 0.7 }}
-      className="mx-28 grid grid-cols-2 justify-items-start gap-20"
+      className="mx-28 grid grid-cols-2 justify-items-start gap-20 py-32"
     >
       {counterBox.map((counter, index) => (
         <div

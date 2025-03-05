@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './ui/accordion'
 
 type IPTVBoxProp = {
@@ -19,14 +20,25 @@ export function IPTVSolutions({
   IPTVBox: IPTVBoxProp[]
 }) {
   return (
-    <div className="relative px-4 py-6 sm:px-8 md:px-20 md:py-10">
-      <h3 className="text-smartellDarkBlue mb-8 text-2xl font-bold md:mb-20 md:text-4xl">
+    <div className="relative px-4 py-6 sm:px-8 md:px-20 md:py-40">
+      <h3 className="text-smartellLightPurple w-full px-6 text-3xl font-bold text-balance md:w-2/3 md:pl-24 md:text-4xl lg:text-5xl">
         {title}
       </h3>
-      <p className="mb-4 text-base leading-relaxed md:text-xl">{firstSubtitle}</p>
-      <p className="mb-8 text-base leading-relaxed md:text-xl">{secondSubtitle}</p>
+      <div className="flex items-center justify-evenly py-32">
+        <p className="text-smartellDarkBlue pl-28 text-2xl font-bold md:text-3xl lg:text-4xl">
+          {firstSubtitle}
+        </p>
+        <div>
+          <Link
+            href="#"
+            className="bg-smartellDarkBlue hover:bg-opacity-90 inline-block rounded-full px-16 py-5 text-xl font-bold text-white transition-colors"
+          >
+            {secondSubtitle}
+          </Link>
+        </div>
+      </div>
       {IPTVBox.map((item, index) => (
-        <div key={item.title} className="my-6 md:my-10">
+        <div key={item.title} className="my-6 px-20 md:my-10">
           <p className="text-smartellLightPurple text-5xl">{String(index + 1).padStart(2, '0')}</p>
 
           {/* Mobile Accordion */}
@@ -55,9 +67,9 @@ export function IPTVSolutions({
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:my-20 md:flex md:flex-row md:items-start md:justify-between md:gap-4">
+          <div className="hidden md:my-20 md:flex md:flex-row md:items-start md:justify-between md:gap-24">
             <div className="basis-1/2">
-              <h3 className="text-smartellDarkBlue text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
+              <h3 className="text-smartellDarkBlue text-4xl font-bold sm:text-5xl md:text-6xl">
                 {item.title}
               </h3>
             </div>

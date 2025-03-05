@@ -21,9 +21,7 @@ export function Question({
       <p className="mx-auto mb-20 w-3/4 text-center text-2xl font-bold text-white md:text-3xl lg:text-4xl">
         {firstSubtitle}
       </p>
-      <p className="mx-auto text-center text-2xl font-bold text-white md:text-3xl lg:text-4xl">
-        {secondSubtitle}
-      </p>
+      <p className="mx-auto text-center text-2xl text-white">{secondSubtitle}</p>
     </div>
   )
 }

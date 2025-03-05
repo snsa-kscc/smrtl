@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ImageShape } from './shapes/ImageShape'
-import { Fingerprint, Globe, Wallet, Popcorn } from 'lucide-react'
+import * as LucideIcons from 'lucide-react'
 
 type BenefitsProps = {
   title: string
@@ -14,21 +14,13 @@ type BenefitsProps = {
     height: number
   }[]
   benefitsBox: {
+    icon: string
     title: string
     description: string
-    image: {
-      id: number
-      alt: string
-      url: string
-      width: number
-      height: number
-    }
   }[]
   ctaLabel: string
   ctaUrl: string
 }
-
-const BENEFIT_ICONS = [Fingerprint, Globe, Wallet, Popcorn]
 
 export function Benefits({
   title,
@@ -54,7 +46,7 @@ export function Benefits({
 
       <div className="bg-smartellDarkBlue grid grid-cols-1 gap-12 px-6 py-20 md:grid-cols-2 lg:grid-cols-4 lg:px-24 xl:px-32">
         {benefitsBox.map((benefit, index) => {
-          const Icon = BENEFIT_ICONS[index]
+          const IconComponent = (LucideIcons as any)[benefit.icon]
           return (
             <div
               key={index}
@@ -65,7 +57,11 @@ export function Benefits({
                 className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/70 block"
               >
                 <div className="mb-8 flex justify-center">
-                  <Icon className="h-16 w-16 text-white" strokeWidth={1.5} />
+                  {IconComponent ? (
+                    <IconComponent className="h-16 w-16 text-white" strokeWidth={1.5} />
+                  ) : (
+                    <div className="h-16 w-16 rounded-full bg-white/10" />
+                  )}
                 </div>
                 <h3 className="text-smartellLightPurple mb-10 text-center text-2xl font-bold lg:text-4xl">
                   {benefit.title}

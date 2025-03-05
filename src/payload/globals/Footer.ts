@@ -33,8 +33,19 @@ export const Footer: GlobalConfig = {
           required: true,
           localized: true,
         },
+      ],
+    },
+    {
+      type: 'row',
+      fields: [
         {
-          name: 'address',
+          name: 'addressLine1',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+        {
+          name: 'addressLine2',
           type: 'text',
           required: true,
           localized: true,
@@ -56,6 +67,17 @@ export const Footer: GlobalConfig = {
           required: true,
           localized: true,
         },
+        {
+          name: 'newsletterSubtitle',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+      ],
+    },
+    {
+      type: 'row',
+      fields: [
         {
           name: 'newsletterButton',
           type: 'text',
@@ -84,6 +106,26 @@ export const Footer: GlobalConfig = {
           type: 'text',
           required: true,
           localized: true,
+        },
+      ],
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'LinkedIn',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'Facebook',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'Instagram',
+          type: 'text',
+          required: true,
         },
       ],
     },

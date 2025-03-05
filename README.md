@@ -2,5 +2,5 @@
 
 ### 2DO
 
-- Data import
-- Navbar
+- data import
+- hydration error

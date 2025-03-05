@@ -36,9 +36,8 @@ export const Benefits: Block = {
       type: 'array',
       fields: [
         {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
+          name: 'icon',
+          type: 'text',
           required: true,
         },
         {

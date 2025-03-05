@@ -288,7 +288,7 @@ export interface Page {
             }
           | {
               title: string;
-              description: string;
+              description?: string | null;
               image: number | Media;
               logo?: boolean | null;
               id?: string | null;
@@ -379,7 +379,7 @@ export interface Page {
                 | null;
               benefitsBox?:
                 | {
-                    image: number | Media;
+                    icon: string;
                     title: string;
                     description: string;
                     id?: string | null;
@@ -716,7 +716,7 @@ export interface PagesSelect<T extends boolean = true> {
                     benefitsBox?:
                       | T
                       | {
-                          image?: T;
+                          icon?: T;
                           title?: T;
                           description?: T;
                           id?: T;
@@ -804,13 +804,18 @@ export interface Footer {
   contactTitle: string;
   email: string;
   phone: string;
-  address: string;
+  addressLine1: string;
+  addressLine2: string;
   infoTitle: string;
   newsletterTitle: string;
+  newsletterSubtitle: string;
   newsletterButton: string;
   newsletterDisclaimer: string;
   successMessage: string;
   errorMessage: string;
+  LinkedIn: string;
+  Facebook: string;
+  Instagram: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -857,13 +862,18 @@ export interface FooterSelect<T extends boolean = true> {
   contactTitle?: T;
   email?: T;
   phone?: T;
-  address?: T;
+  addressLine1?: T;
+  addressLine2?: T;
   infoTitle?: T;
   newsletterTitle?: T;
+  newsletterSubtitle?: T;
   newsletterButton?: T;
   newsletterDisclaimer?: T;
   successMessage?: T;
   errorMessage?: T;
+  LinkedIn?: T;
+  Facebook?: T;
+  Instagram?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -16,7 +16,6 @@ export const ImageHero: Block = {
     {
       name: 'description',
       type: 'textarea',
-      required: true,
       localized: true,
     },
     {

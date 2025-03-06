@@ -9,4 +9,16 @@ export const pathTranslations = {
   it: 'notizie',
 } as const
 
+export const placeholderTranslations = {
+  en: 'Your email',
+  hr: 'Tvoj email',
+  it: 'Il tuo email',
+}
+
+export const sendingTranslations = {
+  en: 'Sending...',
+  hr: 'Slanje...',
+  it: 'Invio...',
+}
+
 export type Locale = (typeof i18n)['locales'][number]

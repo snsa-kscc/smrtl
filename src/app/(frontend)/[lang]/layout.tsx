@@ -11,6 +11,7 @@ import { mergeOpenGraph } from '@/app/lib/mergeOpenGraph'
 import { i18n } from 'i18n.config'
 import { AdminBar } from '@/app/components/AdminBar'
 import { draftMode } from 'next/headers'
+import { Toaster } from 'sonner'
 
 export default async function RootLayout({
   children,
@@ -36,6 +37,7 @@ export default async function RootLayout({
           <TailwindIndicator />
           {/* <Sig /> */}
         </LocaleLinksProvider>
+        <Toaster position="bottom-right" />
       </body>
     </html>
   )

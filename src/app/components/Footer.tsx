@@ -6,6 +6,7 @@ import { Locale, i18n } from 'i18n.config'
 import type { Footer } from '../../payload-types'
 import { Slogan } from './shapes/Slogan'
 import { Linkedin, Instagram, Facebook } from 'lucide-react'
+import { NewsletterForm } from './Newsletter'
 
 export async function Footer({ lang }: { lang: Locale }) {
   const footer = (await getGlobal('footer', undefined, lang)) as Footer
@@ -100,12 +101,7 @@ export async function Footer({ lang }: { lang: Locale }) {
           <div className="basis-1/2">
             <h3 className="mb-2 text-2xl font-bold text-white">{footer.newsletterTitle}</h3>
             <h3 className="mb-12 text-2xl font-bold text-white">{footer.newsletterSubtitle}</h3>
-            <div className="flex items-end gap-4">
-              <hr className="h-1 basis-1/2" />
-              <button className="text-smartellDarkBlue hover:bg-opacity-70 rounded-full bg-white px-12 py-4 font-bold transition-colors duration-300">
-                {footer.newsletterButton}
-              </button>
-            </div>
+            <NewsletterForm footer={footer} lang={lang} />
             <p className="text-smartellLightPurple mt-2 text-xs">{footer.newsletterDisclaimer}</p>
           </div>
         </div>

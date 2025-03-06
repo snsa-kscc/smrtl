@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import '@/app/styles/globals.css'
 import { Mont } from '@/app/lib/fonts'
 import { TailwindIndicator } from '@/app/components/utils/TailwindIndicator'
@@ -24,6 +25,12 @@ export default async function RootLayout({
   const { isEnabled } = await draftMode()
   return (
     <html lang={lang} className={`scroll-smooth ${Mont.className}`}>
+      <head>
+        <Script
+          src={`https://cdn-cookieyes.com/client_data/435ec51bd7d38d8e8aaa7294/script.js`}
+          strategy="beforeInteractive"
+        ></Script>
+      </head>
       <body>
         <LocaleLinksProvider>
           <AdminBar

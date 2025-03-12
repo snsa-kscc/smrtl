@@ -30,11 +30,13 @@ export async function Footer({ lang }: { lang: Locale }) {
   return (
     <>
       <div
-        className="bg-smartellDarkBlue bg-right-top bg-no-repeat px-20 pt-16 pb-20"
+        className="bg-smartellDarkBlue bg-[length:40%] bg-right-top bg-no-repeat px-8 pt-16 pb-20 md:bg-[length:25%] lg:px-20 lg:pt-28 xl:bg-[length:auto]"
         style={{ backgroundImage: `url('/api/media/file/bg.svg')` }}
       >
-        <h2 className="text-10xl text-smartellLightPurple font-bold">{footer.title}</h2>
-        <div className="mt-48 flex w-4/5 gap-8">
+        <h2 className="lg:text-10xl text-smartellLightPurple w-1/2 text-7xl font-bold md:text-8xl lg:w-auto">
+          {footer.title}
+        </h2>
+        <div className="mt-28 flex flex-col gap-8 md:mt-36 md:flex-row lg:mt-48 xl:w-4/5">
           <div className="basis-1/4">
             <h3 className="mb-8 text-2xl font-bold text-white">{footer.contactTitle}</h3>
             <div className="text-lg text-white">
@@ -55,33 +57,6 @@ export async function Footer({ lang }: { lang: Locale }) {
             </div>
             <p className="text-lg text-white">{footer.addressLine1}</p>
             <p className="text-lg text-white">{footer.addressLine2}</p>
-
-            <div className="mt-6 flex gap-4">
-              <a
-                href={footer.LinkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
-              >
-                <Linkedin size={28} />
-              </a>
-              <a
-                href={footer.Facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
-              >
-                <Facebook size={28} />
-              </a>
-              <a
-                href={footer.Instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
-              >
-                <Instagram size={28} />
-              </a>
-            </div>
           </div>
           <div className="basis-1/3">
             <h3 className="mb-8 text-2xl font-bold text-white">{footer.infoTitle}</h3>
@@ -102,10 +77,36 @@ export async function Footer({ lang }: { lang: Locale }) {
             <h3 className="mb-2 text-2xl font-bold text-white">{footer.newsletterTitle}</h3>
             <h3 className="mb-12 text-2xl font-bold text-white">{footer.newsletterSubtitle}</h3>
             <NewsletterForm footer={footer} lang={lang} />
-            <p className="text-smartellLightPurple mt-2 text-xs">{footer.newsletterDisclaimer}</p>
+            <p className="text-smartellLightPurple mt-4 text-xs">{footer.newsletterDisclaimer}</p>
           </div>
         </div>
-        <div className="mt-44 w-1/6">
+        <div className="mt-6 flex gap-4">
+          <a
+            href={footer.LinkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
+          >
+            <Linkedin size={28} />
+          </a>
+          <a
+            href={footer.Facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
+          >
+            <Facebook size={28} />
+          </a>
+          <a
+            href={footer.Instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
+          >
+            <Instagram size={28} />
+          </a>
+        </div>
+        <div className="mt-20 w-1/2 md:w-1/3 lg:mt-44 xl:w-1/6">
           <Slogan />
         </div>
         <div className="mt-8 text-lg text-white">

@@ -25,7 +25,7 @@ export function NewsletterForm({ footer, lang }: { footer: Footer; lang: Locale 
   }, [state])
 
   return (
-    <form action={formAction} className="flex gap-4">
+    <form action={formAction} className="flex flex-col gap-4 lg:flex-row">
       <input
         name="email"
         type="email"
@@ -36,7 +36,7 @@ export function NewsletterForm({ footer, lang }: { footer: Footer; lang: Locale 
       <Button
         type="submit"
         disabled={pending}
-        className="text-smartellDarkBlue hover:bg-opacity-70 basis-1/2 rounded-full bg-white py-6 text-lg font-bold transition-colors duration-300"
+        className="text-smartellDarkBlue hover:bg-opacity-70 basis-1/2 rounded-full bg-white py-4 text-lg font-bold transition-colors duration-300 lg:py-6"
       >
         {pending ? sendingTranslations[lang] : footer.newsletterButton}
       </Button>

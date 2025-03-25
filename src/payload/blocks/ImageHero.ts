@@ -10,7 +10,6 @@ export const ImageHero: Block = {
     {
       name: 'title',
       type: 'text',
-      required: true,
       localized: true,
     },
     {

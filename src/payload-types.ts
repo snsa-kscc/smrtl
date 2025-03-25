@@ -287,7 +287,7 @@ export interface Page {
               blockType: 'features';
             }
           | {
-              title: string;
+              title?: string | null;
               description?: string | null;
               image: number | Media;
               logo?: boolean | null;

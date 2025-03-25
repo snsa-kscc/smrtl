@@ -82,6 +82,7 @@ export function Solutions({
                       alt={item.image.alt}
                       width={item.image.width}
                       height={item.image.height}
+                      quality={100}
                       className="w-full object-cover"
                     />
                     <div className="bg-smartellLightPurple h-2 w-full"></div>

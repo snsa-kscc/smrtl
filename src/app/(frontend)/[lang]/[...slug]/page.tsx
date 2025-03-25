@@ -70,17 +70,20 @@ export default async function Page({
   return (
     <>
       <LocaleLinksUpdater localeLinks={localizedPosts} />
-      <h1>{title}</h1>
-      <p>{new Date().toString()}</p>
-      {content?.content && <Content content={content.content} />}
+      <h1 className="text-smartellLightPurple container mx-auto pt-40 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-8xl">
+        {title}
+      </h1>
       {featuredImage && (
-        <Image
-          src={(featuredImage as Media).url ?? ''}
-          alt={(featuredImage as Media).alt ?? ''}
-          width={(featuredImage as Media).width ?? 0}
-          height={(featuredImage as Media).height ?? 0}
-        />
+        <div className="container mr-auto pt-12">
+          <Image
+            src={(featuredImage as Media).url ?? ''}
+            alt={(featuredImage as Media).alt ?? ''}
+            width={(featuredImage as Media).width ?? 0}
+            height={(featuredImage as Media).height ?? 0}
+          />
+        </div>
       )}
+      {content?.content && <Content content={content.content} />}
     </>
   )
 }

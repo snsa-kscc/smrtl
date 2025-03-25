@@ -30,7 +30,7 @@ export function Referals({ title, referals }: { title: string; referals: Referal
       <div className="sticky top-0 h-[60vh] overflow-hidden pt-20">
         <motion.div className="flex items-center justify-center gap-20" style={{ x }}>
           <div className="ml-20 basis-72">
-            <h2 className="text-balance text-center text-4xl font-bold text-smartellDarkBlue">
+            <h2 className="text-smartellDarkBlue text-center text-5xl font-bold text-balance">
               {title}
             </h2>
           </div>
@@ -43,11 +43,11 @@ export function Referals({ title, referals }: { title: string; referals: Referal
                   width={referal.image.width}
                   height={referal.image.height}
                 />
-                <h3 className="mt-8 min-h-20 text-4xl font-bold text-smartellDarkBlue">
+                <h3 className="text-smartellDarkBlue mt-8 min-h-20 text-4xl font-bold">
                   {referal.message}
                 </h3>
-                <p className="mt-4 text-sm font-bold text-smartellDarkBlue">{referal.name}</p>
-                <p className="mt-1 text-sm font-bold text-smartellDarkBlue">{referal.role}</p>
+                <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referal.name}</p>
+                <p className="text-smartellDarkBlue mt-1 text-sm font-bold">{referal.role}</p>
               </div>
             ))}
           </div>

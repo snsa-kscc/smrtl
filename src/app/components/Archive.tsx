@@ -41,13 +41,14 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
                     <h3 className="text-xl font-bold text-balance">{post.title}</h3>
                   </div>
                   {post.featuredImage && (
-                    <Image
-                      src={(post.featuredImage as Media)?.url ?? ''}
-                      alt={(post.featuredImage as Media)?.alt || ''}
-                      width={(post.featuredImage as Media)?.width || 300}
-                      height={(post.featuredImage as Media)?.height || 200}
-                      className="w-full object-cover"
-                    />
+                    <div className="relative aspect-[3/2] w-full overflow-hidden rounded-md">
+                      <Image
+                        src={(post.featuredImage as Media)?.url ?? ''}
+                        alt={(post.featuredImage as Media)?.alt || ''}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   )}
                 </div>
               </div>

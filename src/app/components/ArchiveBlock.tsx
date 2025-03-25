@@ -16,7 +16,7 @@ export async function ArchiveBlock({ limit, lang }: { limit: number; lang: Local
   return (
     <>
       <Archive lang={lang} posts={fetchedPosts.docs} />
-      <div className="mx-auto w-1/2">
+      <div className="mx-auto w-1/2 py-20">
         <BrandsShape />
       </div>
     </>

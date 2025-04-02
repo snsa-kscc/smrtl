@@ -34,11 +34,11 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
             >
               <div className="p-8">
                 <div className="overflow-hidden">
-                  <div className="text-smartellDarkBlue p-1 pb-10">
+                  <div className="text-smartellDarkBlue p-1 pb-10 h-32 flex flex-col">
                     <p className="text-sm">
                       {dateFormatter.format(new Date(post.createdAt)).replace(/\//g, '.')}
                     </p>
-                    <h3 className="text-xl font-bold text-balance">{post.title}</h3>
+                    <h3 className="text-xl font-bold line-clamp-2 overflow-hidden text-ellipsis">{post.title}</h3>
                   </div>
                   {post.featuredImage && (
                     <div className="relative aspect-[3/2] w-full overflow-hidden rounded-md">

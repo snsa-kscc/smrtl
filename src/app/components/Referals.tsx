@@ -43,7 +43,7 @@ export function Referals({ title, referals }: { title: string; referals: Referal
                   width={referal.image.width}
                   height={referal.image.height}
                 />
-                <h3 className="text-smartellDarkBlue mt-8 min-h-20 text-3xl font-bold">
+                <h3 className="text-smartellDarkBlue mt-8 line-clamp-5 h-48 overflow-hidden text-3xl font-bold">
                   {referal.message}
                 </h3>
                 <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referal.name}</p>

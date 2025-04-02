@@ -1,4 +1,5 @@
 import React, { Fragment, JSX } from 'react'
+import Image from 'next/image'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
 
 import {
@@ -41,6 +42,7 @@ interface SerializedUploadNode {
     width?: number
     height?: number
     alt?: string
+    quality?: number
   }
   relationTo: string
   fields?: Record<string, any>
@@ -233,12 +235,13 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 if (mediaValue.url) {
                   return (
                     <div className="my-4" key={index}>
-                      <img
+                      <Image
                         src={mediaValue.url}
                         alt={mediaValue.alt || ''}
-                        width={mediaValue.width}
-                        height={mediaValue.height}
+                        width={mediaValue.width || 800}
+                        height={mediaValue.height || 600}
                         className="h-auto max-w-full"
+                        quality={100}
                       />
                       {node.fields?.caption && (
                         <figcaption className="mt-2 text-sm text-gray-600">

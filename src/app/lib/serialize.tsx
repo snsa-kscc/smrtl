@@ -12,8 +12,45 @@ import {
 } from './nodeFormat'
 import type { Page } from '@/payload-types'
 
+// Define the link node structure
+interface SerializedLinkNode {
+  type: 'link'
+  version?: number
+  url?: string
+  children?: NodeTypes[]
+  fields?: {
+    linkType?: 'custom' | 'internal'
+    newTab?: boolean
+    url?: string
+    doc?: {
+      relationTo: string
+      value: any
+    }
+  }
+}
+
+// Define the upload node structure for PayloadCMS media
+interface SerializedUploadNode {
+  type: 'upload'
+  value: {
+    id: string
+    url: string
+    filename: string
+    mimeType: string
+    filesize: number
+    width?: number
+    height?: number
+    alt?: string
+  }
+  relationTo: string
+  fields?: Record<string, any>
+  children?: NodeTypes[]
+}
+
 export type NodeTypes =
   | DefaultNodeTypes
+  | SerializedLinkNode
+  | SerializedUploadNode
   | SerializedBlockNode<
       // @ts-ignore // TODO: Fix this
       | Extract<Page['layout'][0], { blockType: 'cta' }>
@@ -101,27 +138,19 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
         } else {
           switch (node.type) {
             case 'linebreak': {
-              return <br className="col-start-2" key={index} />
+              return <br key={index} />
             }
             case 'paragraph': {
-              return (
-                <p className="col-start-2" key={index}>
-                  {serializedChildren}
-                </p>
-              )
+              return <p key={index}>{serializedChildren}</p>
             }
             case 'heading': {
               const Tag = node?.tag
-              return (
-                <Tag className="col-start-2" key={index}>
-                  {serializedChildren}
-                </Tag>
-              )
+              return <Tag key={index}>{serializedChildren}</Tag>
             }
             case 'list': {
               const Tag = node?.tag
               return (
-                <Tag className="list col-start-2" key={index}>
+                <Tag className="list" key={index}>
                   {serializedChildren}
                 </Tag>
               )
@@ -149,12 +178,78 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 )
               }
             }
-            case 'quote': {
+            case 'link': {
+              // For PayloadCMS Lexical links
+              if ('fields' in node && node.fields) {
+                const { linkType, newTab, url, doc } = node.fields
+
+                let href = '#'
+                if (linkType === 'custom' && url) {
+                  href = url
+                } else if (linkType === 'internal' && doc) {
+                  // Handle internal links based on the doc reference
+                  // This would typically be a path to another page in your CMS
+                  const docValue = doc.value as any
+                  const docId = docValue?.id || ''
+                  href = `/${doc.relationTo}/${docId}`
+                }
+
+                return (
+                  <a
+                    href={href}
+                    key={index}
+                    target={newTab ? '_blank' : '_self'}
+                    rel={newTab ? 'noopener noreferrer' : undefined}
+                  >
+                    {serializedChildren}
+                  </a>
+                )
+              }
+
+              // Fallback for standard Lexical links or if fields are missing
               return (
-                <blockquote className="col-start-2" key={index}>
+                <a href={'#'} key={index} rel="noopener noreferrer">
                   {serializedChildren}
-                </blockquote>
+                </a>
               )
+            }
+            case 'quote': {
+              return <blockquote key={index}>{serializedChildren}</blockquote>
+            }
+            // Images are handled via the 'upload' case
+            case 'upload': {
+              // Handle upload media nodes from PayloadCMS
+              if (node.value && typeof node.value === 'object') {
+                // Safe type checking for media properties
+                const mediaValue = node.value as {
+                  url?: string
+                  alt?: string
+                  width?: number
+                  height?: number
+                  filename?: string
+                }
+
+                // Only render if we have a URL
+                if (mediaValue.url) {
+                  return (
+                    <div className="my-4" key={index}>
+                      <img
+                        src={mediaValue.url}
+                        alt={mediaValue.alt || ''}
+                        width={mediaValue.width}
+                        height={mediaValue.height}
+                        className="h-auto max-w-full"
+                      />
+                      {node.fields?.caption && (
+                        <figcaption className="mt-2 text-sm text-gray-600">
+                          {node.fields.caption}
+                        </figcaption>
+                      )}
+                    </div>
+                  )
+                }
+              }
+              return null
             }
 
             default:

@@ -22,7 +22,15 @@ export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: stri
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="w-11/12 text-lg text-white">
-                  {item.answer}
+                  {item.answer.split('**').map((part, index) =>
+                    index % 2 === 0 ? (
+                      part
+                    ) : (
+                      <span key={index} className="font-bold">
+                        {part}
+                      </span>
+                    ),
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}

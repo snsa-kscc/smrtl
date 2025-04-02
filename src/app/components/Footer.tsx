@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { getGlobal } from '../lib/getGlobals'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { Locale, i18n } from 'i18n.config'
+import { Locale, i18n, contactTranslations } from 'i18n.config'
 import type { Footer } from '../../payload-types'
 import { Slogan } from './shapes/Slogan'
 import { Linkedin, Instagram, Facebook } from 'lucide-react'
@@ -31,6 +31,7 @@ export async function Footer({ lang }: { lang: Locale }) {
     <>
       <div
         className="bg-smartellDarkBlue bg-[length:40%] bg-right-top bg-no-repeat px-8 pt-16 pb-20 md:bg-[length:25%] lg:px-20 lg:pt-28 xl:bg-[length:auto]"
+        id={contactTranslations[lang]}
         style={{ backgroundImage: `url('/api/media/file/bg.svg')` }}
       >
         <h2 className="lg:text-10xl text-smartellLightPurple w-1/2 text-7xl font-bold md:text-8xl lg:w-auto">

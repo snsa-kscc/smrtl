@@ -163,12 +163,33 @@
     @apply mb-4;
   }
   h1 {
-    @apply text-2xl font-bold;
+    @apply mb-4 text-3xl font-bold;
   }
   h2 {
-    @apply text-xl font-bold;
+    @apply mb-4 text-2xl font-bold;
   }
   h3 {
-    @apply text-lg font-bold;
+    @apply mb-4 text-xl font-bold;
+  }
+  h4 {
+    @apply mb-4 text-lg font-bold;
+  }
+  h5 {
+    @apply mb-4 text-lg font-bold;
+  }
+  h6 {
+    @apply mb-4 text-lg font-bold;
+  }
+  ul {
+    @apply mb-4 list-disc;
+  }
+  ol {
+    @apply mb-4 list-decimal;
+  }
+  li {
+    @apply ml-4;
+  }
+  a {
+    @apply text-smartellLightPurple;
   }
 }

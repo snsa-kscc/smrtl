@@ -26,8 +26,8 @@ export function Referals({ title, referals }: { title: string; referals: Referal
   const x = useTransform(scrollYProgress, [0, 1], [0, -((referals.length + 1) * 320)])
 
   return (
-    <div ref={containerRef} className="relative my-20 h-[200vh]">
-      <div className="sticky top-0 h-[60vh] overflow-hidden pt-20">
+    <div ref={containerRef} className="relative my-20 h-[300vh]">
+      <div className="sticky top-0 h-[80vh] overflow-hidden pt-20">
         <motion.div className="flex items-center justify-center gap-20" style={{ x }}>
           <div className="ml-20 basis-72">
             <h2 className="text-smartellDarkBlue text-center text-5xl font-bold text-balance">
@@ -43,7 +43,7 @@ export function Referals({ title, referals }: { title: string; referals: Referal
                   width={referal.image.width}
                   height={referal.image.height}
                 />
-                <h3 className="text-smartellDarkBlue mt-8 min-h-20 text-4xl font-bold">
+                <h3 className="text-smartellDarkBlue mt-8 min-h-20 text-3xl font-bold">
                   {referal.message}
                 </h3>
                 <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referal.name}</p>

@@ -74,12 +74,13 @@ export default async function Page({
         {title}
       </h1>
       {featuredImage && (
-        <div className="container mr-auto pt-12">
+        <div className="container mx-auto pt-12">
           <Image
             src={(featuredImage as Media).url ?? ''}
             alt={(featuredImage as Media).alt ?? ''}
             width={(featuredImage as Media).width ?? 0}
             height={(featuredImage as Media).height ?? 0}
+            className="mx-auto"
           />
         </div>
       )}

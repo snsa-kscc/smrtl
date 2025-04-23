@@ -248,6 +248,9 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                           {node.fields.caption}
                         </figcaption>
                       )}
+                      <div className="my-4 border-l-2 border-gray-600 pl-2">
+                        <p className="text-gray--600 text-sm">{mediaValue.alt}</p>
+                      </div>
                     </div>
                   )
                 }

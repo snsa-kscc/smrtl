@@ -51,7 +51,7 @@ export function TVSlider({
         {/* TV Frame */}
         <div className="relative">
           {/* TV Bezel */}
-          <div className="relative aspect-video overflow-hidden rounded-md border-6 border-gray-800 bg-black shadow-2xl">
+          <div className="relative aspect-video overflow-hidden border-6 border-gray-800 bg-black shadow-2xl">
             {/* TV Screen with Slider */}
             <div className="relative h-full w-full overflow-hidden bg-black">
               {/* Screen Glare Effect */}
@@ -108,7 +108,7 @@ export function TVSlider({
 
           {/* TV Stand */}
           <div className="absolute bottom-0 left-1/2 mx-auto w-1/4 -translate-x-1/2 translate-y-[95%]">
-            <div className="h-4 rounded-t-md bg-gray-800"></div>
+            <div className="h-4 bg-gray-800"></div>
             <div className="h-12 rounded-b-md bg-gradient-to-b from-gray-700 to-gray-900"></div>
           </div>
         </div>

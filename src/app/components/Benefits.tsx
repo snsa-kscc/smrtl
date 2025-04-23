@@ -6,13 +6,13 @@ import * as LucideIcons from 'lucide-react'
 type BenefitsProps = {
   title: string
   subtitle: string
-  images: {
+  image: {
     id: number
     alt: string
     url: string
     width: number
     height: number
-  }[]
+  }
   benefitsBox: {
     icon: string
     title: string
@@ -22,28 +22,29 @@ type BenefitsProps = {
   ctaUrl: string
 }
 
-export function Benefits({
-  title,
-  subtitle,
-  images,
-  benefitsBox,
-  ctaLabel,
-  ctaUrl,
-}: BenefitsProps) {
+export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl }: BenefitsProps) {
   return (
     <div className="py-32">
-      <div className="mb-24 flex flex-col items-center gap-12 px-6 py-32 lg:flex-row lg:items-start lg:justify-between lg:px-24 xl:px-32">
+      <div className="mb-24 flex flex-col items-start gap-12 px-6 py-32 lg:flex-row lg:items-start lg:justify-between lg:px-24 xl:px-32">
         <div className="w-32 lg:w-40">
           <ImageShape />
         </div>
         <div className="max-w-3xl lg:ml-12">
-          <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-8xl">
+          <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
             {title}
           </h2>
           <p className="text-center text-2xl lg:text-left">{subtitle}</p>
         </div>
+        <div>
+          <Image
+            src={image.url}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            quality={100}
+          />
+        </div>
       </div>
-
       <div className="bg-smartellDarkBlue grid grid-cols-1 gap-16 px-6 py-40 md:grid-cols-2 lg:grid-cols-4 lg:px-24 xl:px-32">
         {benefitsBox.map((benefit, index) => {
           const IconComponent = (LucideIcons as any)[benefit.icon]

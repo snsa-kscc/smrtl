@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './ui/accordion'
+import { PlayShape } from '@/app/components/shapes/PlayShape'
 
 type IPTVBoxProp = {
   title: string
@@ -10,30 +11,37 @@ type IPTVBoxProp = {
 
 export function IPTVSolutions({
   title,
-  firstSubtitle,
-  secondSubtitle,
+  subtitle,
+  ctaLabel,
+  ctaUrl,
   IPTVBox,
 }: {
   title: string
-  firstSubtitle: string
-  secondSubtitle: string
+  subtitle: string
+  ctaLabel: string
+  ctaUrl: string
   IPTVBox: IPTVBoxProp[]
 }) {
   return (
     <div className="relative px-4 py-6 sm:px-8 md:px-20 md:py-40">
-      <h3 className="text-smartellLightPurple w-full px-6 text-3xl font-bold text-balance md:w-2/3 md:pl-24 md:text-4xl lg:text-5xl">
-        {title}
-      </h3>
-      <div className="flex items-center justify-evenly py-32">
-        <p className="text-smartellDarkBlue pl-28 text-2xl font-bold md:text-3xl lg:text-4xl">
-          {firstSubtitle}
+      <div className="flex flex-col items-center justify-between px-4 py-20 sm:px-8 md:flex-row md:px-20">
+        <h3 className="text-smartellLightPurple w-full text-3xl font-bold text-balance md:w-2/3 md:text-4xl lg:text-5xl">
+          {title}
+        </h3>
+        <div className="w-60">
+          <PlayShape />
+        </div>
+      </div>
+      <div className="flex items-center justify-between px-4 pb-32 sm:px-8 md:px-20">
+        <p className="text-smartellDarkBlue text-2xl font-bold md:text-3xl lg:text-5xl">
+          {subtitle}
         </p>
         <div>
           <Link
-            href="#"
+            href={ctaUrl}
             className="bg-smartellDarkBlue hover:bg-opacity-90 inline-block rounded-full px-16 py-5 text-xl font-bold text-white transition-colors"
           >
-            {secondSubtitle}
+            {ctaLabel}
           </Link>
         </div>
       </div>

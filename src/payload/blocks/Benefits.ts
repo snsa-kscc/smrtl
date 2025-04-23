@@ -20,16 +20,10 @@ export const Benefits: Block = {
       localized: true,
     },
     {
-      name: 'images',
-      type: 'array',
-      fields: [
-        {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-        },
-      ],
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
     },
     {
       name: 'benefitsBox',

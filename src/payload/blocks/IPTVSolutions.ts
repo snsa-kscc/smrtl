@@ -14,16 +14,27 @@ export const IPTVSolutions: Block = {
       localized: true,
     },
     {
-      name: 'firstSubtitle',
+      name: 'subtitle',
       type: 'text',
       required: true,
       localized: true,
     },
     {
-      name: 'secondSubtitle',
-      type: 'text',
-      required: true,
-      localized: true,
+      type: 'row',
+      fields: [
+        {
+          name: 'ctaLabel',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+        {
+          name: 'ctaUrl',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+      ],
     },
     {
       name: 'IPTVBox',

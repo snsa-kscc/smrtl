@@ -10,8 +10,8 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-white p-4">
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8">
+    <nav className="bg-white py-4">
+      <div className="px-24">
         <div className="flex h-16 items-center justify-between">
           <div className="shrink-0">
             <Link href={lang === i18n.defaultLocale ? '/' : `/${lang}`}>

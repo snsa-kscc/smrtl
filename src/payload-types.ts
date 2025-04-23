@@ -298,8 +298,9 @@ export interface Page {
             }
           | {
               title: string;
-              firstSubtitle: string;
-              secondSubtitle: string;
+              subtitle: string;
+              ctaLabel: string;
+              ctaUrl: string;
               IPTVBox?:
                 | {
                     title: string;
@@ -372,12 +373,7 @@ export interface Page {
           | {
               title: string;
               subtitle: string;
-              images?:
-                | {
-                    image: number | Media;
-                    id?: string | null;
-                  }[]
-                | null;
+              image: number | Media;
               benefitsBox?:
                 | {
                     icon: string;
@@ -628,8 +624,9 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     title?: T;
-                    firstSubtitle?: T;
-                    secondSubtitle?: T;
+                    subtitle?: T;
+                    ctaLabel?: T;
+                    ctaUrl?: T;
                     IPTVBox?:
                       | T
                       | {
@@ -708,12 +705,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     title?: T;
                     subtitle?: T;
-                    images?:
-                      | T
-                      | {
-                          image?: T;
-                          id?: T;
-                        };
+                    image?: T;
                     benefitsBox?:
                       | T
                       | {

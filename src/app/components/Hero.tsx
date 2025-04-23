@@ -78,7 +78,7 @@ export function Hero({
 
   return (
     <>
-      <div className="flex flex-col items-center px-4 py-20 md:px-8 lg:px-16">
+      <div className="relative my-20 flex flex-col items-center px-4 md:px-8 lg:px-16">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -132,6 +132,14 @@ export function Hero({
             </div>
           ))}
         </motion.div>
+        <motion.div
+          className="absolute top-0 right-0 -z-50 w-full max-w-[26rem]"
+          initial={{ opacity: 0, y: 200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 1 }}
+        >
+          <HeroShapes />
+        </motion.div>
       </div>
       <motion.p
         initial={{ opacity: 0 }}
@@ -141,21 +149,13 @@ export function Hero({
       >
         {description}
       </motion.p>
-      <div className="relative pb-20 md:pb-32 lg:pb-40">
+      <div className="pb-20 md:pb-32 lg:pb-40">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
           <TVSlider caseStudy={caseStudy} />
-        </motion.div>
-        <motion.div
-          className="absolute top-0 right-0 -z-50 w-full max-w-lg"
-          initial={{ opacity: 0, y: 200 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 1 }}
-        >
-          <HeroShapes />
         </motion.div>
       </div>
     </>

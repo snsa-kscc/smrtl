@@ -5,6 +5,8 @@ export const formatSlug = (val: string): string =>
     .trim()
     .toLowerCase()
     .replace(/ /g, '-')
+    .replace(/—/g, '-')
+    .replace(/--+/g, '-')
     .replace(/[š]/g, 's')
     .replace(/[đ]/g, 'd')
     .replace(/[č]/g, 'c')

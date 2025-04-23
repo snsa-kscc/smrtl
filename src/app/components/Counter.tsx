@@ -89,7 +89,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
               hoveredIndex === index ? 'opacity-100' : 'opacity-0',
             )}
           >
-            <p className="bg-smartellLightPurple rounded-full px-6 py-4 text-sm text-white">
+            <p className="bg-smartellLightPurple rounded-full px-6 py-4 text-sm font-bold text-white">
               {counter.description}
             </p>
           </div>

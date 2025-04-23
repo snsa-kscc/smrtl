@@ -56,8 +56,8 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious variant="ghost" size="icon" />
-      <CarouselNext variant="ghost" size="icon" />
+      <CarouselPrevious variant="ghost" />
+      <CarouselNext variant="ghost" />
     </Carousel>
   )
 }

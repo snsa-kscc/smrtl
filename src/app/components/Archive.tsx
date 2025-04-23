@@ -33,33 +33,31 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
               className="block"
             >
               <div className="p-8">
-                <div className="overflow-hidden">
-                  <div className="text-smartellDarkBlue flex h-32 flex-col p-1 pb-10">
-                    <p className="text-sm">
-                      {dateFormatter.format(new Date(post.createdAt)).replace(/\//g, '.')}
-                    </p>
-                    <h3 className="line-clamp-2 overflow-hidden text-xl font-bold text-ellipsis">
-                      {post.title}
-                    </h3>
+                {post.featuredImage && (
+                  <div className="relative aspect-[1/1] w-full overflow-hidden">
+                    <Image
+                      src={(post.featuredImage as Media)?.url ?? ''}
+                      alt={(post.featuredImage as Media)?.alt || ''}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  {post.featuredImage && (
-                    <div className="relative aspect-[3/2] w-full overflow-hidden">
-                      <Image
-                        src={(post.featuredImage as Media)?.url ?? ''}
-                        alt={(post.featuredImage as Media)?.alt || ''}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
+                )}
+                <div className="text-smartellDarkBlue flex h-32 flex-col pt-10">
+                  <p className="text-sm">
+                    {dateFormatter.format(new Date(post.createdAt)).replace(/\//g, '.')}
+                  </p>
+                  <h3 className="line-clamp-2 overflow-hidden text-xl font-bold text-ellipsis">
+                    {post.title}
+                  </h3>
                 </div>
               </div>
             </Link>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious variant="ghost" size="icon" />
+      <CarouselNext variant="ghost" size="icon" />
     </Carousel>
   )
 }

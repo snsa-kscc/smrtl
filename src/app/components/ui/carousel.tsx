@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from '../shapes/Arrows'
 
 import { cn } from '../../lib/utils'
 import { Button } from './button'
@@ -186,9 +186,9 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         variant={variant}
         size={size}
         className={cn(
-          'absolute h-8 w-8 rounded-full',
+          'absolute h-14 w-14 rounded-full hover:bg-transparent',
           orientation === 'horizontal'
-            ? '-left-12 top-1/2 -translate-y-1/2'
+            ? 'top-1/2 -left-2 -translate-y-32'
             : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
           className,
         )}
@@ -196,7 +196,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         onClick={scrollPrev}
         {...props}
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft />
         <span className="sr-only">Previous slide</span>
       </Button>
     )
@@ -214,9 +214,9 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         variant={variant}
         size={size}
         className={cn(
-          'absolute h-8 w-8 rounded-full',
+          'absolute h-14 w-14 rounded-full hover:bg-transparent',
           orientation === 'horizontal'
-            ? '-right-12 top-1/2 -translate-y-1/2'
+            ? 'top-1/2 -right-2 -translate-y-32'
             : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
           className,
         )}
@@ -224,7 +224,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         onClick={scrollNext}
         {...props}
       >
-        <ArrowRight className="h-4 w-4" />
+        <ArrowRight />
         <span className="sr-only">Next slide</span>
       </Button>
     )

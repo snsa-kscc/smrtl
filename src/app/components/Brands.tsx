@@ -23,48 +23,18 @@ export function Brands({ title, description, brands }: BrandsProps) {
       <p className="mx-auto w-2/3 py-10 text-center text-3xl font-bold text-balance text-white lg:text-4xl xl:text-5xl">
         {description}
       </p>
-      <div className="mx-auto my-12 flex max-w-4xl flex-col gap-8 px-4">
-        <div className="flex justify-evenly py-4">
-          {brands.slice(0, 4).map((brand) => (
-            <div key={brand.image.id} className="flex items-end">
-              <Image
-                src={brand.image.url}
-                alt={brand.image.alt}
-                width={brand.image.width}
-                height={brand.image.height}
-                className="w-full max-w-[120px]"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-evenly py-4">
-          {brands.slice(4, 6).map((brand) => (
-            <div key={brand.image.id} className="flex items-end">
-              <Image
-                src={brand.image.url}
-                alt={brand.image.alt}
-                width={brand.image.width}
-                height={brand.image.height}
-                className="w-full max-w-[120px]"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center py-4">
-          {brands.slice(6, 7).map((brand) => (
-            <div key={brand.image.id} className="flex items-end">
-              <Image
-                src={brand.image.url}
-                alt={brand.image.alt}
-                width={brand.image.width}
-                height={brand.image.height}
-                className="w-full max-w-[120px]"
-              />
-            </div>
-          ))}
-        </div>
+      <div className="mx-auto my-12 flex max-w-4xl flex-col gap-10 px-4 md:flex-row">
+        {brands.map((brand) => (
+          <div key={brand.image.id} className="flex items-end">
+            <Image
+              src={brand.image.url}
+              alt={brand.image.alt}
+              width={brand.image.width}
+              height={brand.image.height}
+              className="w-full max-w-[120px]"
+            />
+          </div>
+        ))}
       </div>
     </div>
   )

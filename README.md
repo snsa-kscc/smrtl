@@ -9,4 +9,3 @@
 - referrals photos
 - archive page
 - minutes to read function
-- squash images

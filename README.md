@@ -6,6 +6,3 @@
 - hydration error
 
 - unify button sizes and typo
-- referrals photos
-- archive page
-- minutes to read function

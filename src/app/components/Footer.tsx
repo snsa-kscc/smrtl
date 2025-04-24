@@ -41,20 +41,20 @@ export async function Footer({ lang }: { lang: Locale }) {
           <div className="basis-1/4">
             <h3 className="mb-8 text-2xl font-bold text-white">{footer.contactTitle}</h3>
             <div className="text-lg text-white">
-              <a
+              <Link
                 href={`mailto:${footer.email}`}
                 className="relative transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
               >
                 {footer.email}
-              </a>
+              </Link>
             </div>
             <div className="text-lg text-white">
-              <a
+              <Link
                 href={`tel:${footer.phone.replace(/\s+/g, '')}`}
                 className="relative transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
               >
                 {footer.phone}
-              </a>
+              </Link>
             </div>
             <p className="text-lg text-white">{footer.addressLine1}</p>
             <p className="text-lg text-white">{footer.addressLine2}</p>
@@ -82,30 +82,30 @@ export async function Footer({ lang }: { lang: Locale }) {
           </div>
         </div>
         <div className="mt-6 flex gap-4">
-          <a
+          <Link
             href={footer.LinkedIn}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
           >
             <Linkedin size={28} />
-          </a>
-          <a
+          </Link>
+          <Link
             href={footer.Facebook}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
           >
             <Facebook size={28} />
-          </a>
-          <a
+          </Link>
+          <Link
             href={footer.Instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-smartellLightPurple text-smartellLightPurple transition-colors duration-300"
           >
             <Instagram size={28} />
-          </a>
+          </Link>
         </div>
         <div className="mt-20 w-1/2 md:w-1/3 lg:mt-44 xl:w-1/6">
           <Slogan />

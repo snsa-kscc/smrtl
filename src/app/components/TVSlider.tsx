@@ -109,7 +109,7 @@ export function TVSlider({
           {/* TV Stand */}
           <div className="absolute bottom-0 left-1/2 mx-auto w-1/4 -translate-x-1/2 translate-y-[95%]">
             <div className="h-4 bg-gray-800"></div>
-            <div className="h-12 rounded-b-md bg-gradient-to-b from-gray-700 to-gray-900"></div>
+            <div className="h-12 rounded-b-xs bg-gradient-to-b from-gray-700 to-gray-900"></div>
           </div>
         </div>
 

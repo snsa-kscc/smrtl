@@ -31,12 +31,12 @@ export function NewsletterForm({ footer, lang }: { footer: Footer; lang: Locale 
         type="email"
         placeholder={placeholderTranslations[lang]}
         required
-        className="basis-1/2 border-b-2 text-white"
+        className="basis-3/4 border-b-2 text-white"
       />
       <Button
         type="submit"
         disabled={pending}
-        className="text-smartellDarkBlue hover:bg-opacity-70 basis-1/2 rounded-full bg-white py-4 text-lg font-bold transition-colors duration-300 lg:py-6"
+        className="text-smartellDarkBlue basis-1/2 cursor-pointer rounded-full bg-white px-16 py-7 text-xl font-bold transition-colors duration-300 hover:bg-white/80"
       >
         {pending ? sendingTranslations[lang] : footer.newsletterButton}
       </Button>

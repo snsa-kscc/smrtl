@@ -266,7 +266,7 @@ export function serializeLexical({ nodes, includeReadingTime = false, lang }: Pr
             case 'quote': {
               return (
                 <blockquote
-                  className="mb-8 border-l-2 border-gray-600 pl-6 text-lg italic"
+                  className="mb-8 border-l-2 border-gray-600 pl-6 text-lg font-light italic"
                   key={index}
                 >
                   {serializedChildren}

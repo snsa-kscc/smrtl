@@ -76,7 +76,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
       <div className="mt-24 text-center">
         <Link
           href={ctaUrl}
-          className="bg-smartellDarkBlue hover:bg-opacity-90 inline-block rounded-full px-16 py-5 text-xl font-bold text-white transition-colors"
+          className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 inline-block cursor-pointer rounded-full px-16 py-4 text-xl font-bold text-white transition-colors"
         >
           {ctaLabel}
         </Link>

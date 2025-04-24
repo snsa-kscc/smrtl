@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { SupportShape } from './shapes/SupportShape'
+import Link from 'next/link'
 
 type CompatibilityProps = {
   title: string
@@ -54,12 +55,12 @@ export function Compatibility({
           {ctaHook}
         </p>
         <div className="mr-20 flex items-center justify-center">
-          <a
+          <Link
             href={ctaUrl}
-            className="text-smartellDarkBlue hover:bg-opacity-70 inline-block rounded-full bg-white px-16 py-5 text-xl font-bold transition-colors duration-300"
+            className="text-smartellDarkBlue inline-block cursor-pointer rounded-full bg-white px-16 py-4 text-xl font-bold transition-colors duration-300 hover:bg-white/80"
           >
             {ctaLabel}
-          </a>
+          </Link>
         </div>
       </div>
     </>

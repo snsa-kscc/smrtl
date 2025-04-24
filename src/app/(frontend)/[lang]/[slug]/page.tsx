@@ -77,7 +77,9 @@ export default async function Page({
           {title}
         </h1>
       )}
-      {content?.content && <Content content={content.content} />}
+      {content?.content && (
+        <Content content={content.content} includeReadingTime={false} lang={lang} />
+      )}
       <RenderBlocks lang={lang} blocks={layout?.layout ?? []} />
     </>
   )

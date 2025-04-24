@@ -1,6 +1,7 @@
 import React, { Fragment, JSX } from 'react'
 import Image from 'next/image'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
+import { readingTimeTranslations, Locale } from 'i18n.config'
 
 import {
   IS_BOLD,
@@ -62,11 +63,58 @@ export type NodeTypes =
 
 type Props = {
   nodes: NodeTypes[]
+  includeReadingTime?: boolean
+  lang: Locale
 }
 
-export function serializeLexical({ nodes }: Props): JSX.Element {
+/**
+ * Extracts plain text content from Lexical nodes for reading time calculation
+ */
+function extractTextFromNodes(nodes: NodeTypes[]): string {
+  let text = ''
+
+  nodes?.forEach((node) => {
+    if (node == null) return
+
+    if (node.type === 'text') {
+      text += node.text || ''
+    }
+
+    if ('children' in node && node.children) {
+      text += extractTextFromNodes(node.children as NodeTypes[])
+    }
+  })
+
+  return text
+}
+
+/**
+ * Calculates reading time in minutes based on words count
+ * Average reading speed is 200-250 words per minute
+ */
+function calculateReadingTime(text: string): number {
+  const wordsPerMinute = 225
+  const wordCount = text.trim().split(/\s+/).length
+  const readingTime = Math.ceil(wordCount / wordsPerMinute)
+
+  // Return at least 1 minute for very short content
+  return Math.max(1, readingTime)
+}
+
+export function serializeLexical({ nodes, includeReadingTime = false, lang }: Props): JSX.Element {
+  // Calculate reading time if requested
+  const textContent = includeReadingTime ? extractTextFromNodes(nodes) : ''
+  const readingTimeMinutes = includeReadingTime ? calculateReadingTime(textContent) : 0
   return (
     <Fragment>
+      {includeReadingTime && (
+        <div className="reading-time mb-6 text-sm text-gray-600">
+          <span>
+            {readingTimeTranslations[lang]}
+            {readingTimeMinutes} min
+          </span>
+        </div>
+      )}
       {nodes?.map((node, index): JSX.Element | null => {
         if (node == null) {
           return null
@@ -123,7 +171,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 }
               }
             }
-            return serializeLexical({ nodes: node.children as NodeTypes[] })
+            return serializeLexical({ nodes: node.children as NodeTypes[], lang })
           }
         }
 
@@ -216,7 +264,14 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               )
             }
             case 'quote': {
-              return <blockquote key={index}>{serializedChildren}</blockquote>
+              return (
+                <blockquote
+                  className="mb-8 border-l-2 border-gray-600 pl-6 text-lg italic"
+                  key={index}
+                >
+                  {serializedChildren}
+                </blockquote>
+              )
             }
             // Images are handled via the 'upload' case
             case 'upload': {
@@ -234,7 +289,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 // Only render if we have a URL
                 if (mediaValue.url) {
                   return (
-                    <div className="my-4" key={index}>
+                    <div className="pb-8" key={index}>
                       <Image
                         src={mediaValue.url}
                         alt={mediaValue.alt || ''}
@@ -249,7 +304,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                         </figcaption>
                       )}
                       <div className="my-4 border-l-2 border-gray-600 pl-2">
-                        <p className="text-gray--600 text-sm">{mediaValue.alt}</p>
+                        <p className="text-gray--600 !py-1 text-sm">{mediaValue.alt}</p>
                       </div>
                     </div>
                   )

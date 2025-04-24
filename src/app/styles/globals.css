@@ -160,34 +160,34 @@
 
 .richText {
   p {
-    @apply mb-4;
+    @apply pb-8;
   }
   h1 {
-    @apply mb-4 text-3xl font-bold;
+    @apply pb-8 text-5xl font-bold;
   }
   h2 {
-    @apply mb-4 text-2xl font-bold;
+    @apply pb-8 text-4xl font-bold;
   }
   h3 {
-    @apply mb-4 text-xl font-bold;
+    @apply pb-8 text-3xl font-bold;
   }
   h4 {
-    @apply mb-4 text-lg font-bold;
+    @apply pb-8 text-2xl font-bold;
   }
   h5 {
-    @apply mb-4 text-lg font-bold;
+    @apply pb-8 text-xl font-bold;
   }
   h6 {
-    @apply mb-4 text-lg font-bold;
+    @apply pb-8 text-lg font-bold;
   }
   ul {
-    @apply mb-4 list-disc;
+    @apply list-disc pb-8;
   }
   ol {
-    @apply mb-4 list-decimal;
+    @apply list-decimal pb-8;
   }
   li {
-    @apply ml-4;
+    @apply ml-8 pb-2;
   }
   a {
     @apply text-smartellLightPurple;

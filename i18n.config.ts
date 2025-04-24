@@ -27,4 +27,22 @@ export const contactTranslations = {
   it: 'contatto',
 } as const
 
+export const shareTranslations = {
+  en: 'Share this post',
+  hr: 'Podijeli ovu objavu',
+  it: 'Condividi questo post',
+} as const
+
+export const shareConfirmationTranslations = {
+  en: 'Link copied!',
+  hr: 'Link kopiran!',
+  it: 'Link copiato!',
+} as const
+
+export const readingTimeTranslations = {
+  en: 'Reading time: ',
+  hr: 'Vrijeme čitanja: ',
+  it: 'Tempo di lettura: ',
+} as const
+
 export type Locale = (typeof i18n)['locales'][number]

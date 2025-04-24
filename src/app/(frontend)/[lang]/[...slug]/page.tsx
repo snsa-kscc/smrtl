@@ -10,6 +10,7 @@ import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 import { Metadata } from 'next'
 import { generateMeta } from '@/app/lib/generateMeta'
 import { draftMode } from 'next/headers'
+import { ShareButtons } from '@/app/components/ShareButtons'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -70,22 +71,32 @@ export default async function Page({
   return (
     <>
       <LocaleLinksUpdater localeLinks={localizedPosts} />
-      <h1 className="text-smartellLightPurple container mx-auto pt-40 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-8xl">
+      <h1 className="text-smartellLightPurple px-8 pt-40 text-center text-4xl font-bold md:px-16 lg:text-left lg:text-5xl xl:text-8xl">
         {title}
       </h1>
       {featuredImage && (
-        <div className="container mx-auto pt-12">
+        <div className="pt-40">
           <Image
             src={(featuredImage as Media).url ?? ''}
             alt={(featuredImage as Media).alt ?? ''}
             width={(featuredImage as Media).width ?? 0}
             height={(featuredImage as Media).height ?? 0}
-            className="mx-auto"
+            className="mx-auto max-w-[1920px]"
             quality={100}
           />
         </div>
       )}
-      {content?.content && <Content content={content.content} />}
+      {content?.content && (
+        <Content content={content.content} includeReadingTime={true} lang={lang} />
+      )}
+
+      <div className="mx-auto w-5xl max-w-full px-8">
+        <ShareButtons
+          url={`${process.env.NEXT_PUBLIC_SERVER_URL}/${lang}/${pathTranslations[lang]}/${pathSlug[0]}`}
+          title={title}
+          lang={lang}
+        />
+      </div>
     </>
   )
 }

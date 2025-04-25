@@ -5,7 +5,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: `${process.env.NEXT_PUBLIC_SERVER_NAME} website`,
   images: [
     {
-      url: `${process.env.NEXT_PUBLIC_SERVER_URL}/meta-image.webp`,
+      url: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/media/file/meta-image.webp`,
     },
   ],
   siteName: process.env.NEXT_PUBLIC_SERVER_NAME,

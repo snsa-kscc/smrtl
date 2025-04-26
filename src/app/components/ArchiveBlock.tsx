@@ -9,13 +9,18 @@ export async function ArchiveBlock({ limit, lang }: { limit: number; lang: Local
   const fetchedPosts = await payload.find({
     collection: 'posts',
     locale: lang,
+    fallbackLocale: false,
     limit,
     depth: 1,
   })
 
+  const filteredPosts = fetchedPosts.docs.filter(
+    (post) => post.title !== undefined && post.slug !== undefined,
+  )
+
   return (
     <>
-      <Archive lang={lang} posts={fetchedPosts.docs} />
+      <Archive lang={lang} posts={filteredPosts} />
       <div className="mx-auto w-1/2 py-20">
         <BrandsShape />
       </div>

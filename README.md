@@ -1,8 +1,3 @@
 # smartell.tv website
 
-### 2DO
-
-- data import
-- hydration error
-
-- unify button sizes and typo
+![smartell.tv](https://github.com/user-attachments/assets/a57013ca-b8bd-447b-9451-71a0f5a01e08)

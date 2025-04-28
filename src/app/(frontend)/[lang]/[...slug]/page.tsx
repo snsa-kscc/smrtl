@@ -11,6 +11,8 @@ import { Metadata } from 'next'
 import { generateMeta } from '@/app/lib/generateMeta'
 import { draftMode } from 'next/headers'
 import { ShareButtons } from '@/app/components/ShareButtons'
+import { ArchiveBlock } from '@/app/components/ArchiveBlock'
+import { readMoreTranslations } from 'i18n.config'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -66,7 +68,7 @@ export default async function Page({
 
   const localizedPosts = await fetchLocalizedVersions(payload, 'posts', pathSlug[0])
 
-  const { title, content, featuredImage } = result.docs?.[0]
+  const { title, content, featuredImage, relatedArticlesLimit } = result.docs?.[0]
 
   return (
     <>
@@ -95,6 +97,17 @@ export default async function Page({
           url={`${process.env.NEXT_PUBLIC_SERVER_URL}/${lang}/${pathTranslations[lang]}/${pathSlug[0]}`}
           title={title}
           lang={lang}
+        />
+      </div>
+      <div className="mx-auto w-5xl max-w-full px-8 py-16">
+        <h2 className="text-smartellLightPurple text-2xl font-bold">
+          {readMoreTranslations[lang]}
+        </h2>
+        <ArchiveBlock
+          lang={lang}
+          limit={relatedArticlesLimit ? relatedArticlesLimit + 1 : 6} // because we are excluding current post
+          isShape={false}
+          excludeSlug={pathSlug[0]}
         />
       </div>
     </>

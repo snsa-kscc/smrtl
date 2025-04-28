@@ -45,4 +45,10 @@ export const readingTimeTranslations = {
   it: 'Tempo di lettura: ',
 } as const
 
+export const readMoreTranslations = {
+  en: 'Related articles',
+  hr: 'Povezani članci',
+  it: 'Articoli correlati',
+} as const
+
 export type Locale = (typeof i18n)['locales'][number]

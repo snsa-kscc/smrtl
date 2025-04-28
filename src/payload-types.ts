@@ -196,6 +196,10 @@ export interface Post {
   slug: string;
   slugLock?: boolean | null;
   featuredImage: number | Media;
+  /**
+   * Number of related articles to show (0-24)
+   */
+  relatedArticlesLimit?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -524,6 +528,7 @@ export interface PostsSelect<T extends boolean = true> {
   slug?: T;
   slugLock?: T;
   featuredImage?: T;
+  relatedArticlesLimit?: T;
   updatedAt?: T;
   createdAt?: T;
 }

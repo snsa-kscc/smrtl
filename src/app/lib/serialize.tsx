@@ -191,7 +191,11 @@ export function serializeLexical({ nodes, includeReadingTime = false, lang }: Pr
               return <br key={index} />
             }
             case 'paragraph': {
-              return <p key={index}>{serializedChildren}</p>
+              return (
+                <p className="text-lg" key={index}>
+                  {serializedChildren}
+                </p>
+              )
             }
             case 'heading': {
               const Tag = node?.tag
@@ -200,7 +204,7 @@ export function serializeLexical({ nodes, includeReadingTime = false, lang }: Pr
             case 'list': {
               const Tag = node?.tag
               return (
-                <Tag className="list" key={index}>
+                <Tag className="list text-lg" key={index}>
                   {serializedChildren}
                 </Tag>
               )

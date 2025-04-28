@@ -100,5 +100,16 @@ export const Posts: CollectionConfig = {
         position: 'sidebar',
       },
     },
+    {
+      name: 'relatedArticlesLimit',
+      type: 'number',
+      defaultValue: 6,
+      min: 0,
+      max: 24,
+      admin: {
+        position: 'sidebar',
+        description: 'Number of related articles to show (0-24)',
+      },
+    },
   ],
 }

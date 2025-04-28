@@ -12,6 +12,7 @@ import {
   revalidatePostsAfterChange,
   revalidatePostsAfterDelete,
 } from '@/payload/hooks/revalidatePosts'
+import { pathTranslations } from 'i18n.config'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -23,7 +24,7 @@ export const Posts: CollectionConfig = {
     useAsTitle: 'title',
     preview: (doc, { locale }) => {
       return generatePreviewPath({
-        path: `/${locale}/posts/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+        path: `/${locale}/${pathTranslations[locale as keyof typeof pathTranslations]}/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
       })
     },
   },

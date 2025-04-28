@@ -7,7 +7,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-import { i18n } from '../i18n.config'
+import { i18n } from 'i18n.config'
 
 import { Footer } from './payload/globals/Footer'
 import { Header } from './payload/globals/Header'

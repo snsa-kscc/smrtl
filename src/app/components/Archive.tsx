@@ -34,7 +34,7 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
             >
               <div className="p-8">
                 {post.featuredImage && (
-                  <div className="relative aspect-[1/1] w-full overflow-hidden">
+                  <div className="relative aspect-[0.9] w-full overflow-hidden">
                     <Image
                       src={(post.featuredImage as Media)?.url ?? ''}
                       alt={(post.featuredImage as Media)?.alt || ''}

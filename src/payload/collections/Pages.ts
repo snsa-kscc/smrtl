@@ -34,11 +34,11 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    preview: (doc, { locale }) => {
-      return generatePreviewPath({
-        path: `/${locale}/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
-      })
-    },
+    // preview: (doc, { locale }) => {
+    //   return generatePreviewPath({
+    //     path: `/${locale}/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+    //   })
+    // },
   },
   // versions: {
   //   drafts: {

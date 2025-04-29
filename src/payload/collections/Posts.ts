@@ -29,12 +29,8 @@ export const Posts: CollectionConfig = {
     },
   },
   versions: {
-    drafts: {
-      autosave: {
-        interval: 3_000,
-      },
-    },
-    maxPerDoc: 5,
+    drafts: true,
+    maxPerDoc: 10,
   },
   hooks: {
     afterChange: [revalidatePostsAfterChange],

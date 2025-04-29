@@ -14,6 +14,6 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: 'public/media',
+    staticDir: process.env.NODE_ENV === 'production' ? 'public/media' : 'public/media-dev',
   },
 }

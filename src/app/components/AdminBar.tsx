@@ -52,7 +52,11 @@ export const AdminBar: React.FC<{
             logo: 'text-white',
             user: 'text-white',
           }}
-          cmsURL={process.env.NEXT_PUBLIC_SERVER_URL}
+          cmsURL={
+            process.env.NODE_ENV === 'development'
+              ? 'http://localhost:3000'
+              : process.env.NEXT_PUBLIC_SERVER_URL
+          }
           collection={collection}
           collectionLabels={{
             plural: collectionLabels[collection as CollectionKey]?.plural || 'Pages',

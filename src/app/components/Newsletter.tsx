@@ -22,7 +22,7 @@ export function NewsletterForm({ footer, lang }: { footer: Footer; lang: Locale 
         })
       }
     }
-  }, [state])
+  }, [state, footer.successMessage, footer.errorMessage])
 
   return (
     <form action={formAction} className="flex flex-col gap-4 lg:flex-row">

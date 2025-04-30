@@ -99,8 +99,8 @@ export default async function Page({
           lang={lang}
         />
       </div>
-      <div className="mx-auto w-5xl max-w-full px-8 py-1">
-        <div className="border-2 border-b border-zinc-400" />
+      <div className="mx-auto w-5xl max-w-full px-8">
+        <hr />
       </div>
       <div className="px-8 pt-32">
         <h2 className="text-center text-5xl font-bold">{readMoreTranslations[lang]}</h2>

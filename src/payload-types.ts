@@ -348,7 +348,7 @@ export interface Page {
             }
           | {
               title: string;
-              referals?:
+              referrals?:
                 | {
                     image: number | Media;
                     message: string;
@@ -359,7 +359,7 @@ export interface Page {
                 | null;
               id?: string | null;
               blockName?: string | null;
-              blockType: 'referals';
+              blockType: 'referrals';
             }
           | {
               limit: number;
@@ -675,11 +675,11 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                     blockName?: T;
                   };
-              referals?:
+              referrals?:
                 | T
                 | {
                     title?: T;
-                    referals?:
+                    referrals?:
                       | T
                       | {
                           image?: T;

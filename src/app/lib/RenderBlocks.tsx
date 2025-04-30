@@ -10,7 +10,7 @@ import { ImageHero } from '../components/ImageHero'
 import { IPTVSolutions } from '../components/IPTVSolutions'
 import { Compatibility } from '../components/Compatibility'
 import { Brands } from '../components/Brands'
-import { Referals } from '../components/Referals'
+import { Referrals } from '../components/Referrals'
 import { ArchiveBlock } from '../components/ArchiveBlock'
 import { Question } from '../components/Question'
 import { Benefits } from '../components/Benefits'
@@ -27,7 +27,7 @@ const blockComponents: { [key: string]: React.ComponentType<any> } = {
   'iptv-solutions': IPTVSolutions,
   compatibility: Compatibility,
   brands: Brands,
-  referals: Referals,
+  referrals: Referrals,
   question: Question,
   benefits: Benefits,
 }

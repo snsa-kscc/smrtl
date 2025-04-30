@@ -1,10 +1,10 @@
 import type { Block } from 'payload'
 
-export const Referals: Block = {
-  slug: 'referals',
+export const Referrals: Block = {
+  slug: 'referrals',
   labels: {
-    singular: 'Referals',
-    plural: 'Referals',
+    singular: 'Referrals',
+    plural: 'Referrals',
   },
   fields: [
     {
@@ -14,7 +14,7 @@ export const Referals: Block = {
       localized: true,
     },
     {
-      name: 'referals',
+      name: 'referrals',
       type: 'array',
       fields: [
         {

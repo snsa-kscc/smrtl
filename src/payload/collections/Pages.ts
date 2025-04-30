@@ -8,7 +8,7 @@ import { ImageHero } from '../blocks/ImageHero'
 import { IPTVSolutions } from '../blocks/IPTVSolutions'
 import { Compatibility } from '../blocks/Compatibility'
 import { Brands } from '../blocks/Brands'
-import { Referals } from '../blocks/Referals'
+import { Referrals } from '../blocks/Referrals'
 import { Archive } from '../blocks/Archive'
 import { Question } from '../blocks/Question'
 import { Benefits } from '../blocks/Benefits'
@@ -94,7 +94,7 @@ export const Pages: CollectionConfig = {
                 IPTVSolutions,
                 Compatibility,
                 Brands,
-                Referals,
+                Referrals,
                 Archive,
                 Question,
                 Benefits,

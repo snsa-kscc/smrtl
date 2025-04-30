@@ -31,7 +31,7 @@ export const ShareButtons = ({ url, title, lang }: ShareButtonsProps) => {
   }
 
   return (
-    <div className="my-8 flex flex-col gap-4">
+    <div className="mb-8 flex flex-col gap-4">
       <span className="mr-2 text-gray-800">{shareTranslations[lang]}</span>
       <div className="flex items-center gap-4">
         <button

@@ -12,7 +12,7 @@ import { generateMeta } from '@/app/lib/generateMeta'
 import { draftMode } from 'next/headers'
 import { ShareButtons } from '@/app/components/ShareButtons'
 import { ArchiveBlock } from '@/app/components/ArchiveBlock'
-import { readMoreTranslations } from 'i18n.config'
+import { readMoreTranslations, readMoreSubTranslations } from 'i18n.config'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -99,10 +99,12 @@ export default async function Page({
           lang={lang}
         />
       </div>
-      <div className="mx-auto w-5xl max-w-full px-8 py-16">
-        <h2 className="text-smartellLightPurple text-2xl font-bold">
-          {readMoreTranslations[lang]}
-        </h2>
+      <div className="mx-auto w-5xl max-w-full px-8 py-1">
+        <div className="border-2 border-b border-zinc-400" />
+      </div>
+      <div className="px-8 pt-32">
+        <h2 className="text-center text-5xl font-bold">{readMoreTranslations[lang]}</h2>
+        <p className="pt-8 text-center text-lg">{readMoreSubTranslations[lang]}</p>
         <ArchiveBlock
           lang={lang}
           limit={relatedArticlesLimit ? relatedArticlesLimit + 1 : 6} // because we are excluding current post

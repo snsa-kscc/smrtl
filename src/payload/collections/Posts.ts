@@ -29,7 +29,11 @@ export const Posts: CollectionConfig = {
     },
   },
   versions: {
-    drafts: true,
+    drafts: {
+      autosave: {
+        interval: 3_000,
+      },
+    },
     maxPerDoc: 10,
   },
   hooks: {

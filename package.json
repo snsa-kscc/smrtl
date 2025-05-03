@@ -12,7 +12,8 @@
     "generate:types": "payload generate:types",
     "lint": "next lint",
     "payload": "payload",
-    "start": "next start"
+    "start": "next start",
+    "startsafe": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -6,7 +6,7 @@ export const revalidatePostsAfterChange: CollectionAfterChangeHook<Post> = ({
   doc,
   req: { payload },
 }) => {
-  if (doc) {
+  if (doc._status === 'published') {
     payload.logger.info(`Revalidating posts.`)
     revalidatePath('/(frontend)/[lang]/[...slug]', 'page')
   }

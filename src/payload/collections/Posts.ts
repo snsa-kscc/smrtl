@@ -22,9 +22,9 @@ export const Posts: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    preview: (doc, { locale }) => {
+    preview: (data, { locale }) => {
       return generatePreviewPath({
-        path: `/${locale}/${pathTranslations[locale as keyof typeof pathTranslations]}/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+        path: `/${locale}/${pathTranslations[locale as keyof typeof pathTranslations]}/${typeof data?.slug === 'string' ? data.slug : ''}`,
       })
     },
   },

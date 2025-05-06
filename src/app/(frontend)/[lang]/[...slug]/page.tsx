@@ -49,13 +49,13 @@ export default async function Page({
     notFound()
   }
 
-  const { isEnabled: draft } = await draftMode()
+  const { isEnabled } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'posts',
-    draft,
+    draft: true,
     depth: 1,
     limit: 1,
     where: { slug: { equals: pathSlug[0] } },
@@ -66,13 +66,17 @@ export default async function Page({
     notFound()
   }
 
-  const localizedPosts = await fetchLocalizedVersions(payload, 'posts', pathSlug[0])
+  let localizedPosts
+
+  if (!isEnabled) {
+    localizedPosts = await fetchLocalizedVersions(payload, 'posts', pathSlug[0])
+  }
 
   const { title, content, featuredImage, relatedArticlesLimit } = result.docs?.[0]
 
   return (
     <>
-      <LocaleLinksUpdater localeLinks={localizedPosts} />
+      {localizedPosts && <LocaleLinksUpdater localeLinks={localizedPosts} />}
       <h1 className="text-smartellLightPurple px-8 pt-40 text-center text-4xl font-bold md:px-16 lg:text-left lg:text-5xl xl:text-8xl">
         {title}
       </h1>
@@ -123,13 +127,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang, slug } = await params
   const [_, ...pathSlug] = slug
-  const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'posts',
-    draft,
+    draft: true,
     depth: 1,
     limit: 1,
     where: { slug: { equals: pathSlug[0] } },

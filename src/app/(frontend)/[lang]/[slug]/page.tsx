@@ -8,7 +8,6 @@ import { fetchLocalizedVersions } from '@/app/lib/utils'
 import { LocaleLinksUpdater } from '@/app/context/LocaleLinksContext'
 import { generateMeta } from '@/app/lib/generateMeta'
 import { Metadata } from 'next'
-import { draftMode } from 'next/headers'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -49,7 +48,6 @@ export default async function Page({
   params: Promise<{ lang: Locale; slug?: string }>
 }) {
   const { lang, slug = 'home' } = await params
-  const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
@@ -59,7 +57,6 @@ export default async function Page({
     limit: 1,
     where: { slug: { equals: slug } },
     locale: lang,
-    draft,
   })
 
   if (!result.docs[0]) {
@@ -91,7 +88,6 @@ export async function generateMetadata({
   params: Promise<{ lang: Locale; slug?: string }>
 }): Promise<Metadata> {
   const { lang, slug = 'home' } = await params
-  const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
@@ -101,7 +97,6 @@ export async function generateMetadata({
     limit: 1,
     where: { slug: { equals: slug } },
     locale: lang,
-    draft,
   })
 
   if (!result.docs[0]) {

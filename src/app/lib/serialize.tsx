@@ -2,6 +2,7 @@ import React, { Fragment, JSX } from 'react'
 import Image from 'next/image'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
 import { readingTimeTranslations, Locale } from 'i18n.config'
+import { CMSLink } from '@/app/components/Link'
 
 import {
   IS_BOLD,
@@ -232,41 +233,62 @@ export function serializeLexical({ nodes, includeReadingTime = false, lang }: Pr
                 )
               }
             }
-            case 'link': {
-              // For PayloadCMS Lexical links
-              if ('fields' in node && node.fields) {
-                const { linkType, newTab, url, doc } = node.fields
 
-                let href = '#'
-                if (linkType === 'custom' && url) {
-                  href = url
-                } else if (linkType === 'internal' && doc) {
-                  // Handle internal links based on the doc reference
-                  // This would typically be a path to another page in your CMS
-                  const docValue = doc.value as any
-                  const docId = docValue?.id || ''
-                  href = `/${doc.relationTo}/${docId}`
-                }
+            // case 'link': {
+            //   // For PayloadCMS Lexical links
+            //   if ('fields' in node && node.fields) {
+            //     const { linkType, newTab, url, doc } = node.fields
 
-                return (
-                  <a
-                    href={href}
-                    key={index}
-                    target={newTab ? '_blank' : '_self'}
-                    rel={newTab ? 'noopener noreferrer' : undefined}
-                  >
-                    {serializedChildren}
-                  </a>
-                )
-              }
+            //     let href = '#'
+            //     if (linkType === 'custom' && url) {
+            //       href = url
+            //     } else if (linkType === 'internal' && doc) {
+            //       // Handle internal links based on the doc reference
+            //       // This would typically be a path to another page in your CMS
+            //       const docValue = doc.value as any
+            //       const docId = docValue?.id || ''
+            //       href = `/${doc.relationTo}/${docId}`
+            //     }
 
-              // Fallback for standard Lexical links or if fields are missing
+            //     return (
+            //       <a
+            //         href={href}
+            //         key={index}
+            //         target={newTab ? '_blank' : '_self'}
+            //         rel={newTab ? 'noopener noreferrer' : undefined}
+            //       >
+            //         {serializedChildren}
+            //       </a>
+            //     )
+            //   }
+
+            //   // Fallback for standard Lexical links or if fields are missing
+            //   return (
+            //     <a href={'#'} key={index} rel="noopener noreferrer">
+            //       {serializedChildren}
+            //     </a>
+            //   )
+            // }
+
+            case 'link':
+            case 'autolink': {
+              //const node = _node as SerializedLinkNode
+
+              const fields = node.fields
+
               return (
-                <a href={'#'} key={index} rel="noopener noreferrer">
+                <CMSLink
+                  key={index}
+                  newTab={Boolean(fields?.newTab)}
+                  reference={fields?.doc as any}
+                  type={fields?.linkType === 'internal' ? 'reference' : 'custom'}
+                  url={fields?.url}
+                >
                   {serializedChildren}
-                </a>
+                </CMSLink>
               )
             }
+
             case 'quote': {
               return (
                 <blockquote

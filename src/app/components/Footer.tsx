@@ -34,7 +34,7 @@ export async function Footer({ lang }: { lang: Locale }) {
         id={contactTranslations[lang]}
         style={{ backgroundImage: `url('/api/media/file/bg.svg')` }}
       >
-        <h2 className="lg:text-10xl text-smartellLightPurple w-1/2 text-7xl font-bold md:text-8xl lg:w-auto">
+        <h2 className="lg:text-10xl text-smartellLightPurple w-1/2 text-7xl font-bold md:text-8xl lg:w-3/4">
           {footer.title}
         </h2>
         <div className="mt-28 flex flex-col gap-8 md:mt-36 md:flex-row lg:mt-48 xl:w-4/5">

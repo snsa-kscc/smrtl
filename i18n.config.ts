@@ -11,7 +11,7 @@ export const pathTranslations = {
 
 export const placeholderTranslations = {
   en: 'Your email',
-  hr: 'Tvoj email',
+  hr: 'Vaš email',
   it: 'Il tuo email',
 } as const
 

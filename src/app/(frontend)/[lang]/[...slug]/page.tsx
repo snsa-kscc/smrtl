@@ -88,7 +88,6 @@ export default async function Page({
             width={(featuredImage as Media).width ?? 0}
             height={(featuredImage as Media).height ?? 0}
             className="mx-auto max-w-[1920px]"
-            quality={100}
           />
         </div>
       )}

@@ -29,7 +29,7 @@ export const contactTranslations = {
 
 export const shareTranslations = {
   en: 'Share this post',
-  hr: 'Podijeli ovu objavu',
+  hr: 'Podijelite ovu objavu',
   it: 'Condividi questo post',
 } as const
 
@@ -53,7 +53,7 @@ export const readMoreTranslations = {
 
 export const readMoreSubTranslations = {
   en: 'Find out more and keep reading',
-  hr: 'Pronađi više i nastavi čitati',
+  hr: 'Pronađite više i nastavite čitati',
   it: 'Scopri di più e continua a leggere',
 } as const
 

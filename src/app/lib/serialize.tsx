@@ -44,7 +44,6 @@ interface SerializedUploadNode {
     width?: number
     height?: number
     alt?: string
-    quality?: number
   }
   relationTo: string
   fields?: Record<string, any>
@@ -322,7 +321,6 @@ export function serializeLexical({ nodes, includeReadingTime = false, lang }: Pr
                         width={mediaValue.width || 800}
                         height={mediaValue.height || 600}
                         className="h-auto max-w-full"
-                        quality={100}
                       />
                       {node.fields?.caption && (
                         <figcaption className="mt-2 text-sm text-gray-600">

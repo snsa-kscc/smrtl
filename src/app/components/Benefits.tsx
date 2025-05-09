@@ -53,10 +53,8 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
               key={index}
               className="group relative overflow-hidden rounded-xl border border-white/10 p-8 transition-all"
             >
-              <Link
-                href={ctaUrl}
-                className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/70 block"
-              >
+              {/* Link goes here */}
+              <div className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/70 block">
                 <div className="mb-8 flex justify-center">
                   {IconComponent ? (
                     <IconComponent className="h-16 w-16 text-white" strokeWidth={1.5} />
@@ -68,7 +66,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
                   {benefit.title}
                 </h3>
                 <p className="text-lg text-white/90">{benefit.description}</p>
-              </Link>
+              </div>
             </div>
           )
         })}

@@ -23,7 +23,7 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
     <Carousel className="mx-auto my-24 w-full max-w-7xl" id={`${pathTranslations[lang]}`}>
       <CarouselContent>
         {posts.map((post) => (
-          <CarouselItem key={post.id} className="basis-1/3">
+          <CarouselItem key={post.id} className="basis-1/2 lg:basis-1/3">
             <Link
               href={
                 lang === i18n.defaultLocale

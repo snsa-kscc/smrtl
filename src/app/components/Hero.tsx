@@ -83,7 +83,7 @@ export function Hero({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.02 }}
-          className="text-smartellLightPurple mb-6 text-center text-4xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-9xl"
+          className="text-smartellLightPurple mb-6 text-center text-5xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-9xl"
         >
           {title.split(/(\s)/).map((word, i) => (
             <div key={i} className="word inline-block">
@@ -133,7 +133,7 @@ export function Hero({
           ))}
         </motion.div>
         <motion.div
-          className="absolute top-0 right-0 -z-50 w-full max-w-[26rem]"
+          className="absolute top-0 right-0 -z-50 w-full max-w-[10rem] sm:max-w-[15rem] md:max-w-[20rem] lg:max-w-[26rem]"
           initial={{ opacity: 0, y: 200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 1 }}

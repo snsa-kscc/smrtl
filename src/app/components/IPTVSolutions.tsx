@@ -46,7 +46,7 @@ export function IPTVSolutions({
         </div>
       </div>
       {IPTVBox.map((item, index) => (
-        <div key={item.title} className="my-6 px-20 md:my-10">
+        <div key={item.title} className="my-6 px-6 md:my-10">
           <p className="text-smartellLightPurple text-5xl">{String(index + 1).padStart(2, '0')}</p>
 
           {/* Mobile Accordion */}

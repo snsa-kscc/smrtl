@@ -3,16 +3,18 @@
 import React from 'react'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './ui/accordion'
 import { QAShape } from './shapes/QAShape'
+import { useIsMobile } from '../hooks/use-mobile'
 
 export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: string }[] }) {
+  const isMobile = useIsMobile()
   return (
     <div className="from-smartellDarkBlue to-smartellDarkBlue/85 bg-gradient-to-b">
-      <div className="flex items-center justify-between gap-10">
+      <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
         <div className="relative max-w-2xl basis-1/2 translate-y-40">
           <div className="text-10xl text-smartellLightPurple absolute top-[10%] left-1/2 -translate-x-1/2 font-bold">
             <p>QA</p>
           </div>
-          <QAShape />
+          <QAShape isMobile={isMobile} />
         </div>
         <div className="mx-32 max-w-3xl basis-1/2">
           <Accordion type="single" collapsible>

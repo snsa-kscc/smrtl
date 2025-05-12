@@ -12,7 +12,7 @@ type ImageHeroProps = {
 export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
   return (
     <div
-      className="grid min-h-[70vh] grid-cols-5 grid-rows-2 items-end justify-items-start gap-y-10 bg-cover bg-center p-20"
+      className="grid min-h-[60vh] grid-cols-5 grid-rows-2 items-end justify-items-start gap-y-10 bg-cover bg-center p-20 lg:min-h-[70vh]"
       style={{
         backgroundImage: `url('${image.url}')`,
       }}

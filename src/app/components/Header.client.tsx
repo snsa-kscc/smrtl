@@ -11,7 +11,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
 
   return (
     <nav className="bg-white py-4">
-      <div className="px-24">
+      <div className="px-6 lg:px-24">
         <div className="flex h-16 items-center justify-between">
           <div className="shrink-0">
             <Link href={lang === i18n.defaultLocale ? '/' : `/${lang}`}>
@@ -54,42 +54,21 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               type="button"
               className="text-smartellDarkBlue hover:bg-smartellLightPurple inline-flex items-center justify-center rounded-md bg-white p-2 transition-colors duration-200 hover:text-white"
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {!isMenuOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              )}
+              <div className="relative flex h-6 w-6 items-center justify-center">
+                {/* Hamburger icon with animation */}
+                <span 
+                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45' : '-translate-y-2'}`} 
+                />
+                <span 
+                  className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100'}`} 
+                />
+                <span 
+                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45' : 'translate-y-2'}`} 
+                />
+              </div>
             </button>
           </div>
         </div>

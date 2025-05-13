@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
+import { useIsMobile } from '../hooks/use-mobile'
 
 type ReferralsProps = {
   name: string
@@ -19,9 +20,11 @@ type ReferralsProps = {
 export function Referrals({ title, referrals }: { title: string; referrals: ReferralsProps[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const stickyRef = useRef<HTMLDivElement>(null)
+  const motionDivRef = useRef<HTMLDivElement>(null)
   const [viewportWidth, setViewportWidth] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [maxScrollReached, setMaxScrollReached] = useState(0)
+  const isMobile = useIsMobile()
 
   // Get the viewport width on mount and when window resizes
   useEffect(() => {
@@ -36,10 +39,13 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
 
   // Handle scroll events to calculate horizontal scroll position
   useEffect(() => {
-    if (!containerRef.current || !stickyRef.current) return
+    if (!containerRef.current || !stickyRef.current || !motionDivRef.current) return
 
-    // Calculate max scroll distance
-    const maxScroll = 440 * (viewportWidth / 1920)
+    // Calculate max scroll distance dynamically
+    const scrollableContentWidth = motionDivRef.current.scrollWidth
+    const visibleContainerWidth = stickyRef.current.clientWidth
+    const calculatedMaxScroll = Math.max(0, scrollableContentWidth - visibleContainerWidth)
+    const maxScroll = Math.max(0, calculatedMaxScroll + (isMobile ? 50 : 100))
 
     const handleScroll = () => {
       if (!containerRef.current || !stickyRef.current) return
@@ -48,39 +54,30 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
       const stickyRect = stickyRef.current.getBoundingClientRect()
       const scrollY = window.scrollY
 
-      // Check if we're in the sticky section
       const isSticky = stickyRect.top <= 0
 
       if (isSticky) {
-        // Calculate the total height of the container
         const containerHeight = containerRef.current.offsetHeight
-
-        // Calculate the start and end points for the scroll animation
         const startPoint = containerRef.current.offsetTop
-        const endPoint = startPoint + containerHeight - window.innerHeight
+        // Ensure scrollableDistance is at least 1 to prevent division by zero
+        const scrollableDistance = Math.max(1, containerHeight - window.innerHeight)
+        const endPoint = startPoint + scrollableDistance
 
-        // Calculate how far we've scrolled through the container (0 to 1)
         const scrollProgress = Math.max(
           0,
           Math.min(1, (scrollY - startPoint) / (endPoint - startPoint)),
         )
 
-        // Calculate the horizontal scroll position
         const newPosition = -maxScroll * scrollProgress
-
-        // Update the scroll position
         setScrollPosition(newPosition)
 
-        // Keep track of the maximum scroll we've reached (most negative value)
         if (newPosition < maxScrollReached) {
           setMaxScrollReached(newPosition)
         }
       } else if (containerRect.top > 0) {
-        // Reset when scrolling back to the top
         setScrollPosition(0)
         setMaxScrollReached(0)
       } else {
-        // When we've scrolled past the sticky section, use the maximum scroll position we reached
         setScrollPosition(maxScrollReached)
       }
     }
@@ -96,8 +93,12 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
   return (
     <div ref={containerRef} className="relative mt-20 h-[200vh]">
       <div ref={stickyRef} className="sticky top-0 h-[90vh] overflow-hidden pt-20">
-        <motion.div className="flex items-center gap-20" style={{ x: scrollPosition }}>
-          <div className="ml-32 basis-72">
+        <motion.div
+          ref={motionDivRef}
+          className="flex items-center gap-20"
+          style={{ x: scrollPosition }}
+        >
+          <div className="ml-18 basis-72 lg:ml-32">
             <h2 className="text-smartellDarkBlue text-center text-5xl font-bold text-balance">
               {title}
             </h2>
@@ -111,7 +112,7 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
                   width={referral.image.width}
                   height={referral.image.height}
                 />
-                <h3 className="text-smartellDarkBlue mt-8 h-56 overflow-hidden text-3xl font-bold">
+                <h3 className="text-smartellDarkBlue mt-8 h-48 overflow-hidden text-2xl font-bold lg:h-56 lg:text-3xl">
                   {referral.message}
                 </h3>
                 <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referral.name}</p>

@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { HeroShapes } from './shapes/HeroShapes'
 import { TVSlider } from './TVSlider'
+import { useIsMobile } from '../hooks/use-mobile'
 
 type ImageType = {
   url: string
@@ -32,6 +33,7 @@ export function Hero({
 }) {
   const titleCharsRef = useRef<HTMLSpanElement[]>([])
   const animationWordsRef = useRef<HTMLDivElement[]>([])
+  const isMobile = useIsMobile()
 
   useGSAP(() => {
     const tl = gsap.timeline()
@@ -105,7 +107,7 @@ export function Hero({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="text-smartellDarkBlue relative mb-12 inline-block text-4xl font-bold md:mb-16 md:text-6xl lg:mb-20 lg:text-8xl"
+          className="text-smartellDarkBlue relative mb-12 inline-block text-3xl font-bold md:mb-16 md:text-6xl lg:mb-20 lg:text-8xl"
         >
           {animationWords.split(';').map((word, i) => (
             <div
@@ -135,7 +137,7 @@ export function Hero({
         <motion.div
           className="absolute top-0 right-0 -z-50 w-full max-w-[10rem] sm:max-w-[15rem] md:max-w-[20rem] lg:max-w-[26rem]"
           initial={{ opacity: 0, y: 200 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: isMobile ? 0.3 : 1, y: 0 }}
           transition={{ delay: 0.1, duration: 1 }}
         >
           <HeroShapes />

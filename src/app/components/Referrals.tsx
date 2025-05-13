@@ -88,7 +88,7 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [viewportWidth, maxScrollReached])
+  }, [viewportWidth, maxScrollReached, isMobile])
 
   return (
     <div ref={containerRef} className="relative mt-20 h-[200vh]">

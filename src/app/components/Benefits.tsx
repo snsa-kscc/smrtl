@@ -24,16 +24,18 @@ type BenefitsProps = {
 
 export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl }: BenefitsProps) {
   return (
-    <div className="py-32">
-      <div className="mb-24 flex flex-col items-start gap-12 px-6 py-32 lg:flex-row lg:items-start lg:justify-between lg:px-24 xl:px-32">
-        <div className="w-32 lg:w-40">
-          <ImageShape />
-        </div>
-        <div className="max-w-3xl lg:ml-12">
-          <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
-            {title}
-          </h2>
-          <p className="text-center text-2xl lg:text-left">{subtitle}</p>
+    <div className="py-16 lg:py-32">
+      <div className="mb-16 flex flex-col items-start gap-12 px-6 py-16 lg:mb-24 lg:flex-row lg:items-start lg:justify-between lg:px-24 lg:py-32 xl:px-32">
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start">
+          <div className="w-32 lg:w-40">
+            <ImageShape />
+          </div>
+          <div className="max-w-3xl lg:ml-12">
+            <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
+              {title}
+            </h2>
+            <p className="text-center text-2xl lg:text-left">{subtitle}</p>
+          </div>
         </div>
         <div>
           <Image

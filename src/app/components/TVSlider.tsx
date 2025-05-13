@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from './ui/carousel'
 import { Button } from './ui/button'
 import Autoplay from 'embla-carousel-autoplay'
+import { useIsMobile } from '../hooks/use-mobile'
 
 type ImageType = {
   url: string
@@ -27,13 +28,14 @@ export function TVSlider({
   const [currentSlide, setCurrentSlide] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Transform scale based on scroll position
+  const isMobile = useIsMobile()
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start 50%', 'start start'],
   })
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5])
+  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 1.5])
 
   useEffect(() => {
     if (!api) {

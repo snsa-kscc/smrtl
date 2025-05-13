@@ -65,7 +65,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       transition={{ duration: 0.7 }}
-      className="mx-28 grid grid-cols-2 justify-items-start gap-20 py-32"
+      className="mx-8 grid grid-cols-2 justify-items-start gap-20 py-24 lg:mx-28 lg:py-32"
     >
       {counterBox.map((counter, index) => (
         <div
@@ -76,7 +76,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
           )}
         >
           <h2
-            className="text-10xl text-smartellDarkBlue cursor-pointer font-bold"
+            className="lg:text-10xl text-smartellDarkBlue cursor-pointer text-7xl font-bold"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             onClick={() => setHoveredIndex(index)}
@@ -85,11 +85,11 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
           </h2>
           <div
             className={cn(
-              'absolute top-1/2 left-full w-max -translate-x-1/4 transform transition-opacity duration-700',
+              'absolute top-1/2 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 lg:-translate-x-1/4',
               hoveredIndex === index ? 'opacity-100' : 'opacity-0',
             )}
           >
-            <p className="bg-smartellLightPurple rounded-full px-16 py-4 text-xl font-bold text-white">
+            <p className="bg-smartellLightPurple rounded-full px-4 py-4 text-xs font-bold text-white lg:px-16 lg:text-xl">
               {counter.description}
             </p>
           </div>

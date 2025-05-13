@@ -24,15 +24,15 @@ export function IPTVSolutions({
 }) {
   return (
     <div className="relative px-4 py-6 sm:px-8 md:px-20 md:py-40">
-      <div className="flex flex-col items-center justify-between px-4 py-20 sm:px-8 md:flex-row md:px-20">
-        <h3 className="text-smartellLightPurple w-full text-3xl font-bold text-balance md:w-2/3 md:text-4xl lg:text-5xl">
+      <div className="flex flex-col items-center justify-between gap-10 px-4 py-20 sm:px-8 md:px-20 lg:flex-row">
+        <h3 className="text-smartellLightPurple w-full text-3xl font-bold text-balance md:text-4xl lg:w-2/3 lg:text-5xl">
           {title}
         </h3>
         <div className="w-60">
           <PlayShape />
         </div>
       </div>
-      <div className="flex items-center justify-between px-4 pb-32 sm:px-8 md:px-20">
+      <div className="flex flex-col items-center justify-between gap-10 px-4 pb-32 sm:px-8 md:px-20 lg:flex-row">
         <p className="text-smartellDarkBlue text-2xl font-bold md:text-3xl lg:text-5xl">
           {subtitle}
         </p>
@@ -50,14 +50,14 @@ export function IPTVSolutions({
           <p className="text-smartellLightPurple text-5xl">{String(index + 1).padStart(2, '0')}</p>
 
           {/* Mobile Accordion */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Accordion type="single" collapsible>
               <AccordionItem value={item.title} className="border-none">
                 <AccordionTrigger className="py-4 hover:no-underline">
                   <h3 className="text-smartellDarkBlue text-4xl font-bold">{item.title}</h3>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-smartellDarkBlue pb-4 text-sm">
+                  <p className="text-smartellDarkBlue pb-4 text-lg">
                     {item.description.split('**').map((part, index) =>
                       index % 2 === 0 ? (
                         part
@@ -75,7 +75,7 @@ export function IPTVSolutions({
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:my-20 md:flex md:flex-row md:items-start md:justify-between md:gap-24">
+          <div className="hidden lg:my-20 lg:flex lg:flex-row lg:items-start lg:justify-between lg:gap-24">
             <div className="basis-1/2">
               <h3 className="text-smartellDarkBlue text-4xl font-bold sm:text-5xl md:text-6xl">
                 {item.title}
@@ -95,7 +95,7 @@ export function IPTVSolutions({
               </p>
             </div>
           </div>
-          <hr className="mt-4 hidden md:block" />
+          <hr className="mt-4 hidden lg:block" />
         </div>
       ))}
     </div>

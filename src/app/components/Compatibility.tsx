@@ -46,7 +46,7 @@ export function Compatibility({
             </div>
           ))}
         </div>
-        <div className="mx-auto max-w-sm translate-x-1/3 translate-y-1/4">
+        <div className="mx-auto max-w-sm translate-y-1/4 lg:translate-x-1/3">
           <SupportShape />
         </div>
       </div>

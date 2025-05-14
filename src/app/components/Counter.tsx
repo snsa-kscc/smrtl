@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { cn } from '../lib/utils'
+import { useIsMobile } from '../hooks/use-mobile'
 
 export function Counter({ counterBox }: { counterBox: { number: number; description: string }[] }) {
+  const isMobile = useIsMobile()
   const [counters, setCounters] = useState<string[]>(counterBox.map(() => '0'))
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const ref = useRef(null)
@@ -85,7 +87,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
           </h2>
           <div
             className={cn(
-              'absolute top-1/2 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 lg:-translate-x-1/4',
+              'absolute top-10/12 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 lg:top-1/2 lg:-translate-x-1/4',
               hoveredIndex === index ? 'opacity-100' : 'opacity-0',
             )}
           >

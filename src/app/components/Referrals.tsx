@@ -92,10 +92,10 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
 
   return (
     <div ref={containerRef} className="relative mt-20 h-[600vh] lg:h-[200vh]">
-      <div ref={stickyRef} className="sticky top-0 h-[90vh] overflow-hidden pt-20">
+      <div ref={stickyRef} className="sticky top-0 h-[70vh] overflow-hidden pt-20 lg:h-[90vh]">
         <motion.div
           ref={motionDivRef}
-          className="flex items-center gap-20"
+          className="flex gap-20 lg:items-center"
           style={{ x: scrollPosition }}
         >
           <div className="ml-18 basis-72 lg:ml-32">

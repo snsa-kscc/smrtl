@@ -31,7 +31,7 @@ export async function ArchiveBlock({
   return (
     <>
       <Archive lang={lang} posts={filteredPosts} />
-      <div className="mx-auto w-1/2 py-20">{isShape && <BrandsShape />}</div>
+      <div className="mx-auto w-2/3 py-10 lg:w-1/2 lg:py-20">{isShape && <BrandsShape />}</div>
     </>
   )
 }

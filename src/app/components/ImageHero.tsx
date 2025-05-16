@@ -17,7 +17,7 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
     <div
       className={cn(
         'grid grid-cols-5 grid-rows-2 items-start justify-items-start gap-y-10 bg-cover bg-center px-14 py-12 lg:min-h-[70vh] lg:p-20',
-        logo ? 'min-h-[100vh]' : 'min-h-[60vh]',
+        logo ? 'min-h-[120vh]' : 'min-h-[60vh]',
       )}
       style={{
         backgroundImage: `url('${image.url}')`,

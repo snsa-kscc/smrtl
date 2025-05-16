@@ -28,7 +28,7 @@ export function TVSlider({
   const [currentSlide, setCurrentSlide] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile(1536)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,

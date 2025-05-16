@@ -6,7 +6,7 @@ import { QAShape } from './shapes/QAShape'
 import { useIsMobile } from '../hooks/use-mobile'
 
 export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: string }[] }) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile(1024)
   return (
     <div className="from-smartellDarkBlue to-smartellDarkBlue/85 bg-gradient-to-b">
       <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">

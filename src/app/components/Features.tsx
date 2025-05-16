@@ -51,7 +51,7 @@ function Feature({
   return (
     <div className={`p-1 ${margin} flex flex-nowrap whitespace-nowrap`}>
       <motion.div
-        className="flex flex-nowrap text-8xl font-bold whitespace-nowrap text-white"
+        className="flex flex-nowrap text-4xl font-bold whitespace-nowrap text-white lg:text-8xl"
         style={{ x }}
       >
         {Array.from({ length: 4 }, (_, index) => (
@@ -76,15 +76,17 @@ export function Features({
   secondLineFeatures: string
 }) {
   return (
-    <div className="bg-smartellLightPurple flex flex-col items-start justify-center overflow-hidden px-6 py-24 md:px-12 lg:px-24 xl:px-32">
-      <p className="pt-32 pl-28 text-2xl font-bold text-white md:text-3xl lg:text-4xl">{title}</p>
+    <div className="bg-smartellLightPurple flex flex-col items-start justify-center overflow-hidden px-6 py-14 md:px-12 lg:px-24 lg:py-24 xl:px-32">
+      <p className="pt-10 pl-28 text-2xl font-bold text-white md:text-3xl lg:pt-32 lg:text-4xl">
+        {title}
+      </p>
       <Feature baseVelocity={-0.6} margin="mt-24">
         {firstLineFeatures}
       </Feature>
       <Feature baseVelocity={0.6} margin="mb-24">
         {secondLineFeatures}
       </Feature>
-      <p className="self-end pr-28 pb-32 text-2xl text-white">{subtitle}</p>
+      <p className="self-end pr-28 pb-14 text-2xl text-white lg:pb-32">{subtitle}</p>
     </div>
   )
 }

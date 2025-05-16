@@ -1,6 +1,8 @@
 'use client'
 
 import { ImageShape } from './shapes/ImageShape'
+import { useIsMobile } from '../hooks/use-mobile'
+import { cn } from '../lib/utils'
 
 type ImageHeroProps = {
   title: string
@@ -10,15 +12,19 @@ type ImageHeroProps = {
 }
 
 export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
+  const isMobile = useIsMobile(1024)
   return (
     <div
-      className="grid min-h-[60vh] grid-cols-5 grid-rows-2 items-end justify-items-start gap-y-10 bg-cover bg-center p-20 lg:min-h-[70vh]"
+      className={cn(
+        'grid grid-cols-5 grid-rows-2 items-start justify-items-start gap-y-10 bg-cover bg-center px-14 py-12 lg:min-h-[70vh] lg:p-20',
+        logo ? 'min-h-[100vh]' : 'min-h-[60vh]',
+      )}
       style={{
         backgroundImage: `url('${image.url}')`,
       }}
     >
       {logo ? (
-        <h2 className="text-smartellLightPurple mb-8 text-4xl font-bold lg:text-5xl xl:text-7xl">
+        <h2 className="text-smartellLightPurple col-span-5 text-4xl font-bold lg:col-span-1 lg:text-5xl xl:text-7xl">
           {title}
         </h2>
       ) : (
@@ -26,8 +32,10 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
           {title}
         </h2>
       )}
-      <p className="row-start-2 self-start text-2xl text-white">{description}</p>
-      {logo && (
+      <p className="col-span-5 row-start-2 self-end text-2xl text-white lg:col-span-1 lg:self-start">
+        {description}
+      </p>
+      {!isMobile && logo && (
         <div className="col-start-3 row-start-2 translate-y-10 scale-150">
           <ImageShape />
         </div>

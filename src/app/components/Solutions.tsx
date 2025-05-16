@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from './ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 
@@ -62,7 +61,7 @@ export function Solutions({
             {industry.map((item, index) => (
               <p
                 key={item.name}
-                className={`mb-4 text-2xl font-bold transition-colors duration-300 md:text-3xl lg:text-4xl xl:text-5xl ${
+                className={`text-2xl font-bold transition-colors duration-300 md:text-3xl lg:mb-4 lg:text-4xl xl:text-5xl ${
                   index === currentIndex ? 'text-smartellLightPurple' : 'text-slate-600'
                 }`}
               >

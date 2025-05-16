@@ -29,12 +29,12 @@ export function Compatibility({
 }: CompatibilityProps) {
   return (
     <>
-      <div className="bg-smartellDarkBlue px-20 pt-52">
-        <h3 className="text-smartellLightPurple mx-auto w-2/3 text-center text-4xl font-bold text-balance lg:text-5xl xl:text-8xl">
+      <div className="bg-smartellDarkBlue px-8 pt-28 lg:px-20 lg:pt-52">
+        <h3 className="text-smartellLightPurple mx-auto w-full text-center text-4xl font-bold text-balance lg:w-2/3 lg:text-5xl xl:text-8xl">
           {title}
         </h3>
         <p className="mt-6 py-10 text-center text-2xl text-balance text-white">{description}</p>
-        <div className="mt-24 flex items-center justify-center gap-16">
+        <div className="mt-14 flex items-center justify-center gap-16 lg:mt-24">
           {platform.map((item) => (
             <div key={item.image.id}>
               <Image

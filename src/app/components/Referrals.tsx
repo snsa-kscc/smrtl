@@ -92,27 +92,28 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
 
   return (
     <div ref={containerRef} className="relative mt-20 h-[600vh] lg:h-[200vh]">
-      <div ref={stickyRef} className="sticky top-0 h-[70vh] overflow-hidden pt-20 lg:h-[90vh]">
+      <div ref={stickyRef} className="sticky top-0 overflow-hidden py-20">
         <motion.div
           ref={motionDivRef}
           className="flex gap-20 lg:items-center"
           style={{ x: scrollPosition }}
         >
           <div className="ml-18 basis-72 lg:ml-32">
-            <h2 className="text-smartellDarkBlue text-center text-5xl font-bold text-balance">
+            <h2 className="text-smartellDarkBlue text-center text-3xl font-bold text-balance lg:text-5xl">
               {title}
             </h2>
           </div>
           <div className="flex gap-20">
             {referrals.map((referral, idx) => (
-              <div key={idx} className="shrink-0 basis-72">
+              <div key={idx} className="basis-72 lg:shrink-0">
                 <Image
                   src={referral.image.url}
                   alt={referral.image.alt}
                   width={referral.image.width}
                   height={referral.image.height}
+                  className="max-w-40 lg:max-w-full"
                 />
-                <h3 className="text-smartellDarkBlue mt-8 h-48 overflow-hidden text-2xl font-bold lg:h-56 lg:text-3xl">
+                <h3 className="text-smartellDarkBlue mt-8 h-56 overflow-hidden text-2xl font-bold lg:text-3xl">
                   {referral.message}
                 </h3>
                 <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referral.name}</p>

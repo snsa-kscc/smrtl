@@ -54,7 +54,7 @@ export function IPTVSolutions({
             <Accordion type="single" collapsible>
               <AccordionItem value={item.title} className="border-none">
                 <AccordionTrigger className="py-4 hover:no-underline">
-                  <h3 className="text-smartellDarkBlue text-4xl font-bold">{item.title}</h3>
+                  <h3 className="text-smartellDarkBlue text-3xl font-bold">{item.title}</h3>
                 </AccordionTrigger>
                 <AccordionContent>
                   <p className="text-smartellDarkBlue pb-4 text-lg">

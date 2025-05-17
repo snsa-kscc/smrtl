@@ -47,7 +47,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
           />
         </div>
       </div>
-      <div className="bg-smartellDarkBlue grid grid-cols-1 gap-16 px-6 py-40 md:grid-cols-2 lg:grid-cols-4 lg:px-24 xl:px-32">
+      <div className="bg-smartellDarkBlue grid grid-cols-1 gap-16 px-6 py-40 md:grid-cols-2 lg:px-24 xl:px-32 2xl:grid-cols-4">
         {benefitsBox.map((benefit, index) => {
           const IconComponent = (LucideIcons as any)[benefit.icon]
           return (
@@ -64,7 +64,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
                     <div className="h-16 w-16 rounded-full bg-white/10" />
                   )}
                 </div>
-                <h3 className="text-smartellLightPurple mb-10 text-center text-2xl font-bold lg:text-4xl">
+                <h3 className="text-smartellLightPurple mb-10 text-center text-2xl font-bold lg:text-4xl 2xl:text-3xl">
                   {benefit.title}
                 </h3>
                 <p className="text-lg text-white/90">{benefit.description}</p>

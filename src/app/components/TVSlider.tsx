@@ -116,8 +116,8 @@ export function TVSlider({
         </div>
 
         {/* TV Logo */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[120%]">
-          <p className="text-sm font-semibold tracking-wider text-gray-400">SMARTELL</p>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[200%]">
+          <p className="text-xs font-semibold tracking-wider text-gray-400 lg:text-sm">SMARTELL</p>
         </div>
       </motion.div>
     </div>

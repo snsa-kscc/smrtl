@@ -77,17 +77,17 @@ export default async function Page({
   return (
     <>
       {localizedPosts && <LocaleLinksUpdater localeLinks={localizedPosts} />}
-      <h1 className="text-smartellLightPurple px-8 pt-40 text-center text-4xl font-bold md:px-16 lg:text-left lg:text-5xl xl:text-8xl">
+      <h1 className="text-smartellLightPurple px-8 pt-16 text-center text-4xl font-bold md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-left lg:text-6xl xl:text-8xl">
         {title}
       </h1>
       {featuredImage && (
-        <div className="pt-40">
+        <div className="pt-16 lg:pt-40">
           <Image
             src={(featuredImage as Media).url ?? ''}
             alt={(featuredImage as Media).alt ?? ''}
             width={(featuredImage as Media).width ?? 0}
             height={(featuredImage as Media).height ?? 0}
-            className="mx-auto max-w-[1920px]"
+            className="mx-auto w-full max-w-[1920px]"
           />
         </div>
       )}

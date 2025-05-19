@@ -33,7 +33,7 @@ export function Hero({
 }) {
   const titleCharsRef = useRef<HTMLSpanElement[]>([])
   const animationWordsRef = useRef<HTMLDivElement[]>([])
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile(1536)
 
   useGSAP(() => {
     const tl = gsap.timeline()
@@ -80,12 +80,12 @@ export function Hero({
 
   return (
     <>
-      <div className="relative my-14 flex flex-col items-center px-4 md:px-8 lg:my-20 lg:px-16">
+      <div className="relative my-10 flex flex-col items-center px-4 md:px-8 lg:my-20 lg:px-16">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.02 }}
-          className="text-smartellLightPurple mb-6 text-center text-5xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-9xl"
+          className="text-smartellLightPurple mb-6 text-center text-5xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-8xl xl:text-9xl"
         >
           {title.split(/(\s)/).map((word, i) => (
             <div key={i} className="word inline-block">
@@ -107,7 +107,7 @@ export function Hero({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="text-smartellDarkBlue relative mb-12 inline-block text-3xl font-bold md:mb-16 md:text-6xl lg:mb-20 lg:text-8xl"
+          className="text-smartellDarkBlue relative mb-12 inline-block text-3xl font-bold md:mb-16 md:text-6xl lg:mb-20 lg:text-7xl xl:text-8xl"
         >
           {animationWords.split(';').map((word, i) => (
             <div
@@ -147,7 +147,7 @@ export function Hero({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        className="text-smartellDarkBlue mx-auto mb-10 max-w-2xl px-4 text-center text-3xl font-bold"
+        className="text-smartellDarkBlue mx-auto mb-0 max-w-2xl px-4 text-center text-3xl font-bold lg:mb-10"
       >
         {description}
       </motion.p>

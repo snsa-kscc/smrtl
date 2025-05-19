@@ -24,7 +24,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               />
             </Link>
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {header.navItems?.map((item, idx) => (
                 <Link
@@ -37,7 +37,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               ))}
             </div>
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <div className="ml-4 flex items-center lg:ml-6">
               <LanguageSwitcher />
               <Link
@@ -48,7 +48,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               </Link>
             </div>
           </div>
-          <div className="-mr-2 flex lg:hidden">
+          <div className="-mr-2 flex xl:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
@@ -59,14 +59,14 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               <span className="sr-only">Open main menu</span>
               <div className="relative flex h-6 w-6 items-center justify-center">
                 {/* Hamburger icon with animation */}
-                <span 
-                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45' : '-translate-y-2'}`} 
+                <span
+                  className={`absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45' : '-translate-y-2'}`}
                 />
-                <span 
-                  className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100'}`} 
+                <span
+                  className={`absolute block h-0.5 w-6 bg-current transition-all duration-300 ease-in-out ${isMenuOpen ? 'scale-x-0 opacity-0' : 'opacity-100'}`}
                 />
-                <span 
-                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45' : 'translate-y-2'}`} 
+                <span
+                  className={`absolute block h-0.5 w-6 transform bg-current transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45' : 'translate-y-2'}`}
                 />
               </div>
             </button>
@@ -75,7 +75,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
       </div>
 
       <div
-        className={`transition-max-height overflow-hidden duration-300 ease-in-out lg:hidden ${
+        className={`transition-max-height overflow-hidden duration-300 ease-in-out xl:hidden ${
           isMenuOpen ? 'max-h-screen' : 'max-h-0'
         }`}
         id="mobile-menu"
@@ -85,7 +85,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
             <Link
               key={idx}
               href={item.url}
-              className="text-smartellDarkBlue relative block rounded-md px-3 py-2 text-lg font-medium transition-colors duration-200"
+              className="text-smartellDarkBlue relative block rounded-md px-3 py-2 text-lg font-bold transition-colors duration-200"
             >
               {item.label}
             </Link>
@@ -96,7 +96,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
             <LanguageSwitcher />
             <Link
               href={header.cta?.url ?? ''}
-              className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 ml-auto shrink-0 rounded-full p-4 text-sm font-medium text-white shadow-xs transition duration-200"
+              className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 ml-auto shrink-0 rounded-full p-4 text-sm font-bold text-white shadow-xs transition duration-200"
             >
               {header.cta?.label}
             </Link>

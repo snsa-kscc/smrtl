@@ -78,7 +78,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
           )}
         >
           <h2
-            className="lg:text-10xl text-smartellDarkBlue cursor-pointer text-6xl font-bold"
+            className="2xl:text-10xl text-smartellDarkBlue cursor-pointer text-6xl font-bold md:text-7xl lg:text-8xl xl:text-9xl"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             onClick={() => setHoveredIndex(index)}
@@ -87,11 +87,11 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
           </h2>
           <div
             className={cn(
-              'absolute top-10/12 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 lg:top-1/2 lg:-translate-x-1/4',
+              'absolute top-10/12 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 2xl:top-1/2 2xl:-translate-x-1/4',
               hoveredIndex === index ? 'opacity-100' : 'opacity-0',
             )}
           >
-            <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-[10px] font-bold text-white lg:px-16 lg:text-xl">
+            <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-[10px] font-bold text-white lg:px-16 lg:text-base xl:text-lg">
               {counter.description}
             </p>
           </div>

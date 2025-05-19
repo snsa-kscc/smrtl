@@ -28,7 +28,7 @@ export function IPTVSolutions({
         <h3 className="text-smartellLightPurple w-full text-3xl font-bold text-balance md:text-4xl lg:w-2/3 lg:text-5xl">
           {title}
         </h3>
-        <div className="w-60">
+        <div className="w-40 lg:w-60">
           <PlayShape />
         </div>
       </div>
@@ -50,11 +50,13 @@ export function IPTVSolutions({
           <p className="text-smartellLightPurple text-5xl">{String(index + 1).padStart(2, '0')}</p>
 
           {/* Mobile Accordion */}
-          <div className="lg:hidden">
+          <div className="xl:hidden">
             <Accordion type="single" collapsible>
               <AccordionItem value={item.title} className="border-none">
                 <AccordionTrigger className="py-4 hover:no-underline">
-                  <h3 className="text-smartellDarkBlue text-3xl font-bold">{item.title}</h3>
+                  <h3 className="text-smartellDarkBlue text-3xl font-bold md:text-4xl">
+                    {item.title}
+                  </h3>
                 </AccordionTrigger>
                 <AccordionContent>
                   <p className="text-smartellDarkBlue pb-4 text-lg">
@@ -75,7 +77,7 @@ export function IPTVSolutions({
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden lg:my-20 lg:flex lg:flex-row lg:items-start lg:justify-between lg:gap-24">
+          <div className="hidden xl:my-20 xl:flex xl:flex-row xl:items-start xl:justify-between xl:gap-24">
             <div className="basis-1/2">
               <h3 className="text-smartellDarkBlue text-4xl font-bold sm:text-5xl md:text-6xl">
                 {item.title}
@@ -95,7 +97,7 @@ export function IPTVSolutions({
               </p>
             </div>
           </div>
-          <hr className="mt-4 hidden lg:block" />
+          <hr className="mt-4 hidden xl:block" />
         </div>
       ))}
     </div>

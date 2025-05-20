@@ -25,7 +25,7 @@ type BenefitsProps = {
 export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl }: BenefitsProps) {
   return (
     <div className="py-16 lg:py-32">
-      <div className="mb-16 flex flex-col items-start gap-12 px-6 py-16 lg:mb-24 lg:flex-row lg:items-start lg:justify-between lg:px-24 lg:py-32 xl:px-32">
+      <div className="mb-16 flex flex-col items-center gap-12 px-6 py-16 lg:mb-24 lg:flex-row lg:items-start lg:justify-between lg:px-24 lg:py-32 xl:px-32">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start">
           <div className="w-32 lg:w-40">
             <ImageShape />

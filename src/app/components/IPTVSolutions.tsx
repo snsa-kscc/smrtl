@@ -23,7 +23,7 @@ export function IPTVSolutions({
   IPTVBox: IPTVBoxProp[]
 }) {
   return (
-    <div className="relative px-4 py-6 sm:px-8 md:px-20 md:py-40">
+    <div className="relative px-4 py-6 sm:px-8 md:px-20 lg:py-40">
       <div className="flex flex-col items-center justify-between gap-10 px-4 py-20 sm:px-8 md:px-20 lg:flex-row">
         <h3 className="text-smartellLightPurple w-full text-3xl font-bold text-balance md:text-4xl lg:w-2/3 lg:text-5xl">
           {title}

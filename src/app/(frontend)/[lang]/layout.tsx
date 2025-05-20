@@ -44,7 +44,10 @@ export default async function RootLayout({
           <TailwindIndicator />
           {/* <Sig /> */}
         </LocaleLinksProvider>
-        <Toaster position="bottom-right" />
+        <Toaster
+          position="bottom-right"
+          toastOptions={{ classNames: { toast: `${Mont.className}` } }}
+        />
       </body>
     </html>
   )

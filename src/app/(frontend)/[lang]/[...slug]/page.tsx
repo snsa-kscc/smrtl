@@ -77,7 +77,7 @@ export default async function Page({
   return (
     <>
       {localizedPosts && <LocaleLinksUpdater localeLinks={localizedPosts} />}
-      <h1 className="text-smartellLightPurple px-8 pt-16 text-center text-4xl font-bold md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-left lg:text-6xl xl:text-8xl">
+      <h1 className="text-smartellLightPurple px-4 pt-16 text-center text-5xl font-bold md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-left lg:text-7xl xl:text-8xl">
         {title}
       </h1>
       {featuredImage && (
@@ -105,9 +105,11 @@ export default async function Page({
       <div className="mx-auto w-5xl max-w-full px-8">
         <hr />
       </div>
-      <div className="px-8 pt-32">
-        <h2 className="text-center text-5xl font-bold">{readMoreTranslations[lang]}</h2>
-        <p className="pt-8 text-center text-lg">{readMoreSubTranslations[lang]}</p>
+      <div className="pt-32">
+        <div className="px-8">
+          <h2 className="text-center text-5xl font-bold">{readMoreTranslations[lang]}</h2>
+          <p className="pt-8 text-center text-lg">{readMoreSubTranslations[lang]}</p>
+        </div>
         <ArchiveBlock
           lang={lang}
           limit={relatedArticlesLimit ? relatedArticlesLimit + 1 : 6} // because we are excluding current post

@@ -70,7 +70,7 @@ export default async function Page({
     <>
       <LocaleLinksUpdater localeLinks={localizedPosts} />
       {title !== 'home' && (
-        <h1 className="text-smartellLightPurple mx-auto w-5xl max-w-full px-8 pt-40 text-center text-4xl font-bold lg:text-left lg:text-5xl xl:text-8xl">
+        <h1 className="text-smartellLightPurple px-4 pt-16 text-center text-5xl font-bold hyphens-manual md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-left lg:text-7xl xl:text-8xl">
           {title}
         </h1>
       )}

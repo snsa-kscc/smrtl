@@ -36,7 +36,7 @@ export function IPTVSolutions({
         <p className="text-smartellDarkBlue text-2xl font-bold md:text-3xl lg:text-5xl">
           {subtitle}
         </p>
-        <div>
+        <div className="shrink-0">
           <Link
             href={ctaUrl}
             className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 inline-block cursor-pointer rounded-full px-16 py-4 text-xl font-bold text-white transition-colors"

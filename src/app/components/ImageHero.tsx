@@ -24,7 +24,7 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
       }}
     >
       {logo ? (
-        <h2 className="text-smartellLightPurple col-span-5 text-4xl font-bold lg:col-span-1 lg:text-5xl xl:text-7xl">
+        <h2 className="col-span-5 text-center text-3xl font-bold text-white lg:col-span-1 lg:text-5xl xl:text-7xl">
           {title}
         </h2>
       ) : (
@@ -32,7 +32,7 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
           {title}
         </h2>
       )}
-      <p className="col-span-5 row-start-2 self-end text-2xl text-white lg:col-span-1 lg:self-start">
+      <p className="col-span-5 row-start-2 self-end text-center text-2xl text-white lg:col-span-1 lg:self-start">
         {description}
       </p>
       {!isMobile && logo && (

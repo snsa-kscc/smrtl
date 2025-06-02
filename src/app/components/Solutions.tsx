@@ -107,7 +107,7 @@ export function Solutions({
               ))}
             </CarouselContent>
           </Carousel>
-          <div className="flex items-center justify-center gap-4 pt-3">
+          <div className="flex items-center justify-center gap-4 pt-3 md:hidden">
             <p className="text-lg text-white">{currentIndex + 1}</p>
             <hr className="h-0.5 w-12 bg-white" />
             <p className="text-lg text-white">{industry.length}</p>

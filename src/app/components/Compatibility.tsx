@@ -29,7 +29,7 @@ export function Compatibility({
 }: CompatibilityProps) {
   return (
     <>
-      <div className="bg-smartellDarkBlue px-8 pt-28 lg:px-20 lg:pt-52">
+      <div className="bg-smartellDarkBlue px-8 pt-16 lg:px-20 lg:pt-52">
         <h3 className="text-smartellLightPurple mx-auto w-full text-center text-4xl font-bold text-balance lg:w-2/3 lg:text-5xl xl:text-8xl">
           {title}
         </h3>

@@ -24,20 +24,20 @@ type BenefitsProps = {
 
 export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl }: BenefitsProps) {
   return (
-    <div className="py-16 lg:py-32">
-      <div className="mb-16 flex flex-col items-center gap-12 px-6 py-16 lg:mb-24 lg:flex-row lg:items-start lg:justify-between lg:px-24 lg:py-32 xl:px-32">
-        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start">
-          <div className="w-32 lg:w-40">
+    <div className="pb-10 lg:py-32">
+      <div className="flex flex-col items-center gap-12 px-6 py-8 md:py-16 lg:mb-24 lg:flex-row lg:items-start lg:justify-between lg:px-24 lg:py-32 xl:px-32">
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] lg:gap-12">
+          <div className="z-0 col-start-1 row-start-1 w-32 justify-self-start opacity-45 lg:col-start-1 lg:row-start-1 lg:w-40 lg:justify-self-start lg:opacity-100">
             <ImageShape />
           </div>
-          <div className="max-w-3xl lg:ml-12">
-            <h2 className="text-smartellLightPurple mb-8 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
+          <div className="z-10 col-start-1 row-start-1 max-w-3xl self-center pt-24 lg:col-start-2 lg:row-start-1 lg:pt-0">
+            <h2 className="text-smartellLightPurple mb-5 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
               {title}
             </h2>
             <p className="text-center text-2xl lg:text-left">{subtitle}</p>
           </div>
         </div>
-        <div>
+        <div className="hidden lg:block">
           <Image
             src={image.url}
             alt={image.alt}
@@ -47,7 +47,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
           />
         </div>
       </div>
-      <div className="bg-smartellDarkBlue grid grid-cols-1 gap-16 px-6 py-40 md:grid-cols-2 lg:px-24 xl:px-32 2xl:grid-cols-4">
+      <div className="bg-smartellDarkBlue grid grid-cols-1 gap-16 px-6 py-16 md:grid-cols-2 md:py-40 lg:px-24 xl:px-32 2xl:grid-cols-4">
         {benefitsBox.map((benefit, index) => {
           const IconComponent = (LucideIcons as any)[benefit.icon]
           return (
@@ -73,7 +73,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
           )
         })}
       </div>
-      <div className="mt-24 text-center">
+      <div className="mt-8 text-center lg:mt-24">
         <Link
           href={ctaUrl}
           className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 inline-block cursor-pointer rounded-full px-16 py-4 text-xl font-bold text-white transition-colors"

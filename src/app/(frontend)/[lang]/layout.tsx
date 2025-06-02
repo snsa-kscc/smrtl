@@ -39,7 +39,7 @@ export default async function RootLayout({
             }}
           />
           <Header lang={lang} />
-          <main>{children}</main>
+          <main className="pt-14 lg:pt-16">{children}</main>
           <Footer lang={lang} />
           <TailwindIndicator />
           {/* <Sig /> */}

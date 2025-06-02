@@ -40,7 +40,7 @@ export function Solutions({
   }, [api])
 
   return (
-    <div className="bg-smartellDarkBlue py-12 md:py-24">
+    <div className="bg-smartellDarkBlue py-4 md:py-24">
       <h3 className="w-full px-6 py-12 text-center text-3xl font-bold text-balance text-white md:px-24 md:py-20 md:text-4xl lg:text-5xl">
         {title.split('**').map((part, index) =>
           index % 2 === 0 ? (
@@ -52,22 +52,40 @@ export function Solutions({
           ),
         )}
       </h3>
-      <div className="flex flex-col items-center justify-between pt-12 md:flex-row">
+      <div className="flex flex-col items-center justify-between pt-4 md:flex-row lg:pt-12">
         <div>
           <p className="w-full px-6 pb-10 text-2xl font-bold text-balance text-white md:pt-28 md:pl-24 md:text-3xl lg:text-4xl">
             {description}
           </p>
           <div className="mb-8 w-full px-6 md:mb-0 md:basis-1/2 md:pl-24">
-            {industry.map((item, index) => (
-              <p
-                key={item.name}
-                className={`text-2xl font-bold transition-colors duration-300 md:text-3xl lg:mb-4 lg:text-4xl xl:text-5xl ${
-                  index === currentIndex ? 'text-smartellLightPurple' : 'text-slate-600'
-                }`}
-              >
-                {item.name}
-              </p>
-            ))}
+            {/* For md and larger screens - show all items */}
+            <div className="hidden md:block">
+              {industry.map((item, index) => (
+                <p
+                  key={item.name}
+                  className={`text-2xl font-bold transition-colors duration-300 md:text-3xl lg:mb-4 lg:text-4xl xl:text-5xl ${
+                    index === currentIndex ? 'text-smartellLightPurple' : 'text-slate-600'
+                  }`}
+                >
+                  {item.name}
+                </p>
+              ))}
+            </div>
+            {/* For xs and sm screens - show only current item with animation */}
+            <div className="relative h-6 md:hidden">
+              {industry.map((item, index) => (
+                <p
+                  key={item.name}
+                  className={`absolute top-0 left-0 text-2xl font-bold transition-all duration-500 ${
+                    index === currentIndex
+                      ? 'text-smartellLightPurple translate-y-0 opacity-100'
+                      : 'translate-y-8 text-slate-600 opacity-0'
+                  }`}
+                >
+                  {item.name}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
         <div className="w-full md:basis-1/2 md:translate-y-12">
@@ -89,6 +107,11 @@ export function Solutions({
               ))}
             </CarouselContent>
           </Carousel>
+          <div className="flex items-center justify-center gap-4 pt-3">
+            <p className="text-lg text-white">{currentIndex + 1}</p>
+            <hr className="h-0.5 w-12 bg-white" />
+            <p className="text-lg text-white">{industry.length}</p>
+          </div>
         </div>
       </div>
     </div>

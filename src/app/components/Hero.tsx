@@ -80,7 +80,7 @@ export function Hero({
 
   return (
     <>
-      <div className="relative my-10 flex flex-col items-center px-4 md:px-8 lg:my-20 lg:px-16">
+      <div className="relative mt-10 flex flex-col items-center px-4 md:mb-10 md:px-8 lg:my-20 lg:px-16">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -151,7 +151,7 @@ export function Hero({
       >
         {description}
       </motion.p>
-      <div className="pb-20 md:pb-32 lg:pb-40">
+      <div className="pb-6 md:pb-32 lg:pb-40">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}

@@ -48,7 +48,7 @@ export function TVSlider({
   }, [api])
 
   return (
-    <div ref={containerRef} className="flex flex-col items-center px-4 py-10 sm:px-6 md:px-8">
+    <div ref={containerRef} className="flex flex-col items-center px-4 py-8 sm:px-6 md:px-8">
       <motion.div className="relative mx-auto w-full max-w-5xl" style={{ scale }}>
         {/* TV Frame */}
         <div className="relative">

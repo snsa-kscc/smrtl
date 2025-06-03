@@ -4,6 +4,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { useIsMobile } from '../hooks/use-mobile'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from '@/app/components/ui/carousel'
 
 type ReferralsProps = {
   name: string
@@ -18,16 +24,26 @@ type ReferralsProps = {
 }
 
 export function Referrals({ title, referrals }: { title: string; referrals: ReferralsProps[] }) {
+  // --- States and Refs for Desktop version ---
   const containerRef = useRef<HTMLDivElement>(null)
   const stickyRef = useRef<HTMLDivElement>(null)
   const motionDivRef = useRef<HTMLDivElement>(null)
   const [viewportWidth, setViewportWidth] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [maxScrollReached, setMaxScrollReached] = useState(0)
+  // --- End States and Refs for Desktop version ---
+
   const isMobile = useIsMobile()
 
-  // Get the viewport width on mount and when window resizes
+  // --- States for Mobile Carousel version ---
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+  // --- End States for Mobile Carousel version ---
+
+  // Effect for Desktop: Get the viewport width on mount and when window resizes
   useEffect(() => {
+    if (isMobile) return
     const updateViewportWidth = () => {
       setViewportWidth(window.innerWidth)
     }
@@ -35,17 +51,16 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
     updateViewportWidth()
     window.addEventListener('resize', updateViewportWidth)
     return () => window.removeEventListener('resize', updateViewportWidth)
-  }, [])
+  }, [isMobile])
 
-  // Handle scroll events to calculate horizontal scroll position
+  // Effect for Desktop: Handle scroll events to calculate horizontal scroll position
   useEffect(() => {
-    if (!containerRef.current || !stickyRef.current || !motionDivRef.current) return
+    if (isMobile || !containerRef.current || !stickyRef.current || !motionDivRef.current) return
 
-    // Calculate max scroll distance dynamically
     const scrollableContentWidth = motionDivRef.current.scrollWidth
     const visibleContainerWidth = stickyRef.current.clientWidth
     const calculatedMaxScroll = Math.max(0, scrollableContentWidth - visibleContainerWidth)
-    const maxScroll = Math.max(0, calculatedMaxScroll + (isMobile ? 50 : 100))
+    const maxScroll = Math.max(0, calculatedMaxScroll + 100) // Desktop specific offset
 
     const handleScroll = () => {
       if (!containerRef.current || !stickyRef.current) return
@@ -53,24 +68,19 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
       const containerRect = containerRef.current.getBoundingClientRect()
       const stickyRect = stickyRef.current.getBoundingClientRect()
       const scrollY = window.scrollY
-
       const isSticky = stickyRect.top <= 0
 
       if (isSticky) {
         const containerHeight = containerRef.current.offsetHeight
         const startPoint = containerRef.current.offsetTop
-        // Ensure scrollableDistance is at least 1 to prevent division by zero
         const scrollableDistance = Math.max(1, containerHeight - window.innerHeight)
         const endPoint = startPoint + scrollableDistance
-
         const scrollProgress = Math.max(
           0,
           Math.min(1, (scrollY - startPoint) / (endPoint - startPoint)),
         )
-
         const newPosition = -maxScroll * scrollProgress
         setScrollPosition(newPosition)
-
         if (newPosition < maxScrollReached) {
           setMaxScrollReached(newPosition)
         }
@@ -82,13 +92,70 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
       }
     }
 
-    // Initial check
     handleScroll()
-
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [viewportWidth, maxScrollReached, isMobile])
+  }, [isMobile, viewportWidth, maxScrollReached])
+
+  // Effect for Mobile Carousel: API setup and slide change listener
+  useEffect(() => {
+    if (!api || !isMobile) {
+      return
+    }
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap())
+
+    const handleSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
+
+    api.on('select', handleSelect)
+
+    return () => {
+      api.off('select', handleSelect)
+    }
+  }, [api, isMobile])
+
+  if (isMobile) {
+    return (
+      <div className="px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center">
+          <h2 className="text-smartellDarkBlue text-3xl font-bold text-balance">{title}</h2>
+        </div>
+        <Carousel setApi={setApi} opts={{ loop: true }}>
+          <CarouselContent>
+            {referrals.map((referral, idx) => (
+              <CarouselItem key={idx} className="mr-6 flex basis-1/2 flex-col gap-2 sm:basis-1/3">
+                <Image
+                  src={referral.image.url}
+                  alt={referral.image.alt}
+                  width={referral.image.width}
+                  height={referral.image.height}
+                />
+                <div className="flex grow flex-col justify-between">
+                  <h3 className="text-smartellDarkBlue text-2xl font-bold">{referral.message}</h3>
+                  <div className="flex flex-col">
+                    <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referral.name}</p>
+                    <p className="text-smartellDarkBlue mt-1 text-sm font-bold">{referral.role}</p>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+        {api && count > 0 && (
+          <div className="mt-6 flex flex-col items-center">
+            <div className="h-1.5 w-3/4 max-w-60 overflow-hidden rounded-full bg-gray-200">
+              <div
+                className="bg-smartellDarkBlue h-full rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${((current + 1) / count) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
 
   return (
     <div ref={containerRef} className="relative h-[600vh] lg:mt-20 lg:h-[200vh]">

@@ -37,7 +37,7 @@ export async function Footer({ lang }: { lang: Locale }) {
         <h2 className="lg:text-10xl text-smartellLightPurple w-1/2 text-5xl font-bold sm:text-7xl md:text-8xl lg:w-3/4">
           {footer.title}
         </h2>
-        <div className="mt-28 flex flex-col gap-8 md:mt-36 md:flex-row lg:mt-48 xl:w-4/5">
+        <div className="mt-16 flex flex-col gap-8 sm:mt-28 md:mt-36 md:flex-row lg:mt-48 xl:w-4/5">
           <div className="basis-1/4">
             <h3 className="mb-8 text-2xl font-bold text-white">{footer.contactTitle}</h3>
             <div className="text-lg text-white">

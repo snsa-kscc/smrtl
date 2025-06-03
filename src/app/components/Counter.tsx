@@ -9,6 +9,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
   const isMobile = useIsMobile()
   const [counters, setCounters] = useState<string[]>(counterBox.map(() => '0'))
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [animationComplete, setAnimationComplete] = useState(false)
   const ref = useRef(null)
   const isInView = useInView(ref)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
@@ -19,6 +20,10 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
       const staggerDelay = isMobile ? 300 : 700
       const steps = isMobile ? 15 : 30
       const baseInterval = baseDuration / steps
+
+      // Define startTime at the beginning
+      const startTime = performance.now()
+      const totalDuration = baseDuration + (counterBox.length - 1) * staggerDelay
 
       intervalRef.current = setInterval(() => {
         const currentTime = performance.now()
@@ -42,14 +47,16 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
         )
       }, baseInterval)
 
-      const startTime = performance.now()
-      const totalDuration = baseDuration + (counterBox.length - 1) * staggerDelay
-
       setTimeout(() => {
         if (intervalRef.current) {
           clearInterval(intervalRef.current)
         }
         setCounters(counterBox.map((counter) => counter.number.toString()))
+
+        // Only set animation complete for mobile
+        if (isMobile) {
+          setAnimationComplete(true)
+        }
       }, totalDuration)
     }
 
@@ -61,42 +68,66 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
   }, [isInView, counterBox, isMobile])
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      transition={{ duration: 0.7 }}
-      className="mx-8 grid grid-cols-2 justify-items-start gap-20 py-24 lg:mx-28 lg:py-32"
-    >
-      {counterBox.map((counter, index) => (
-        <div
-          key={counter.number}
-          className={cn(
-            'relative',
-            index % 4 === 2 || index % 4 === 3 ? 'justify-self-center' : '',
-          )}
-        >
-          <h2
-            className="2xl:text-10xl text-smartellDarkBlue cursor-pointer text-6xl font-bold md:text-7xl lg:text-8xl xl:text-9xl"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => setHoveredIndex(index)}
-          >
-            {counters[index]}
-          </h2>
+    <div className="overflow-hidden">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+        transition={{ duration: 0.7 }}
+        className="mx-8 grid grid-cols-2 justify-items-start gap-20 pt-20 pb-16 lg:mx-28 lg:py-32"
+      >
+        {counterBox.map((counter, index) => (
           <div
+            key={counter.number}
             className={cn(
-              'absolute top-10/12 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 2xl:top-1/2 2xl:-translate-x-1/4',
-              hoveredIndex === index ? 'opacity-100' : 'opacity-0',
+              isMobile ? 'relative w-full' : 'relative',
+              index % 4 === 2 || index % 4 === 3 ? 'justify-self-center' : '',
             )}
           >
-            <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-[10px] font-bold text-white lg:px-16 lg:text-base xl:text-lg">
-              {counter.description}
-            </p>
+            <h2
+              className="2xl:text-10xl text-smartellDarkBlue cursor-pointer text-center text-6xl font-bold md:text-7xl lg:text-8xl xl:text-9xl"
+              onMouseEnter={() => !isMobile && setHoveredIndex(index)}
+              onMouseLeave={() => !isMobile && setHoveredIndex(null)}
+              onClick={() => !isMobile && setHoveredIndex(index)}
+            >
+              {counters[index]}
+            </h2>
+
+            {/* Desktop version - hover controlled */}
+            {!isMobile && (
+              <div
+                className={cn(
+                  'absolute top-10/12 left-full w-max -translate-x-10/12 transform transition-opacity duration-700 2xl:top-1/2 2xl:-translate-x-1/4',
+                  hoveredIndex === index ? 'opacity-100' : 'opacity-0',
+                )}
+              >
+                <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-[10px] font-bold text-white lg:px-16 lg:text-base xl:text-lg">
+                  {counter.description}
+                </p>
+              </div>
+            )}
+
+            {/* Mobile version - staggered animation */}
+            {isMobile && animationComplete && (
+              <motion.div
+                className="absolute left-1/2 w-max -translate-x-1/2 transform"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.5, // This is the key for staggering - each item gets progressively delayed
+                }}
+              >
+                <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-center text-[10px] font-bold text-white">
+                  {counter.description}
+                </p>
+              </motion.div>
+            )}
           </div>
-        </div>
-      ))}
-    </motion.div>
+        ))}
+      </motion.div>
+    </div>
   )
 }

@@ -32,7 +32,7 @@ export function Archive({ lang, posts }: { lang: Locale; posts: Post[] }) {
               }
               className="block"
             >
-              <div className="p-8">
+              <div className="px-8">
                 {post.featuredImage && (
                   <div className="relative aspect-[0.9] w-full overflow-hidden">
                     <Image

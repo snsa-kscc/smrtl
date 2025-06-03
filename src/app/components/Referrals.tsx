@@ -91,7 +91,7 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
   }, [viewportWidth, maxScrollReached, isMobile])
 
   return (
-    <div ref={containerRef} className="relative mt-20 h-[600vh] lg:h-[200vh]">
+    <div ref={containerRef} className="relative h-[600vh] lg:mt-20 lg:h-[200vh]">
       <div ref={stickyRef} className="sticky top-0 overflow-hidden py-20">
         <motion.div
           ref={motionDivRef}

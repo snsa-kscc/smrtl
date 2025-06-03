@@ -30,7 +30,7 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
           <div className="z-0 col-start-1 row-start-1 w-32 justify-self-start opacity-45 lg:col-start-1 lg:row-start-1 lg:w-40 lg:justify-self-start lg:opacity-100">
             <ImageShape />
           </div>
-          <div className="z-10 col-start-1 row-start-1 max-w-3xl self-center pt-24 lg:col-start-2 lg:row-start-1 lg:pt-0">
+          <div className="z-10 col-start-1 row-start-1 max-w-3xl self-center pt-8 sm:pt-24 lg:col-start-2 lg:row-start-1 lg:pt-0">
             <h2 className="text-smartellLightPurple mb-5 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
               {title}
             </h2>

@@ -36,7 +36,7 @@ export function NewsletterForm({ footer, lang }: { footer: Footer; lang: Locale 
       <Button
         type="submit"
         disabled={pending}
-        className="text-smartellDarkBlue mx-16 basis-1/2 cursor-pointer rounded-full bg-white px-16 py-4 text-xl font-bold transition-colors duration-300 hover:bg-white/80 lg:mx-0 lg:py-7"
+        className="text-smartellDarkBlue mx-12 basis-1/2 cursor-pointer rounded-full bg-white px-16 py-4 text-xl font-bold transition-colors duration-300 hover:bg-white/80 lg:mx-0 lg:py-7"
       >
         {pending ? sendingTranslations[lang] : footer.newsletterButton}
       </Button>

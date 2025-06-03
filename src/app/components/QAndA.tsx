@@ -19,7 +19,7 @@ export function QAndA({ qAndABox }: { qAndABox: { question: string; answer: stri
         <div className="mx-8 max-w-3xl basis-1/2 lg:mx-32">
           <Accordion type="single" collapsible>
             {qAndABox.map((item, index) => (
-              <AccordionItem key={index} value={item.question} className="my-10">
+              <AccordionItem key={index} value={item.question} className="mt-1 mb-10 lg:mt-10">
                 <AccordionTrigger className="text-left text-3xl font-bold text-white hover:no-underline">
                   {item.question}
                 </AccordionTrigger>

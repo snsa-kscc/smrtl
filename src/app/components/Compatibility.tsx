@@ -50,7 +50,7 @@ export function Compatibility({
           <SupportShape />
         </div>
       </div>
-      <div className="bg-smartellLightPurple flex flex-col items-center justify-center gap-12 px-10 pt-28 lg:flex-row lg:justify-between lg:px-20 lg:pt-44">
+      <div className="bg-smartellLightPurple flex flex-col items-center justify-center gap-12 px-10 pt-16 lg:flex-row lg:justify-between lg:px-20 lg:pt-44">
         <p className="text-smartellDarkBlue basis-1/2 text-center text-4xl font-bold text-balance lg:text-5xl xl:text-7xl">
           {ctaHook}
         </p>

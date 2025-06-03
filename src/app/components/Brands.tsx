@@ -16,7 +16,7 @@ type BrandsProps = {
 
 export function Brands({ title, description, brands }: BrandsProps) {
   return (
-    <div className="bg-smartellDarkBlue py-28">
+    <div className="bg-smartellDarkBlue py-18 lg:py-28">
       <h3 className="text-smartellLightPurple mx-auto w-2/3 text-center text-5xl font-bold text-balance lg:text-5xl xl:text-8xl">
         {title}
       </h3>

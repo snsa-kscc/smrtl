@@ -15,9 +15,9 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
 
   useEffect(() => {
     if (isInView && !intervalRef.current) {
-      const baseDuration = 3000
-      const staggerDelay = 700
-      const steps = 30
+      const baseDuration = isMobile ? 1500 : 3000
+      const staggerDelay = isMobile ? 300 : 700
+      const steps = isMobile ? 15 : 30
       const baseInterval = baseDuration / steps
 
       intervalRef.current = setInterval(() => {
@@ -58,7 +58,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
         clearInterval(intervalRef.current)
       }
     }
-  }, [isInView, counterBox])
+  }, [isInView, counterBox, isMobile])
 
   return (
     <motion.div

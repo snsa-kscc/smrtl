@@ -24,16 +24,16 @@ export function IPTVSolutions({
 }) {
   return (
     <div className="relative px-4 py-6 sm:px-8 md:px-20 lg:py-40">
-      <div className="flex flex-col items-center justify-between gap-10 px-4 py-20 sm:px-8 md:px-20 lg:flex-row">
-        <h3 className="text-smartellLightPurple w-full text-3xl font-bold text-balance md:text-4xl lg:w-2/3 lg:text-5xl">
+      <div className="flex flex-col items-center justify-between gap-10 px-4 py-12 sm:px-8 sm:py-20 md:px-20 lg:flex-row">
+        <h3 className="text-smartellLightPurple w-full text-center text-3xl font-bold text-balance md:text-4xl lg:w-2/3 lg:text-left lg:text-5xl">
           {title}
         </h3>
         <div className="w-40 lg:w-60">
           <PlayShape />
         </div>
       </div>
-      <div className="flex flex-col items-center justify-between gap-10 px-4 pb-32 sm:px-8 md:px-20 lg:flex-row">
-        <p className="text-smartellDarkBlue text-2xl font-bold md:text-3xl lg:text-5xl">
+      <div className="flex flex-col items-center justify-between gap-10 px-4 pb-16 sm:px-8 md:px-20 lg:flex-row lg:pb-32">
+        <p className="text-smartellDarkBlue mx-8 text-center text-2xl font-bold sm:mx-0 md:text-3xl lg:text-left lg:text-5xl">
           {subtitle}
         </p>
         <div className="shrink-0">

@@ -102,6 +102,14 @@ export async function generateMetadata({
   if (!result.docs[0]) {
     return {}
   }
-
-  return generateMeta({ doc: result.docs[0], collection: 'pages', lang })
+  
+  // Create the canonical path for this page
+  const canonicalPath = slug === 'home' ? `/${lang}` : `/${lang}/${slug}`
+  
+  return generateMeta({ 
+    doc: result.docs[0], 
+    collection: 'pages', 
+    lang,
+    path: canonicalPath
+  })
 }

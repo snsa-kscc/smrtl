@@ -127,7 +127,7 @@ export async function generateMetadata({
   params: Promise<{ lang: Locale; slug: string[] }>
 }): Promise<Metadata> {
   const { lang, slug } = await params
-  const [_, ...pathSlug] = slug
+  const [pathLang, ...pathSlug] = slug
 
   const payload = await getPayload({ config: configPromise })
 
@@ -143,6 +143,14 @@ export async function generateMetadata({
   if (!result.docs[0]) {
     return {}
   }
-
-  return generateMeta({ doc: result.docs[0], collection: 'posts', lang })
+  
+  // Create the canonical path for this post
+  const canonicalPath = `/${lang}/${pathTranslations[lang]}/${pathSlug[0]}`
+  
+  return generateMeta({ 
+    doc: result.docs[0], 
+    collection: 'posts', 
+    lang,
+    path: canonicalPath
+  })
 }

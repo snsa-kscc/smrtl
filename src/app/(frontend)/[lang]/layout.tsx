@@ -57,7 +57,6 @@ export const metadata: Metadata = {
   category: 'technology',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL!),
   alternates: {
-    canonical: '/',
     languages: Object.fromEntries(i18n.locales.map((locale) => [locale, `/${locale}`])),
   },
   generator: 'Next.js',

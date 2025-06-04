@@ -114,6 +114,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               <Link
                 key={idx}
                 href={item.url}
+                onClick={() => setIsMenuOpen(false)}
                 className="relative block rounded-md px-3 py-2 text-lg font-bold text-white transition-colors duration-200 hover:text-white/80"
               >
                 {item.label}
@@ -126,6 +127,7 @@ export function HeaderClient({ lang, header }: { lang: Locale; header: Header })
               <Link
                 href={header.cta?.url ?? ''}
                 className="bg-smartellDarkBlue hover:bg-smartellDarkBlue/90 ml-auto shrink-0 rounded-full px-8 py-4 text-xl font-bold text-white shadow-xs transition duration-200"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {header.cta?.label}
               </Link>

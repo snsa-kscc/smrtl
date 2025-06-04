@@ -52,7 +52,7 @@ export function Solutions({
           ),
         )}
       </h3>
-      <div className="flex flex-col items-center justify-between pt-4 md:flex-row lg:pt-12">
+      <div className="flex flex-col items-end justify-between pt-4 md:flex-row lg:pt-12">
         <div>
           <p className="w-full px-6 pb-10 text-2xl font-bold text-balance text-white md:pt-28 md:pl-24 md:text-3xl lg:text-4xl">
             {description}
@@ -88,7 +88,7 @@ export function Solutions({
             </div>
           </div>
         </div>
-        <div className="w-full md:basis-1/2 md:translate-y-12">
+        <div className="w-full md:basis-1/2 lg:translate-y-12">
           <Carousel setApi={setApi} plugins={[Autoplay({ delay: 2500 })]} className="w-full">
             <CarouselContent>
               {industry.map((item) => (

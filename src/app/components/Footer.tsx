@@ -28,7 +28,7 @@ export async function Footer({ lang }: { lang: Locale }) {
     }))
 
   return (
-    <>
+    <footer>
       <div
         className="bg-smartellDarkBlue bg-[length:35%] bg-right-top bg-no-repeat px-8 pt-16 pb-20 md:bg-[length:25%] lg:px-20 lg:pt-28 xl:bg-[length:auto]"
         id={contactTranslations[lang]}
@@ -114,6 +114,6 @@ export async function Footer({ lang }: { lang: Locale }) {
           <p>© Copyright {new Date().getFullYear()} Smartell</p>
         </div>
       </div>
-    </>
+    </footer>
   )
 }

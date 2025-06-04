@@ -77,7 +77,7 @@ export default async function Page({
   return (
     <>
       {localizedPosts && <LocaleLinksUpdater localeLinks={localizedPosts} />}
-      <h1 className="text-smartellLightPurple px-4 pt-16 text-left text-5xl font-bold md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-7xl xl:text-8xl">
+      <h1 className="text-smartellLightPurple px-8 pt-16 text-left text-5xl font-bold md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-7xl xl:text-8xl">
         {title}
       </h1>
       {featuredImage && (

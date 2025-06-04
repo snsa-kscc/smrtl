@@ -12,7 +12,7 @@ export function Content({
 }) {
   return (
     <div className="mx-auto w-5xl max-w-full px-8 py-16">
-      <div className="richText">
+      <div className="richText wrap-break-word">
         {serializeLexical({ nodes: content.root.children, includeReadingTime, lang })}
       </div>
     </div>

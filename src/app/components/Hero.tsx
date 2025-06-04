@@ -85,7 +85,7 @@ export function Hero({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.02 }}
-          className="text-smartellLightPurple mb-6 text-center text-5xl font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-8xl xl:text-9xl"
+          className="text-smartellLightPurple mb-6 text-center text-5xl leading-[1.1] font-bold [perspective:1000px] [transform-style:preserve-3d] md:mb-12 md:text-6xl lg:mb-16 lg:text-8xl xl:text-9xl"
         >
           {title.split(/(\s)/).map((word, i) => (
             <div key={i} className="word inline-block">

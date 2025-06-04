@@ -118,22 +118,24 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
 
   if (isMobile) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center">
-          <h2 className="text-smartellDarkBlue text-3xl font-bold text-balance">{title}</h2>
+      <div className="px-4 py-16 sm:px-6">
+        <div className="mb-10 text-center">
+          <h2 className="text-smartellDarkBlue mx-8 text-4xl font-bold text-balance">{title}</h2>
         </div>
         <Carousel setApi={setApi} opts={{ loop: true }}>
           <CarouselContent>
             {referrals.map((referral, idx) => (
-              <CarouselItem key={idx} className="mr-6 flex basis-1/2 flex-col gap-2 sm:basis-1/3">
+              <CarouselItem key={idx} className="mr-6 flex basis-1/2 flex-col gap-4 sm:basis-1/3">
                 <Image
                   src={referral.image.url}
                   alt={referral.image.alt}
                   width={referral.image.width}
                   height={referral.image.height}
                 />
-                <div className="flex grow flex-col justify-between">
-                  <h3 className="text-smartellDarkBlue text-2xl font-bold">{referral.message}</h3>
+                <div className="flex grow flex-col justify-between gap-2">
+                  <h3 className="text-smartellDarkBlue text-xl leading-tight font-bold">
+                    {referral.message}
+                  </h3>
                   <div className="flex flex-col">
                     <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referral.name}</p>
                     <p className="text-smartellDarkBlue mt-1 text-sm font-bold">{referral.role}</p>
@@ -144,7 +146,7 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
           </CarouselContent>
         </Carousel>
         {api && count > 0 && (
-          <div className="mt-6 flex flex-col items-center">
+          <div className="mt-8 flex flex-col items-center">
             <div className="h-1.5 w-3/4 max-w-60 overflow-hidden rounded-full bg-gray-200">
               <div
                 className="bg-smartellDarkBlue h-full rounded-full transition-all duration-300 ease-out"

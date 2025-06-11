@@ -66,19 +66,11 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db:
-    process.env.NODE_ENV === 'production'
-      ? sqliteAdapter({
-          client: {
-            url: process.env.DATABASE_URI || '',
-            authToken: process.env.DATABASE_AUTH_TOKEN || '',
-          },
-        })
-      : sqliteAdapter({
-          client: {
-            url: 'file:./sqlite-dev.db',
-          },
-        }),
+  db: sqliteAdapter({
+    client: {
+      url: process.env.DATABASE_URI || '',
+    },
+  }),
   sharp,
   email: nodemailerAdapter({
     defaultFromAddress: process.env.EMAIL_SERVER_USER!,

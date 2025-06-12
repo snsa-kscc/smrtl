@@ -36,7 +36,7 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
         {description}
       </p>
       {!isMobile && logo && (
-        <div className="col-start-3 row-start-2 translate-y-10 scale-150">
+        <div className="col-start-4 row-start-2 translate-y-10 scale-150">
           <ImageShape />
         </div>
       )}

@@ -52,6 +52,12 @@ Start the production server:
 pnpm start
 ```
 
+To specify a custom port, example 4000 (default is 3000):
+
+```bash
+pnpm start -p 4000
+```
+
 ## Production Deployment with PM2
 
 1. Install PM2 globally if not already installed
@@ -69,7 +75,11 @@ pnpm start
 3. Start the application with PM2
 
    ```bash
+   # Default port (3000)
    pm2 start "pnpm start" --name smrtl
+
+   # Custom port (example: 4000)
+   pm2 start "pnpm start -p 4000" --name smrtl
    ```
 
 4. Set up PM2 to start on system boot

@@ -77,7 +77,7 @@ export default async function Page({
   return (
     <>
       {localizedPosts && <LocaleLinksUpdater localeLinks={localizedPosts} />}
-      <h1 className="text-smartellLightPurple px-8 pt-16 text-left text-5xl font-bold md:px-16 md:text-5xl lg:px-40 lg:pt-40 lg:text-7xl xl:text-8xl">
+      <h1 className="text-smartellLightPurple px-6 pt-16 text-left text-5xl font-bold md:text-5xl lg:px-24 lg:pt-40 lg:text-7xl xl:text-8xl">
         {title}
       </h1>
       {featuredImage && (
@@ -143,14 +143,14 @@ export async function generateMetadata({
   if (!result.docs[0]) {
     return {}
   }
-  
+
   // Create the canonical path for this post
   const canonicalPath = `/${lang}/${pathTranslations[lang]}/${pathSlug[0]}`
-  
-  return generateMeta({ 
-    doc: result.docs[0], 
-    collection: 'posts', 
+
+  return generateMeta({
+    doc: result.docs[0],
+    collection: 'posts',
     lang,
-    path: canonicalPath
+    path: canonicalPath,
   })
 }

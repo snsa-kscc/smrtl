@@ -135,7 +135,7 @@ export function Hero({
           ))}
         </motion.div>
         <motion.div
-          className="absolute top-0 right-0 -z-50 w-full max-w-[10rem] sm:max-w-[15rem] md:max-w-[20rem] lg:max-w-[26rem]"
+          className="absolute top-7 right-0 -z-50 w-full max-w-[10rem] sm:max-w-[15rem] md:max-w-[20rem] lg:max-w-[26rem]"
           initial={{ opacity: 0, y: 200 }}
           animate={{ opacity: isMobile ? 0.3 : 1, y: 0 }}
           transition={{ delay: 0.1, duration: 1 }}

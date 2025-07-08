@@ -50,11 +50,11 @@ export function Compatibility({
           <SupportShape />
         </div>
       </div>
-      <div className="bg-smartellLightPurple flex flex-col items-center justify-center gap-12 px-10 pt-16 lg:flex-row lg:justify-between lg:px-20 lg:pt-44">
-        <p className="text-smartellDarkBlue basis-1/2 text-center text-4xl font-bold text-balance lg:text-5xl xl:text-7xl">
+      <div className="bg-smartellLightPurple flex flex-col items-center justify-center gap-12 px-10 pt-16 lg:flex-row lg:justify-between lg:px-30 lg:pt-44">
+        <p className="text-smartellDarkBlue basis-1/2 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
           {ctaHook}
         </p>
-        <div className="flex items-center justify-center lg:mr-20">
+        <div className="flex items-center justify-center">
           <Link
             href={ctaUrl}
             className="text-smartellDarkBlue inline-block cursor-pointer rounded-full bg-white px-16 py-4 text-xl font-bold transition-colors duration-300 hover:bg-white/80"

@@ -27,15 +27,15 @@ export function Benefits({ title, subtitle, image, benefitsBox, ctaLabel, ctaUrl
     // <div className="pb-10 lg:py-32">
     <div className="lg:pt-32">
       <div className="flex flex-col items-center gap-12 py-10 md:py-16 lg:mb-24 lg:flex-row lg:items-start lg:justify-between lg:px-24 lg:py-32 xl:px-32">
-        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] lg:gap-12">
+        <div className="grid w-full grid-cols-1 items-start lg:w-auto lg:grid-cols-[auto_1fr] lg:gap-12">
           <div className="z-0 col-start-1 row-start-1 w-32 justify-self-start opacity-45 lg:col-start-1 lg:row-start-1 lg:w-40 lg:justify-self-start lg:opacity-100">
             <ImageShape />
           </div>
-          <div className="z-10 col-start-1 row-start-1 max-w-3xl self-center pt-8 sm:pt-24 lg:col-start-2 lg:row-start-1 lg:pt-0">
+          <div className="z-10 col-start-1 row-start-1 self-center pt-8 sm:pt-24 lg:col-start-2 lg:row-start-1 lg:pt-0">
             <h2 className="text-smartellLightPurple mb-5 text-center text-4xl font-bold text-balance lg:text-left lg:text-5xl xl:text-7xl">
               {title}
             </h2>
-            <p className="text-center text-2xl lg:text-left">{subtitle}</p>
+            <p className="text-smartellDarkBlue text-center text-2xl lg:text-left">{subtitle}</p>
           </div>
         </div>
         <div className="hidden lg:block">

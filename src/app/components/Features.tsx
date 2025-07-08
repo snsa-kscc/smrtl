@@ -76,8 +76,8 @@ export function Features({
   secondLineFeatures: string
 }) {
   return (
-    <div className="bg-smartellLightPurple flex flex-col items-start justify-center overflow-hidden px-6 py-14 md:px-12 lg:px-24 lg:py-24 xl:px-32">
-      <p className="mx-12 self-center pt-4 text-center text-2xl font-bold text-white md:text-3xl lg:mx-0 lg:self-auto lg:pt-32 lg:pl-28 lg:text-4xl">
+    <div className="bg-smartellLightPurple flex flex-col items-start justify-center overflow-hidden px-6 py-14 md:px-12 lg:px-30 lg:py-24 xl:px-32">
+      <p className="mx-12 self-center pt-4 text-center text-2xl font-bold text-white md:text-3xl lg:mx-0 lg:self-auto lg:pt-32 lg:text-4xl">
         {title}
       </p>
       <Feature baseVelocity={-0.6} margin="mt-16 lg:mt-24">
@@ -86,7 +86,7 @@ export function Features({
       <Feature baseVelocity={0.6} margin="mb-16 lg:mb-24">
         {secondLineFeatures}
       </Feature>
-      <p className="text-smartellDarkBlue self-end pb-4 text-center text-2xl font-bold text-balance lg:pr-28 lg:pb-32 lg:text-white">
+      <p className="text-smartellDarkBlue self-end pb-4 text-center text-2xl font-bold text-balance lg:pb-32 lg:text-white">
         {subtitle}
       </p>
     </div>

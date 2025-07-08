@@ -23,20 +23,21 @@ export function ImageHero({ title, description, image, logo }: ImageHeroProps) {
         backgroundImage: `url('${image.url}')`,
       }}
     >
-      {logo ? (
-        <h2 className="col-span-5 justify-self-center text-center text-3xl font-bold text-white lg:col-span-3 lg:justify-self-auto lg:text-left lg:text-5xl xl:text-7xl 2xl:col-span-1">
-          {title}
-        </h2>
-      ) : (
-        <h2 className="col-span-4 mb-8 text-4xl font-bold text-balance text-white lg:text-5xl xl:text-7xl">
-          {title}
-        </h2>
-      )}
-      <p className="col-span-5 row-start-2 self-end text-center text-2xl text-white lg:col-span-2 lg:self-start lg:text-left 2xl:col-span-1">
+      <h2
+        className={cn(
+          'col-span-5 justify-self-center text-center font-bold text-white lg:col-span-3 lg:justify-self-auto lg:text-left xl:col-span-4',
+          logo
+            ? 'text-3xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:col-span-1'
+            : 'text-4xl md:text-5xl lg:text-7xl',
+        )}
+      >
+        {title}
+      </h2>
+      <p className="col-span-5 row-start-2 self-end text-center text-2xl text-white lg:col-span-2 lg:text-left 2xl:col-span-1 2xl:self-start">
         {description}
       </p>
       {!isMobile && logo && (
-        <div className="col-start-4 row-start-2 translate-y-10 scale-150">
+        <div className="col-start-4 row-start-2 translate-y-14 scale-150 self-end">
           <ImageShape />
         </div>
       )}

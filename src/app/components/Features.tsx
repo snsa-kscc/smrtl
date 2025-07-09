@@ -86,7 +86,7 @@ export function Features({
       <Feature baseVelocity={0.6} margin="mb-16 lg:mb-24">
         {secondLineFeatures}
       </Feature>
-      <p className="text-smartellDarkBlue self-end pb-4 text-center text-2xl font-bold text-balance lg:pb-32 lg:text-white">
+      <p className="text-smartellDarkBlue self-center pb-4 text-center text-2xl font-bold text-balance lg:self-end lg:pb-32 lg:text-right lg:text-white">
         {subtitle}
       </p>
     </div>

@@ -33,7 +33,7 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
   const [maxScrollReached, setMaxScrollReached] = useState(0)
   // --- End States and Refs for Desktop version ---
 
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile(1100)
 
   // --- States for Mobile Carousel version ---
   const [api, setApi] = useState<CarouselApi>()
@@ -118,33 +118,47 @@ export function Referrals({ title, referrals }: { title: string; referrals: Refe
 
   if (isMobile) {
     return (
-      <div className="px-4 py-16 sm:px-6">
+      <div className="px-4 py-16 sm:px-6 lg:pt-24 lg:pb-30">
         <div className="mb-10 text-center">
-          <h2 className="text-smartellDarkBlue mx-8 text-4xl font-bold text-balance">{title}</h2>
+          <h2 className="text-smartellDarkBlue mx-8 text-4xl font-bold text-balance lg:pb-6 lg:text-5xl">
+            {title}
+          </h2>
         </div>
-        <Carousel setApi={setApi} opts={{ loop: true }}>
-          <CarouselContent>
-            {referrals.map((referral, idx) => (
-              <CarouselItem key={idx} className="mr-6 flex basis-1/2 flex-col gap-4 sm:basis-1/3">
-                <Image
-                  src={referral.image.url}
-                  alt={referral.image.alt}
-                  width={referral.image.width}
-                  height={referral.image.height}
-                />
-                <div className="flex grow flex-col justify-between gap-2">
-                  <h3 className="text-smartellDarkBlue text-xl leading-tight font-bold">
-                    {referral.message}
-                  </h3>
-                  <div className="flex flex-col">
-                    <p className="text-smartellDarkBlue mt-4 text-sm font-bold">{referral.name}</p>
-                    <p className="text-smartellDarkBlue mt-1 text-sm font-bold">{referral.role}</p>
+        <div className="relative">
+          {/* Left fade effect */}
+          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent opacity-90 lg:w-24" />
+
+          <Carousel setApi={setApi} opts={{ loop: true }}>
+            <CarouselContent>
+              {referrals.map((referral, idx) => (
+                <CarouselItem key={idx} className="mr-6 flex basis-1/2 flex-col gap-4 sm:basis-1/3">
+                  <Image
+                    src={referral.image.url}
+                    alt={referral.image.alt}
+                    width={referral.image.width}
+                    height={referral.image.height}
+                  />
+                  <div className="flex grow flex-col justify-between gap-2">
+                    <h3 className="text-smartellDarkBlue text-xl leading-tight font-bold">
+                      {referral.message}
+                    </h3>
+                    <div className="flex flex-col">
+                      <p className="text-smartellDarkBlue mt-4 text-sm font-bold">
+                        {referral.name}
+                      </p>
+                      <p className="text-smartellDarkBlue mt-1 text-sm font-bold">
+                        {referral.role}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Right fade effect */}
+          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent opacity-90 lg:w-24" />
+        </div>
         {api && count > 0 && (
           <div className="mt-8 flex flex-col items-center">
             <div className="h-1.5 w-3/4 max-w-60 overflow-hidden rounded-full bg-gray-200">

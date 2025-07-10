@@ -6,7 +6,7 @@ import { cn } from '../lib/utils'
 import { useIsMobile } from '../hooks/use-mobile'
 
 export function Counter({ counterBox }: { counterBox: { number: number; description: string }[] }) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile(1100)
   const [counters, setCounters] = useState<string[]>(counterBox.map(() => '0'))
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [animationComplete, setAnimationComplete] = useState(false)
@@ -75,7 +75,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: '0px 0px -10% 0px' }}
         transition={{ duration: 0.7 }}
-        className="mx-8 grid grid-cols-2 justify-items-start gap-20 pt-20 pb-16 lg:mx-28 lg:py-32"
+        className="mx-8 grid grid-cols-2 justify-items-start gap-20 pt-20 pb-16 md:py-24 lg:mx-28 lg:py-32"
       >
         {counterBox.map((counter, index) => (
           <div
@@ -120,7 +120,7 @@ export function Counter({ counterBox }: { counterBox: { number: number; descript
                   delay: index * 0.5, // This is the key for staggering - each item gets progressively delayed
                 }}
               >
-                <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-center text-[10px] font-bold text-white">
+                <p className="bg-smartellLightPurple rounded-full px-3 py-4 text-center text-[10px] font-bold text-white md:px-6 md:text-base lg:px-8 lg:text-lg">
                   {counter.description}
                 </p>
               </motion.div>

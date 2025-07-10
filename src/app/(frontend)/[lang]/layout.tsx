@@ -2,7 +2,6 @@ import Script from 'next/script'
 import '@/app/styles/globals.css'
 import { Mont } from '@/app/lib/fonts'
 import { TailwindIndicator } from '@/app/components/utils/TailwindIndicator'
-import { Sig } from '@/app/components/utils/Sig'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { Locale } from 'i18n.config'
@@ -42,7 +41,6 @@ export default async function RootLayout({
           <main className="pt-14 lg:pt-16">{children}</main>
           <Footer lang={lang} />
           <TailwindIndicator />
-          {/* <Sig /> */}
         </LocaleLinksProvider>
         <Toaster
           position="bottom-right"
